@@ -23,7 +23,6 @@ const HomePage = () => {
     const storedLang  = localStorage.getItem("i18nextLng") || 'en'; // Достъп до localStorage само в браузъра
     setLanguage(storedLang);
     document.title = storedLang ===  'bg' ? 'Начална страница' : 'Home page';
-
     // Проверка само ако сме в браузърна среда
     if (typeof window !== 'undefined') {
       const nextauth = localStorage.getItem("nextauth.message");
