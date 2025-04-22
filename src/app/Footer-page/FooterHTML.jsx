@@ -61,6 +61,9 @@ const FooterHtml = () => {
           </div>
         </div>
       </div>
+      <section>
+        <div className="all-rights-reserved flex-horizontal-container-raw text-align-center justify-content-center padding-15">© {t('years')} {t('myName')}. {t('allRights')}.</div>
+      </section>
     </footer>
   );
 };
