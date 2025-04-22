@@ -4,8 +4,6 @@ services:
   app:
     build: .
     container_name: eng.d-dimitrov.eu
-    ports:
-      - '3003:3003'
     volumes:
       - .:/app
     restart: always
