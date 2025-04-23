@@ -7,7 +7,6 @@ services:
     volumes:
       - .:/app
     command: npm start
-    restart: always
 networks:
   default:
     external:
