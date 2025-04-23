@@ -1,13 +1,13 @@
-version: '1.0'
+version: '3.8'
 
 services:
   app:
     build: .
-    container_name: eng.d-dimitrov.eu
+    container_name: d-dimitrov
     volumes:
       - .:/app
-    restart: always
     command: npm start
+    restart: always
 networks:
   default:
     external:

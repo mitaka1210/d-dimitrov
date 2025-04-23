@@ -4,8 +4,8 @@ set -e
 
 # ⚙️ Настройки
 PROJECT_DIR="$PWD"
-BACKUP_TAG="eng.d-dimitrov.eu-backup:$(date +%F-%H-%M-%S)"
-CONTAINER_NAME="eng.d-dimitrov.eu"
+BACKUP_TAG="d-dimitrov-backup:$(date +%F-%H-%M-%S)"
+CONTAINER_NAME="d-dimitrov"
 SERVICE_NAME="app"
 LOG_FILE="$PROJECT_DIR/deploy_logs/deploy_test_$(date +%F_%H-%M-%S).log"
 
