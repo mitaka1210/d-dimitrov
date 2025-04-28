@@ -104,7 +104,6 @@ form {
 
   input,
   textarea {
-    font-family: 'Quicksand', sans-serif;
     color: #212529;
     font-size: 1.1rem;
   }
@@ -166,6 +165,9 @@ textarea {
   .container-contact {
     display: flex;
     flex-flow: column;
+  }
+  form {
+    min-width: 2rem;
   }
   .left-svg svg {
     margin-right: 0;

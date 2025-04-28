@@ -319,3 +319,9 @@
     left: 100%;
   }
 }
+
+@media (max-width: 440px) {
+  .timeline__event{
+    width: 90vw;
+  }
+}
