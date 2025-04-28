@@ -405,7 +405,9 @@
     }
   }
 }
-
+.add-scroll-aquarium-page {
+  height: 150dvh;
+}
 
 @media (min-height: 1100px) {
   .add-scroll-aquarium-page {
@@ -413,10 +415,21 @@
   }
 
 }
-
+@media (min-height: 900px) {
+  .add-scroll-aquarium-page {
+    height: 200dvh;
+  }
+}
+@media (min-height: 600px) {
+  .add-scroll-aquarium-page {
+    height: 270dvh;
+  }
+}
 @media (max-width: 500px) {
+  .add-scroll-aquarium-page{
+    height: 200dvh;
+  }
   .mobile-devices-styles {
     text-align: center;
   }
-
 }
