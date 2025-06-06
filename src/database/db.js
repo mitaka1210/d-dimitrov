@@ -5,9 +5,10 @@ const pool = new Pool({
   user: "mitaka",
   password: "mitaka",
   host: "192.168.55.5",
-  // port: 6543,// home
-  port: 5432,  // work
-  database: "postgres"
+  // port: 5434,// dev
+  port: 5435,  // prod
+  database: "prod_db",
+  // database: "dev_db"
 });
 
 export default pool;
