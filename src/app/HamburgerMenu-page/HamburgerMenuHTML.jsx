@@ -175,11 +175,11 @@ function HamburgerMenu() {
               {t("contact")}
             </ItemLink>
           </li>
-          {/*<li onClick={handleClick}>*/}
-          {/*  <ItemLink onClick={handleClick} to="/login" href="/Login-page">*/}
-          {/*    {t("login")}*/}
-          {/*  </ItemLink>*/}
-          {/*</li>*/}
+          <li onClick={handleClick}>
+            <ItemLink onClick={handleClick} to="/login" href="/Login-page">
+              {t("login")}
+            </ItemLink>
+          </li>
           <li onClick={handleClick}>
             <ChangeLang/>
           </li>
