@@ -93,7 +93,7 @@ setTimeout(() => {
                   откъде
                   да започнете, тази статия ще ви даде основни насоки.</span>
                         :
-                      <span>{article.sections[1].content.substring(0,220)}...</span>
+                      <span>{article.sections[index - 1].content.substring(0,220)}...</span>
                  }
                  <div className="flex-horizontal-container-raw justify-end">
                   <button onClick={() => handleClick(article.id)}>

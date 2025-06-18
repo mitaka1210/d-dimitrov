@@ -1,4 +1,7 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import {
+ validateArticles
+} from "../../helperMethods/checkArticleSectionNotNull/checkArticleSectionNotNull";
 
 export const fetchArticles = createAsyncThunk('getArticles', async () => {
  const response = await fetch('/api/getArticles');
@@ -33,10 +36,12 @@ const articlesSlice = createSlice({
   builder.addCase(fetchArticles.fulfilled, (state, action) => {
    state.isLoading = false;
    let articlesArr = [];
+   state.data = validateArticles(action.payload);
+   console.log("pesho", state.data);
    state.status = 'succeeded';
    if (action.payload.error === undefined){
-    for (let i = 0; i < action.payload.length; i++) {
-     let createArticleDate = new Date(action.payload[i].createData).toLocaleString(undefined, {
+    for (let i = 0; i < state.data.length; i++) {
+     let createArticleDate = new Date(state.data[i].createData).toLocaleString(undefined, {
       year: 'numeric',
       month: '2-digit',
       day: '2-digit',
@@ -44,11 +49,11 @@ const articlesSlice = createSlice({
      });
      articlesArr.push({
       create_article_date: createArticleDate,
-      status: action.payload[i].status,
-      id: action.payload[i].id,
-      title: action.payload[i].title,
-      sections: action.payload[i].sections,
-      images: action.payload[i].images,
+      status: state.data[i].status,
+      id: state.data[i].id,
+      title: state.data[i].title,
+      sections: state.data[i].sections,
+      images: state.data[i].images,
      });
     }
     //? return last created article first

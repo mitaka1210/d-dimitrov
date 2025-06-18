@@ -24,7 +24,7 @@ const SignUpFormHTML = ({sendDataToLogin}) => {
     //! ERROR input default state
     const { errorCreate } = useSelector((state) => state.createAccount);
     const dispatch = useDispatch();
-
+    const role = 'user';
 
     const handleCreateAccount = async (e) => {
         e.preventDefault();
@@ -34,7 +34,7 @@ const SignUpFormHTML = ({sendDataToLogin}) => {
             setErrors(validationErrors);
         }else {
             try {
-                await dispatch(createAccount({ username, first_name, lastName, email, password })).unwrap();
+                await dispatch(createAccount({ username, first_name, lastName, email, role, password })).unwrap();
                 window.location.reload();
                 // const signInButton = document.getElementById('idCreateAccount');
                 // const containerLogin = document.getElementById('login');
