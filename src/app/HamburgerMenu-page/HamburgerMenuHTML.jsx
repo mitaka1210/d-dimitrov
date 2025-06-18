@@ -1,8 +1,10 @@
 "use client";
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import styled from "styled-components";
 import {useTranslation} from "react-i18next";
 import ChangeLang from "@/app/Lang/Lang";
+import {signOut, useSession} from "next-auth/react";
+import Link from "next/link";
 
 const COLORS = {
   primaryDark: "#115b4c",
@@ -131,6 +133,21 @@ function HamburgerMenu() {
   const {t} = useTranslation();
   const [click, setClick] = useState(false);
   const handleClick = () => setClick(!click);
+  const { data: session } = useSession();
+  const [userName, setUserName] = useState("");
+  useEffect(() => {
+    if (session && session.user) {
+      setUserName(session.user.name);
+    }else if(localStorage.getItem('token') !== undefined && localStorage.getItem('token') !== null && localStorage.getItem('token') !== ''){
+      setUserName(localStorage.getItem('role'));
+    }
+  }, [userName]);
+
+  const goToHome = () => {
+    signOut({ callbackUrl: "/" }).then((r) => {});
+    localStorage.removeItem("token");
+    localStorage.removeItem("role");
+  };
   return (
     <>
       <MenuLabel htmlFor="navi-toggle" className="hamburger-menu" onClick={handleClick}>
@@ -175,11 +192,19 @@ function HamburgerMenu() {
               {t("contact")}
             </ItemLink>
           </li>
-          {/*<li onClick={handleClick}>*/}
-          {/*  <ItemLink onClick={handleClick} to="/login" href="/Login-page">*/}
-          {/*    {t("login")}*/}
-          {/*  </ItemLink>*/}
-          {/*</li>*/}
+          <li onClick={handleClick}>
+            {
+              userName === ''  ?   <ItemLink onClick={handleClick} to="/login" href="/Login-page">
+                    {t("login")}
+                  </ItemLink> :
+                  <div className="flex gap-4 ml-auto">
+                    <p className="text-sky-600">{session !== null  ? session.user.name : ''}</p>
+                    <button onClick={goToHome} className="flex-horizontal-container-raw log-out">
+                      {t("signOut")}
+                    </button>
+                  </div>
+            }
+          </li>
           <li onClick={handleClick}>
             <ChangeLang/>
           </li>

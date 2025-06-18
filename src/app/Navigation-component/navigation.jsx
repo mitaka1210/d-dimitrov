@@ -75,17 +75,17 @@ const Navigation = () => {
             <li className="text-7 color-white margin-15">
               <Link href="/Contacts-page">{t("contact")}</Link>
             </li>
-            {/*<li className="text-8 color-white margin-15">*/}
-            {/*  {*/}
-            {/*    userName === ''  ?  <Link href="/Login-page">{t("login")}</Link> :*/}
-            {/*        <div className="flex gap-4 ml-auto">*/}
-            {/*          <p className="text-sky-600">{session !== null  ? session.user.name : ''}</p>*/}
-            {/*          <button onClick={goToHome} className="flex-horizontal-container-raw log-out">*/}
-            {/*            {t("signOut")}*/}
-            {/*          </button>*/}
-            {/*        </div>*/}
-            {/*  }*/}
-            {/*</li>*/}
+            <li className="text-8 color-white margin-15">
+              {
+                userName === ''  ?  <Link href="/Login-page">{t("login")}</Link> :
+                    <div className="flex gap-4 ml-auto">
+                      <p className="text-sky-600">{session !== null  ? session.user.name : ''}</p>
+                      <button onClick={goToHome} className="flex-horizontal-container-raw log-out">
+                        {t("signOut")}
+                      </button>
+                    </div>
+              }
+            </li>
             <li className="text-9 color-white margin-15">
               <ChangeLang />
             </li>
