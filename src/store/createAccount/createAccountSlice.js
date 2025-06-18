@@ -8,7 +8,7 @@ const url = `${process.env.NEXT_PUBLIC_APP_API_URL_PROD}`;
 // Async thunk for creating an account
 export const createAccount = createAsyncThunk('account/createAccount', async (userData, thunkAPI) => {
     try {
-        const response = await fetch(`${url}/api/create-account`, {
+        const response = await fetch(`${'https://share.d-dimitrov.eu'}/api/create-account`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

@@ -8,7 +8,7 @@ const url = `${process.env.NEXT_PUBLIC_APP_API_URL_PROD}`;
 // Async Thunks за логин
 export const login = createAsyncThunk('auth/login', async ({ username, password, role }, { rejectWithValue }) => {
     try {
-        const response = await fetch(`${url}/api/login`, {
+        const response = await fetch(`${'https://share.d-dimitrov.eu'}/api/login`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ username, password, role }),
@@ -20,7 +20,8 @@ export const login = createAsyncThunk('auth/login', async ({ username, password,
         }
 
         localStorage.setItem('token', data.token); // Съхранява токена
-        localStorage.setItem('role', data.user); // Съхранява токена
+        localStorage.setItem('role', data.role); // Съхранява ролята
+        localStorage.setItem('name', data.username); // Съхранява името
 
         return data;
     } catch (error) {
@@ -33,7 +34,7 @@ export const checkAuth = createAsyncThunk('auth/checkAuth', async (_, { rejectWi
         const token = localStorage.getItem('token');
         if (!token) throw new Error('No token found');
 
-        const response = await fetch(`${url}/api/check-auth`, {
+        const response = await fetch(`${'https://share.d-dimitrov.eu'}/api/check-auth`, {
             headers: { Authorization: token },
         });
 
