@@ -4,20 +4,35 @@ import "./blog.scss";
 import {useRouter} from "next/navigation";
 import {useTranslation} from "react-i18next";
 import LoaderHTML from "@/app/loader/LoaderHTML";
+import {useDispatch, useSelector} from "react-redux";
+import {fetchArticles} from "@/store/getArticles/getArticlesSlice";
+
 const BlogHtml = () => {
   const articlesAquariumNumbers= process.env.NEXT_PUBLIC_AQUARIUM_ARTICLES;
   const articlesProgramingNumbers= process.env.NEXT_PUBLIC_PROGRAMING_ARTICLES;
   const {t} = useTranslation();
+  const [blockCategoryAquariums, setBlockCategoryAquariums] = useState(false);
+  const loadingState = useSelector((state) => state.articles);
   const [loading, setLoading] = useState(true);
+  const dispatch = useDispatch();
   const router = useRouter();
   let lang = localStorage.getItem("i18nextLng");
+  const status = useSelector((state) => state.articles.status);
+  const articlesInfo = useSelector((state) => state.articles.data);
 
   useEffect(() => {
     // Симулираме зареждане (например от API или изображения)
- setTimeout(() => {
-   setLoading(false);
- }, 2000)
-  }, []);
+    if (status === 'idle') {
+      dispatch(fetchArticles());
+    }
+    if(status === 'succeeded') {
+      console.log("pesho", articlesInfo);
+      console.log("pesho", loadingState.isLoading);
+      setLoading(loadingState.isLoading)
+      findArticlesByStatus();
+    }
+
+  }, [status]);
   const redirectTo = (path) => {
     if (path === "aquariums") {
       router.push("/cardAquariums");
@@ -25,6 +40,18 @@ const BlogHtml = () => {
       // router.push("/programingArticles");
     }
   };
+
+  const findArticlesByStatus = () => {
+    console.log("pesho", articlesInfo);
+    articlesInfo.forEach((article) => {
+      if (article.status === false  && (articlesInfo.length === 1 || articlesInfo.length === 0)) {
+        setBlockCategoryAquariums(false)
+        console.log("pesho", blockCategoryAquariums);
+      }else {
+        setBlockCategoryAquariums(true)
+      }
+    })
+  }
 
     if (loading) {
         return <LoaderHTML />;
@@ -35,8 +62,13 @@ const BlogHtml = () => {
         <h1 className="capitalize text-3xl md:text-4xl lg:text-6xl text-center mb-10 lg:mb-20 text-indigo-600">{t("category")}</h1>
         <p className="text-align-center">{t('articleOnlyBG')}</p>
         <div className="grid lg:grid-cols-3 gap-7 justify-center">
-          <div className="max-w-sm shadow-xl relative card rounded-md overflow-hidden"
-               onClick={() => redirectTo("aquariums")}>
+          <div
+              className={`max-w-sm shadow-xl relative card rounded-md overflow-hidden${blockCategoryAquariums ? "" : " opacity-50 cursor-not-allowed"}`}
+              aria-disabled={!blockCategoryAquariums}
+              onClick={() => {
+                if (blockCategoryAquariums) redirectTo("aquariums");
+              }}
+          >
             <div className="relative">
               <img
                 src="https://aquascape.bg/blog/12-single-default/akvaskejp-where-the-wild-flowers-grow-aranzhi.jpg"
