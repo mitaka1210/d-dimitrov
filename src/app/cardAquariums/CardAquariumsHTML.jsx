@@ -27,6 +27,9 @@ setTimeout(() => {
  if (articlesInfo.length === 0 && status === 'failed') {
   router.push('/');
  }
+ const backToHome = () => {
+    router.push('/');
+ }
  const handleClick = (id) => {
   // const {id} = router.query;
   // Проверете дали използвате низове за query параметрите
@@ -59,7 +62,11 @@ setTimeout(() => {
         {
          articlesInfo.length > 0 ?
           (
+
            articlesInfo.map((article, index) => {
+            if (article.status === false) {
+             backToHome();
+            }
             return (
              <div key={index}>
               {article.status === true && articlesInfo.length > 0 ?
