@@ -37,24 +37,24 @@ const articlesSlice = createSlice({
    state.isLoading = false;
    let articlesArr = [];
    state.data = validateArticles(action.payload);
-   console.log("pesho", state.data);
    state.status = 'succeeded';
    if (action.payload.error === undefined){
     for (let i = 0; i < state.data.length; i++) {
-     let createArticleDate = new Date(state.data[i].createData).toLocaleString(undefined, {
-      year: 'numeric',
-      month: '2-digit',
-      day: '2-digit',
-      weekday: 'long',
-     });
-     articlesArr.push({
-      create_article_date: createArticleDate,
-      status: state.data[i].status,
-      id: state.data[i].id,
-      title: state.data[i].title,
-      sections: state.data[i].sections,
-      images: state.data[i].images,
-     });
+        if (state.data[i].status === true) {
+         let createArticleDate = new Date(state.data[i].createData).toLocaleString(undefined, {
+          year: 'numeric',
+          month: '2-digit',
+          day: '2-digit',
+          weekday: 'long',
+         });
+         articlesArr.push({
+          create_article_date: createArticleDate,
+          status: state.data[i].status,
+          id: state.data[i].id,
+          title: state.data[i].title,
+          sections: state.data[i].sections,
+          images: state.data[i].images,
+         });        }
     }
     //? return last created article first
     state.data = articlesArr;
