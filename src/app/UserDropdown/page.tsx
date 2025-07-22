@@ -2,7 +2,6 @@
 
 import React, {useEffect, useState} from 'react';
 import dynamic from 'next/dynamic';
-import './about.scss';
 import SEO from "@/app/SEO/seo";
 const AboutHtml = dynamic(
     () => import('./userDropdown'),
@@ -15,7 +14,7 @@ const AboutPage = () => {
                 <div>
                         <section>
                             <main className='user-dropdown-section'>
-                                <AboutHtml/>
+                                <AboutHtml userLoginName={undefined}/>
                             </main>
                         </section>
                 </div>
