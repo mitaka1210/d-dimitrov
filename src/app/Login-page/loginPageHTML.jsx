@@ -20,6 +20,7 @@ function LoginPageHtml(props) {
     const dispatch = useDispatch();
     const { loading, error } = useSelector((state) => state.auth);
     const [isLoggedIn, setIsLoggedIn] = useState(false);
+    const [showPassword, setShowPassword] = useState(false);
 
     const router = useRouter();
         useEffect(() => {
@@ -90,7 +91,7 @@ function LoginPageHtml(props) {
                         {loginForm ? (
                             <div>
                                 <form action="#" onSubmit={handleLogin}>
-                                    <h3 className="color-white">{t('login')}</h3>
+                                    <h3 className="color-white">{t('loginWith')}</h3>
                                     <div className="social-container-login" onClick={logInWithGoogle}>
                                         <a href="#" className="social">
                                             <Image src={google} alt="google"/>
@@ -98,18 +99,34 @@ function LoginPageHtml(props) {
                                     </div>
                                     <span className="color-white">{t('orUseYourAccount')}</span>
                                     <div>
-                                        <label className="add-color-white login-input margin-top-15">Username</label>
+                                        <label className="add-color-to-text login-input margin-top-15">{t('username')}</label>
                                         <input type="text" value={username} name="username" placeholder={t('username')} onChange={(e) => setUsername(e.target.value)} />
                                         {errors.username && <span style={{ color: 'red' }}>{errors.username}</span>}
                                     </div>
-                                    <div className="margin-15">
-                                        <label className="add-color-white">Password</label>
-                                        <input type="password" value={password} placeholder={t('password')} onChange={(e) => setPassword(e.target.value)} />
+
+                                    <div className="margin-top-15 margin-bottom-15" style={{ position: "relative" }}>
+                                        <label className="add-color-to-text">{t('password')}</label>
+                                        <input
+                                            type={showPassword ? "text" : "password"}
+                                            value={password}
+                                            placeholder={t('password')}
+                                            onChange={(e) => setPassword(e.target.value)}
+                                            style={{ paddingRight: "2.5em" }}
+                                        />
+                                        <button
+                                            type="button"
+                                            className="show-password-btn"
+                                            onClick={() => setShowPassword((v) => !v)}
+                                            tabIndex={-1}
+                                            aria-label={showPassword ? "Hide password" : "Show password"}
+                                        >
+                                            {showPassword ? "🙈" : "👁️"}
+                                        </button>
                                         {errors.password && <span style={{ color: 'red' }}>{errors.password}</span>}
                                     </div>
                                     {isLoggedIn && <p style={{ color: 'red' }}>{error}</p>}
                                     <button className="btn-login-page" onClick={handleClickSignIn} type="submit" disabled={loading}>
-                                        {loading ? t('waitLoad') : t("login")}
+                                        {loading ? t('waitLoad') : t("loginAfterWriteAcc")}
                                     </button>
                                 </form>
                             </div>
