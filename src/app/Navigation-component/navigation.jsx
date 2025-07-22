@@ -12,6 +12,7 @@ import ChangeLang from "@/app/Lang/Lang";
 import { useRouter } from "next/navigation";
 import Appbar from "@/app/SignInButton/AppBar/AppBar";
 import { signOut, useSession } from "next-auth/react";
+import UserDropdown from "@/app/UserDropdown/userDropdown";
 const Navigation = () => {
   const { t } = useTranslation();
   const size = useWindowSize();
@@ -22,15 +23,9 @@ const Navigation = () => {
     if (session && session.user) {
       setUserName(session.user.name);
     }else if(localStorage.getItem('token') !== undefined && localStorage.getItem('token') !== null && localStorage.getItem('token') !== ''){
-      setUserName(localStorage.getItem('role'));
+      setUserName(localStorage.getItem('name'));
     }
   }, [userName]);
-
-  const goToHome = () => {
-    signOut({ callbackUrl: "/" }).then((r) => {});
-    localStorage.removeItem("token");
-    localStorage.removeItem("role");
-  };
   const ImprovementsWebsite = () => {
     router.push("/Improvements-website");
   };
@@ -75,15 +70,10 @@ const Navigation = () => {
             <li className="text-7 color-white margin-15">
               <Link href="/Contacts-page">{t("contact")}</Link>
             </li>
-            <li className="text-8 color-white margin-15">
+            <li className={userName === '' ? 'margin-15 text-8 color-white' : 'margin-5 text-8 color-white'}>
               {
                 userName === ''  ?  <Link href="/Login-page">{t("login")}</Link> :
-                    <div className="flex gap-4 ml-auto">
-                      <p className="text-sky-600">{session !== null  ? session.user.name : ''}</p>
-                      <button onClick={goToHome} className="flex-horizontal-container-raw log-out">
-                        {t("signOut")}
-                      </button>
-                    </div>
+                    <UserDropdown userLoginName={userName} />
               }
             </li>
             <li className="text-9 color-white margin-15">

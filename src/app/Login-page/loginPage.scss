@@ -236,6 +236,19 @@
 .login-create-account-page{
   width: 100%;
 }
+
+.add-color-to-text{
+  color: #00a8cc;
+}
+.show-password-btn{
+  position: absolute;
+  right: 10px;
+  top: 26px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1.2em;
+}
 //media queries
 @media (max-width: 991px) {
   section .container {
