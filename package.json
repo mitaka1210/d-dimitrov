@@ -6,6 +6,12 @@
     "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
+    "start:prod": "NODE_ENV=production next start -p 3009",
+    "start:dev": "NODE_ENV=development next dev",
+    "prebuild": "npm run lint && npm run test",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "postinstall": "next telemetry disable && npm run build",
+    "prod": "NODE_ENV=production next start",
     "lint": "next lint"
   },
   "dependencies": {
@@ -24,6 +30,7 @@
     "axios": "^1.7.2",
     "bcrypt": "^5.1.1",
     "debug": "^4.4.0",
+    "dotenv": "^17.2.1",
     "esbuild": "^0.25.0",
     "express": "^4.19.2",
     "express-rate-limit": "^7.3.1",
