@@ -36,9 +36,10 @@ const articlesSlice = createSlice({
   builder.addCase(fetchArticles.fulfilled, (state, action) => {
    state.isLoading = false;
    let articlesArr = [];
-   state.data = validateArticles(action.payload);
+   const validDataFromBETrueOrFalse = validateArticles(action.payload);
    state.status = 'succeeded';
-   if (action.payload.error === undefined){
+   if (action.payload.error === undefined && validDataFromBETrueOrFalse === true) {
+    state.data = action.payload;
     for (let i = 0; i < state.data.length; i++) {
         if (state.data[i].status === true) {
          let createArticleDate = new Date(state.data[i].createData).toLocaleString(undefined, {

@@ -21,15 +21,16 @@ const BlogHtml = () => {
   const articlesInfo = useSelector((state) => state.articles.data);
 
   useEffect(() => {
+
     // Симулираме зареждане (например от API или изображения)
     if (status === 'idle') {
       dispatch(fetchArticles());
     }
     if(status === 'succeeded') {
-      console.log("pesho", articlesInfo);
-      console.log("pesho", loadingState.isLoading);
       setLoading(loadingState.isLoading)
       findArticlesByStatus();
+    }else if(status === 'failed') {
+      setLoading(false);
     }
 
   }, [status]);
@@ -42,13 +43,12 @@ const BlogHtml = () => {
   };
 
   const findArticlesByStatus = () => {
-    console.log("pesho", articlesInfo);
     articlesInfo.forEach((article) => {
-      if (article.status === false  && (articlesInfo.length === 1 || articlesInfo.length === 0)) {
+      if (article.status === false  &&  articlesInfo.length === 0) {
         setBlockCategoryAquariums(false)
         console.log("pesho", blockCategoryAquariums);
       }else {
-        setBlockCategoryAquariums(true)
+        setBlockCategoryAquariums(true);
       }
     })
   }
