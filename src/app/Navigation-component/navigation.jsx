@@ -70,12 +70,12 @@ const Navigation = () => {
             <li className="text-7 color-white margin-15">
               <Link href="/Contacts-page">{t("contact")}</Link>
             </li>
-            <li className={userName === '' ? 'margin-15 text-8 color-white' : 'margin-5 text-8 color-white'}>
+{/*            <li className={userName === '' ? 'margin-15 text-8 color-white' : 'margin-5 text-8 color-white'}>
               {
                 userName === ''  ?  <Link href="/Login-page">{t("login")}</Link> :
                     <UserDropdown userLoginName={userName} />
               }
-            </li>
+            </li>*/}
             <li className="text-9 color-white margin-15">
               <ChangeLang />
             </li>
