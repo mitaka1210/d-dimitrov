@@ -82,7 +82,7 @@ const AboutHtml = forwardRef(({open, setOpen}, ref) => {
                                         <div className="accordian-title">{item.title}</div>
                                         <div className="accordian-content">
                                             {item.paras.map((para, num) => {
-                                                return <p key={num}>{para}</p>;
+                                                return <p className="padding-0" key={num}>{para}</p>;
                                             })}
                                             {item.showMore ? <a href="#">{item.showMore}</a> : ""}
                                         </div>
@@ -105,7 +105,7 @@ const AboutHtml = forwardRef(({open, setOpen}, ref) => {
                     <div className="overlay-box round-behavior shadowed-element border-color-gray-2px">
                         <div
                             className="desc flex-vertical-container-raw justify-content-center align-items-center text-align-center">
-                            <h3>{t("programing")}!</h3>
+                            <h4>{t("programing")}!</h4>
                             <h5><strong>{t("started")}</strong></h5>
                             <span>{t("startedChance") + ' '}<strong>{t('time') + ' '}</strong>{t('thisDirection')}!</span>
                         </div>
@@ -115,16 +115,12 @@ const AboutHtml = forwardRef(({open, setOpen}, ref) => {
                     <div className="overlay-box round-behavior shadowed-element border-color-gray-2px">
                         <div
                             className="desc flex-vertical-container-raw justify-content-center align-items-center text-align-center">
-                            <h3 className="">{t("capital")}.</h3>
-                            <h5 className="margin-5">{t("say")} <strong>{t("WarrenBuffett")}:</strong></h5>
+                            <h4 className="">{t("capital")}.</h4>
+                            <h4 className="margin-5">{t("say")} <strong>{t("WarrenBuffett")}:</strong></h4>
                             <div className="flex-vertical-container-raw align-items-center text-align-center">
-                <span className="flex-horizontal-container-raw border-color-bottom-gray padding-0">{t("rule")} <p
-                    className="numbered-item padding-0"></p>1:{t("loseMoney")}.
-                </span>
-                        <span className="flex-horizontal-container-raw border-color-bottom-gray ">{t("rule")} <p
-                            className="numbered-item padding-0"></p>2:{t("forgetOne")}<p
-                            className="numbered-item padding-0"></p> 1:
-                        </span>
+                                <p className="flex-horizontal-container-raw border-color-bottom-gray padding-0">{t("rule")} №1:</p>{t("loseMoney")}.
+                                <p className=" border-color-bottom-gray padding-0">{t("rule")} №2:</p>
+                                <p>{t('forgetOne')} №1</p>
                             </div>
                         </div>
                     </div>
@@ -133,7 +129,7 @@ const AboutHtml = forwardRef(({open, setOpen}, ref) => {
                     <div className="overlay-box round-behavior shadowed-element border-color-gray-2px">
                         <div
                             className="desc flex-vertical-container-raw justify-content-center align-items-center text-align-center">
-                            <h3 className="margin-15">{t("book")}</h3>
+                            <h4 className="margin-15">{t("book")}</h4>
                             <span>{t("moneyVideo")}.</span>
                             <h5 className="">{t("say")} <strong>{t("RobertKiyosaki")}:</strong></h5>
                             <span><strong className="motivation border-color-bottom-gray ">"{t("motoRobert")}"</strong></span>

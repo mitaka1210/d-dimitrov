@@ -47,12 +47,12 @@ export default function ImprovementsWebsite() {
                 <div className="update">
                   <span className="icon">🔍</span>
                   <span>{t("addSearch")}</span>
-                  <span className="status pending">{t("inProgress")}</span>
+                  <span className="status pending">{t("expected")}</span>
                 </div>
                 <div className="update">
                   <span className="icon">👤</span>
                   <span>{t("createLoginPage")}</span>
-                  <span className="status in-progress">{t("expected")}</span>
+                  <span className="status in-progress">{t("inProgress")}</span>
                 </div>
                 <div className="update">
                   <span className="icon">📝</span>
@@ -80,9 +80,14 @@ export default function ImprovementsWebsite() {
                   <span className="status completed">{t("complete")}</span>
                 </div>
                 <div className="update">
+                  <span className="icon">⚙️</span>
+                  <span>{t("automateArticleUpload")}</span>
+                  <span className="status completed">{t("complete")}</span>
+                </div>
+                <div className="update">
                   <span className="icon">💡</span>
                   <span>{t("manyMoreIdeas")}</span>
-                  <span className="status pending">{t("expected")}</span>
+                  <span className="status ideasForWebsite">{t("expected")}</span>
                 </div>
               </div>
             </section>
