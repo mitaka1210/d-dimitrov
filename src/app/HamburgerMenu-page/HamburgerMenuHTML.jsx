@@ -192,7 +192,7 @@ function HamburgerMenu() {
               {t("contact")}
             </ItemLink>
           </li>
-          <li onClick={handleClick}>
+          {/*<li onClick={handleClick}>
             {
               userName === ''  ?   <ItemLink onClick={handleClick} to="/login" href="/Login-page">
                     {t("login")}
@@ -204,7 +204,7 @@ function HamburgerMenu() {
                     </button>
                   </div>
             }
-          </li>
+          </li>*/}
           <li onClick={handleClick}>
             <ChangeLang/>
           </li>
