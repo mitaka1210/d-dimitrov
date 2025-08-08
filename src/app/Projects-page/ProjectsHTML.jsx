@@ -372,7 +372,7 @@ const ProjectsHtml = () => {
                   {t("application")}
                 </a>
                 <a
-                  href="https://github.com/mitaka1210/PERN"
+                  href="https://github.com/mitaka1210/upload_article"
                   target="_blank"
                   className="read-more-btn"
                 >
@@ -410,7 +410,7 @@ const ProjectsHtml = () => {
                   {t("application")}
                 </a>
                 <a
-                  href="https://github.com/mitaka1210/mitaka-website"
+                  href="https://github.com/mitaka1210/d-dimitrov"
                   target="_blank"
                   className="read-more-btn"
                 >
