@@ -40,7 +40,10 @@ const skills = [
     { name: "Vue - 2", icon: "🟩", category: "new" },
     { name: "NodeJS", icon: "🛠️", category: "new" },
   ],
-  [{ name: "Мисля какво да е", icon: "🤔💭", category: "new" }],
+  [   {name: "bashScripts", icon: "📜", category: "new" },
+      { name: "selfHosted", icon: "🖥️", category: "new" },
+      { name: "Мисля какво да е", icon: "🤔💭", category: "new" }
+  ]
 ];
 
 const skillDescriptionsBG = {
@@ -67,6 +70,8 @@ const skillDescriptionsBG = {
   RTK: "Redux Toolkit - подобрена версия на Redux.",
   "Vue - 2": "Втората версия на Vue.js за уеб разработка.",
   DBeaver: "Инструмент за управление на бази данни.",
+  bashScripts: "Bash скриптове за автоматизация на задачи в Unix-подобни системи.",
+  selfHosted: "Самостоятелно хоствани приложения и услуги.",
   "Мисля какво да е": "Предстои да бъде открито! 😉",
 };
 const skillDescriptionsEN = {
@@ -86,13 +91,15 @@ const skillDescriptionsEN = {
   SCSS: "Extension of CSS with additional features.",
   AngularJS: "The first version of Angular for web applications.",
   Gulp: "Task automation tool in web development.",
-  Github: "Platform for code repository management.",
+  GitHub: "GitHub is a cloud-based platform for hosting code and collaboration, allowing developers to store, manage, and share their projects.",
   NestJS: "Framework for building server-side applications with TypeScript.",
   MongoDB: "NoSQL document-based database.",
   Postman: "Tool for API testing and development.",
   RTK: "Redux Toolkit - an improved version of Redux.",
   "Vue - 2": "The second version of Vue.js for web development.",
   dbeaver: "Database management tool.",
+  bashScripts: "Bash scripts for automating tasks in Unix-like systems.",
+  selfHosted: "Self-hosted applications and services.",
   "🤔💭": "To be discovered! 😉",
 };
 
@@ -246,36 +253,6 @@ export default function SkillPyramid() {
       {showServices && (
         <>
           <MyServices />
-          {/* <h2 className="margin-top-45 remove-margin-bottom">
-            {t("myServices")}
-          </h2>
-          <div className="mt-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6 services">
-            {services.map((service, index) => (
-              <motion.div
-                key={index}
-                className="bg-gray-800 p-16 rounded-xl shadow-lg text-center flex flex-col items-center card"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{
-                  duration: 0.5,
-                  delay: index * 0.2,
-                  ease: "easeOut",
-                }}
-              >
-                <div className="text-4xl mb-4 text-blue-400">
-                  {service.icon}
-                </div>
-                <h2 className="text-xl font-bold mb-2">{service.title}</h2>
-                <ul className="text-gray-400">
-                  {service.details.map((detail, i) => (
-                    <li key={i} className="mb-1 change-font-size-li">
-                      &raquo; {detail}
-                    </li>
-                  ))}
-                </ul>
-              </motion.div>
-            ))}
-          </div> */}
         </>
       )}
     </div>
