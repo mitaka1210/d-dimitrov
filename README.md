@@ -2,13 +2,14 @@
 
 > Modern personal website showcasing my professional journey, skills, and projects with integrated blog functionality
 
-[![Live Demo](https://img.shields.io/badge/demo-live-success.svg)](https://mitaka-website-stage.vercel.app/Home-page)
-[![Vercel](https://img.shields.io/badge/deployed-vercel-black.svg)](https://mitaka-website-stage.vercel.app/Home-page)
+[![Live Demo](https://img.shields.io/badge/demo-live-success.svg)](https://d-dimitrov.eu)
+[![Domain](https://img.shields.io/badge/domain-d--dimitrov.eu-blue.svg)](https://d-dimitrov.eu)
+[![English](https://img.shields.io/badge/english-eng.d--dimitrov.eu-green.svg)](https://eng.d-dimitrov.eu)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 
 ## 🌐 Live Demo
 
-**[View Portfolio →](https://mitaka-website-stage.vercel.app/Home-page)**
+**[View Portfolio →](https://d-dimitrov.eu)** | **[English Version →](https://eng.d-dimitrov.eu)**
 
 ![Portfolio Preview](https://via.placeholder.com/800x400/0066cc/ffffff?text=Portfolio+Screenshot)
 
@@ -30,12 +31,13 @@
 This is my personal portfolio website and blog platform where I share information about myself, my professional journey, interests, hobbies, and technical skills. The platform features a modern design with multiple sections and will soon include article publishing capabilities with user interaction features.
 
 ### What Makes It Special
-- 🎨 **Modern Design** - Clean, responsive interface with smooth user experience
-- 📱 **Multi-Page Structure** - Dedicated sections for different aspects of my profile
-- 📝 **Blog Integration** - Upcoming article publishing system
-- 💬 **Interactive Features** - Comment and sharing functionality (coming soon)
-- 🚀 **Performance Optimized** - Built with Next.js for optimal performance
-- 🐳 **Containerized** - Docker setup for easy deployment
+- 🎨 **Modern Full-Stack Architecture** - Clean separation between frontend and backend
+- 🌐 **Custom Domain & Routing** - Professional domain with subdomain routing
+- 🐳 **Containerized Infrastructure** - Docker containers orchestrated with Nginx
+- ☁️ **CDN & DNS** - Cloudflare integration for performance and security
+- 📱 **Multi-Language Support** - Separate subdomains for different languages
+- 📝 **RESTful API** - Express.js backend with PostgreSQL database
+- 🚀 **Production-Ready** - Self-hosted on dedicated server infrastructure
 
 ## ✨ Features
 
@@ -63,13 +65,55 @@ This is my personal portfolio website and blog platform where I share informatio
 ![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)
 
 ### Backend & Database
-![PostgreSQL](https://img.shields.io/badge/PostgreSQL-316192?style=for-the-badge&logo=postgresql&logoColor=white)
+![Express.js](https://img.shields.io/badge/Express.js-404D59?style=for-the-badge&logo=express&logoColor=white)
 ![Node.js](https://img.shields.io/badge/Node.js-43853D?style=for-the-badge&logo=nodedotjs&logoColor=white)
+![PostgreSQL](https://img.shields.io/badge/PostgreSQL-316192?style=for-the-badge&logo=postgresql&logoColor=white)
 
-### DevOps & Tools
+### Infrastructure & DevOps
 ![Docker](https://img.shields.io/badge/Docker-2CA5E0?style=for-the-badge&logo=docker&logoColor=white)
-![Vercel](https://img.shields.io/badge/Vercel-000000?style=for-the-badge&logo=vercel&logoColor=white)
+![Nginx](https://img.shields.io/badge/nginx-009639?style=for-the-badge&logo=nginx&logoColor=white)
+![Cloudflare](https://img.shields.io/badge/Cloudflare-F38020?style=for-the-badge&logo=Cloudflare&logoColor=white)
 ![DBeaver](https://img.shields.io/badge/DBeaver-382923?style=for-the-badge&logo=dbeaver&logoColor=white)
+
+## 🏗️ Architecture Overview
+
+```
+┌─────────────────────────────────────────────────────────────┐
+│                        Cloudflare                           │
+│                     (DNS + CDN + SSL)                       │
+└─────────────────────┬───────────────────────────────────────┘
+                      │
+              ┌───────▼────────┐
+              │  d-dimitrov.eu │ ◄──── Main Domain
+              └───────┬────────┘
+                      │
+              ┌───────▼────────┐
+              │eng.d-dimitrov.eu│ ◄──── English Subdomain
+              └───────┬────────┘
+                      │
+        ┌─────────────▼──────────────┐
+        │        Your Server          │
+        │  ┌─────────────────────────┐ │
+        │  │        Nginx            │ │ ◄──── Reverse Proxy
+        │  │    (Load Balancer)      │ │
+        │  └─────────┬───────────────┘ │
+        │            │                 │
+        │  ┌─────────▼───────────────┐ │
+        │  │   Frontend Container    │ │ ◄──── Next.js App
+        │  │      (Next.js)          │ │
+        │  └─────────┬───────────────┘ │
+        │            │                 │
+        │  ┌─────────▼───────────────┐ │
+        │  │   Backend Container     │ │ ◄──── Express.js API
+        │  │     (Express.js)        │ │
+        │  └─────────┬───────────────┘ │
+        │            │                 │
+        │  ┌─────────▼───────────────┐ │
+        │  │  PostgreSQL Container   │ │ ◄──── Database
+        │  │      (Database)         │ │
+        │  └─────────────────────────┘ │
+        └─────────────────────────────┘
+```
 
 ## 📁 Pages & Structure
 
@@ -82,6 +126,27 @@ Portfolio Structure:
 ├── 🚀 Projects           # Portfolio showcasing my work
 └── 📅 Timeline           # Professional & personal milestones
 ```
+
+## 🌐 Infrastructure Details
+
+### Domain Configuration
+- **Main Domain**: `d-dimitrov.eu` (Bulgarian version)
+- **English Subdomain**: `eng.d-dimitrov.eu` (English version)
+- **DNS Provider**: Cloudflare (with SSL/TLS encryption)
+- **CDN**: Cloudflare global network for performance
+
+### Server Architecture
+- **Hosting**: Self-hosted on dedicated server
+- **Reverse Proxy**: Nginx for container routing and load balancing  
+- **Containerization**: Docker containers for each service
+- **Container Orchestration**: Docker Compose
+- **SSL Termination**: Nginx with Cloudflare SSL certificates
+
+### API Architecture
+- **Backend Framework**: Express.js (RESTful API)
+- **Database**: PostgreSQL with connection pooling
+- **Container Communication**: Internal Docker network
+- **API Endpoints**: `/api/v1/*` structure
 
 ### Page Details
 
@@ -101,23 +166,44 @@ Portfolio Structure:
 Make sure you have the following installed:
 - [Node.js](https://nodejs.org/) (version 16 or higher)
 - [npm](https://www.npmjs.com/) or [yarn](https://yarnpkg.com/)
-- [Docker](https://www.docker.com/) (for containerized setup)
-- [PostgreSQL](https://www.postgresql.org/) (for database)
+- [Docker](https://www.docker.com/) & [Docker Compose](https://docs.docker.com/compose/)
+- [PostgreSQL](https://www.postgresql.org/) (or use Docker container)
 
-### Quick Start
+### Development Setup
+
+For local development, you'll need to run both frontend and backend:
 
 ```bash
 # Clone the repository
 git clone https://github.com/mitaka1210/d-dimitrov.git
-
-# Navigate to project directory
 cd d-dimitrov
 
-# Install dependencies
+# Install frontend dependencies
 npm install
 
-# Start development server
-npm run dev
+# Start local PostgreSQL (if using Docker)
+docker-compose up -d postgres
+
+# Start backend API server (Express.js)
+cd backend && npm install && npm run dev
+
+# Start frontend development server (Next.js)
+cd .. && npm run dev
+```
+
+### Production Docker Setup
+
+The production environment uses Docker containers with Nginx:
+
+```bash
+# Build and start all containers
+docker-compose up -d --build
+
+# Check container status
+docker ps
+
+# View logs
+docker-compose logs -f
 ```
 
 Open [http://localhost:3000](http://localhost:3000) to view the portfolio locally.
@@ -168,12 +254,14 @@ Open [http://localhost:3000](http://localhost:3000) to view the portfolio locall
 
 | Command | Description |
 |---------|-------------|
-| `npm run dev` | Start development server |
-| `npm run build` | Build for production |
-| `npm run start` | Start production server |
+| `npm run dev` | Start frontend development server |
+| `npm run build` | Build frontend for production |
+| `npm run start` | Start production frontend server |
 | `npm run lint` | Run ESLint |
 | `npm run type-check` | TypeScript type checking |
-| `npm run db:migrate` | Run database migrations |
+| `docker-compose up -d` | Start all containers in background |
+| `docker-compose logs -f` | View container logs |
+| `docker-compose down` | Stop all containers |
 
 ### Development Guidelines
 
@@ -219,31 +307,66 @@ The project uses **DBeaver** for database management. You can:
 
 ## 🚀 Deployment
 
-### Vercel (Current)
+### Production Architecture
 
-The portfolio is currently deployed on **Vercel**:
-- **Production**: [mitaka-website-stage.vercel.app](https://mitaka-website-stage.vercel.app/Home-page)
-- Automatic deployments from `main` branch
-- Environment variables configured in Vercel dashboard
+The portfolio runs on a **self-hosted server** with the following setup:
 
-### Docker Deployment
-
+#### Domain & DNS Configuration
 ```bash
-# Build Docker image
-docker build -t portfolio .
+# Main domain (Bulgarian)
+d-dimitrov.eu → Server IP → Nginx → Frontend Container
 
-# Run container
-docker run -p 3000:3000 --env-file .env portfolio
+# English subdomain  
+eng.d-dimitrov.eu → Server IP → Nginx → Frontend Container (EN)
 ```
 
-### Manual Deployment
+#### Docker Compose Production Setup
+```yaml
+# docker-compose.yml structure
+services:
+  nginx:          # Reverse proxy & load balancer
+  frontend:       # Next.js application
+  backend:        # Express.js API server
+  postgres:       # PostgreSQL database
+```
+
+#### Nginx Configuration
+```nginx
+# Simplified nginx.conf structure
+server {
+    server_name d-dimitrov.eu;
+    location / {
+        proxy_pass http://frontend:3000;
+    }
+    location /api/ {
+        proxy_pass http://backend:5000;
+    }
+}
+
+server {
+    server_name eng.d-dimitrov.eu;
+    location / {
+        proxy_pass http://frontend-en:3000;
+    }
+}
+```
+
+### Deployment Process
+
+1. **Code Push** to GitHub repository
+2. **Server Pull** latest changes
+3. **Container Rebuild** with Docker Compose
+4. **Nginx Reload** for routing updates
+5. **Cloudflare Cache** purging (if needed)
+
+### Environment Variables
 
 ```bash
-# Build the application
-npm run build
-
-# Start production server
-npm start
+# Production .env
+DATABASE_URL=postgresql://user:pass@postgres:5432/portfolio
+API_URL=http://backend:5000
+NEXTAUTH_URL=https://d-dimitrov.eu
+CLOUDFLARE_API_TOKEN=your_token
 ```
 
 ## 🔮 Upcoming Features
@@ -272,9 +395,9 @@ While this is a personal portfolio, suggestions and feedback are always welcome!
 
 **Димитър Димитров (D. Dimitrov)**
 
-- 🌐 **Portfolio**: [mitaka-website-stage.vercel.app](https://mitaka-website-stage.vercel.app/Home-page)
+- 🌐 **Portfolio**: [d-dimitrov.eu](https://d-dimitrov.eu)
+- 🇬🇧 **English**: [eng.d-dimitrov.eu](https://eng.d-dimitrov.eu)
 - 💻 **GitHub**: [@mitaka1210](https://github.com/mitaka1210)
-- 📧 **Email**: [Contact through website](https://mitaka-website-stage.vercel.app/Home-page)
 
 ## 📄 License
 
@@ -284,7 +407,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 <div align="center">
   <p>✨ Built with passion using Next.js, React, and modern web technologies ✨</p>
-  <p>🚀 <a href="https://mitaka-website-stage.vercel.app/Home-page">Visit Live Portfolio</a> 🚀</p>
+  <p>🚀 <a href="https://d-dimitrov.eu">Visit Live Portfolio</a> | <a href="https://eng.d-dimitrov.eu">English Version</a> 🚀</p>
 </div>
 
 ## 🎨 Screenshots
