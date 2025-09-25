@@ -1,9 +1,7 @@
 'use client'
 
-import React, { useEffect, useState } from 'react';
-import './blog.scss';
+import React from 'react';
 import dynamic from 'next/dynamic';
-import SEO from '../SEO/seo';
 
 const Newsletter = dynamic(() => import('./newsletterSignup'), { ssr: false });
 const Page = () => {
