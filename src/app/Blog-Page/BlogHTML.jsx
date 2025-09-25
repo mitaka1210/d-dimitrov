@@ -6,52 +6,49 @@ import {useTranslation} from "react-i18next";
 import LoaderHTML from "@/app/loader/LoaderHTML";
 import {useDispatch, useSelector} from "react-redux";
 import {fetchArticles} from "@/store/getArticles/getArticlesSlice";
+import NewsletterSignup from "@/app/newsletterSignup/newsletterSignup";
 
 const BlogHtml = () => {
-  const articlesAquariumNumbers= process.env.NEXT_PUBLIC_AQUARIUM_ARTICLES;
-  const articlesProgramingNumbers= process.env.NEXT_PUBLIC_PROGRAMING_ARTICLES;
-  const {t} = useTranslation();
-  const [blockCategoryAquariums, setBlockCategoryAquariums] = useState(false);
-  const loadingState = useSelector((state) => state.articles);
-  const [loading, setLoading] = useState(true);
-  const dispatch = useDispatch();
-  const router = useRouter();
-  let lang = localStorage.getItem("i18nextLng");
-  const status = useSelector((state) => state.articles.status);
-  const articlesInfo = useSelector((state) => state.articles.data);
+    const articlesAquariumNumbers = process.env.NEXT_PUBLIC_AQUARIUM_ARTICLES;
+    const articlesProgramingNumbers = process.env.NEXT_PUBLIC_PROGRAMING_ARTICLES;
+    const { t } = useTranslation();
+    const [blockCategoryAquariums, setBlockCategoryAquariums] = useState(false);
+    const loadingState = useSelector((state) => state.articles);
+    const [loading, setLoading] = useState(true);
+    const dispatch = useDispatch();
+    const router = useRouter();
+    let lang = localStorage.getItem("i18nextLng");
+    const status = useSelector((state) => state.articles.status);
+    const articlesInfo = useSelector((state) => state.articles.data);
 
-  useEffect(() => {
-    // Симулираме зареждане (например от API или изображения)
-    if (status === 'idle') {
-      dispatch(fetchArticles());
-    }
-    if(status === 'succeeded') {
-      console.log("pesho", articlesInfo);
-      console.log("pesho", loadingState.isLoading);
-      setLoading(loadingState.isLoading)
-      findArticlesByStatus();
-    }
 
-  }, [status]);
-  const redirectTo = (path) => {
-    if (path === "aquariums") {
-      router.push("/cardAquariums");
-    } else if (path === "programing") {
-      // router.push("/programingArticles");
-    }
-  };
+    useEffect(() => {
+        if (status === 'idle') {
+            dispatch(fetchArticles());
+        }
+        if (status === 'succeeded') {
+            setLoading(loadingState.isLoading);
+            findArticlesByStatus();
+        }
+    }, [status]);
 
-  const findArticlesByStatus = () => {
-    console.log("pesho", articlesInfo);
-    articlesInfo.forEach((article) => {
-      if (article.status === false  && (articlesInfo.length === 1 || articlesInfo.length === 0)) {
-        setBlockCategoryAquariums(false)
-        console.log("pesho", blockCategoryAquariums);
-      }else {
-        setBlockCategoryAquariums(true)
-      }
-    })
-  }
+    const redirectTo = (path) => {
+        if (path === "aquariums") {
+            router.push("/cardAquariums");
+        } else if (path === "programing") {
+            // router.push("/programingArticles");
+        }
+    };
+
+    const findArticlesByStatus = () => {
+        articlesInfo.forEach((article) => {
+            if (article.status === false && (articlesInfo.length === 1 || articlesInfo.length === 0)) {
+                setBlockCategoryAquariums(false);
+            } else {
+                setBlockCategoryAquariums(true);
+            }
+        });
+    };
 
     if (loading) {
         return <LoaderHTML />;
@@ -155,6 +152,9 @@ const BlogHtml = () => {
             </div>
           </div>
         </div>
+          <div>
+                <NewsletterSignup/>
+          </div>
       </div>
     </div>
   );
