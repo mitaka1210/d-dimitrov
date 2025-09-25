@@ -11,7 +11,7 @@ const NewsletterSignup = () => {
         setStatus('loading');
         console.log("pesho",email);
         try {
-            const res = await fetch('http://192.168.100.12:3400/api/newsLetter', {
+            const res = await fetch('/api/newsLetter', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ email }),
