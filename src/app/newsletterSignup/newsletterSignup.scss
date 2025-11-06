@@ -14,31 +14,29 @@
   margin-bottom: 1rem;
 }
 
-form {
+.newsletter-form {
   width: 100%;
   text-align: center;
-}
+  & h2 {
+    margin-bottom: 0.5rem;
+    color: #333;
+  }
 
-h2 {
-  margin-bottom: 0.5rem;
-  color: #333;
-}
+  & p {
+    margin-bottom: 1rem;
+    color: #666;
+  }
 
-p {
-  margin-bottom: 1rem;
-  color: #666;
+  & input {
+    width: 100%;
+    padding: 0.8rem;
+    margin-bottom: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 1rem;
+  }
 }
-
-input {
-  width: 100%;
-  padding: 0.8rem;
-  margin-bottom: 1rem;
-  border: 1px solid #ccc;
-  border-radius: 6px;
-  font-size: 1rem;
-}
-
-button {
+.news-letter-button {
   background: #0070f3;
   color: white;
   padding: 0.8rem 1.6rem;
@@ -48,7 +46,7 @@ button {
   cursor: pointer;
 }
 
-button:disabled {
+.news-letter-button:disabled {
   opacity: 0.6;
 }
 
