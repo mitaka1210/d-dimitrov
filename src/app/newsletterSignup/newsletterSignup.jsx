@@ -42,7 +42,7 @@ const NewsletterSignup = () => {
                     </svg>
                 </div>
 
-                <form onSubmit={handleSubmit}>
+                <form className="newsletter-form" onSubmit={handleSubmit}>
                     <h2>📣 Абонирай се за бюлетина</h2>
                     <p>Получавай новини, съвети и ресурси директно на имейла си.</p>
                     <input
@@ -52,7 +52,7 @@ const NewsletterSignup = () => {
                         onChange={(e) => setEmail(e.target.value)}
                         required
                     />
-                    <button type="submit" disabled={status === 'loading'}>
+                    <button type="submit" disabled={status === 'loading'} className="news-letter-button">
                         {status === 'loading' ? 'Изпращане...' : 'Абонирай се'}
                     </button>
                     {status === 'success' && <p className="success">✅ Успешно се абонира!</p>}
