@@ -7,19 +7,19 @@ import { useTranslation } from "react-i18next";
 import HamburgerMenu from "@/app/HamburgerMenu-page/HamburgerMenuHTML";
 import useWindowSize from "@/app/Helper-components/getWindowSize/windowSize";
 import React, { useEffect, useState } from "react";
-import Header from "@/app/Lang/Lang";
 import ChangeLang from "@/app/Lang/Lang";
 import { useRouter } from "next/navigation";
-import Appbar from "@/app/SignInButton/AppBar/AppBar";
 import { signOut, useSession } from "next-auth/react";
-import UserDropdown from "@/app/UserDropdown/userDropdown";
+import images from '../../../assets/images/image';
 const Navigation = () => {
   const { t } = useTranslation();
   const size = useWindowSize();
   const { data: session } = useSession();
   const [userName, setUserName] = useState("");
   const router = useRouter();
-  useEffect(() => {
+  let bitcoin = images;
+
+    useEffect(() => {
     if (session && session.user) {
       setUserName(session.user.name);
     }else if(localStorage.getItem('token') !== undefined && localStorage.getItem('token') !== null && localStorage.getItem('token') !== ''){
@@ -48,6 +48,9 @@ const Navigation = () => {
           >
             <span>🚀</span>
           </div>
+            <div className="bitcoin-logo-improvements">
+            <img src={bitcoin[24].url.src} alt="React-website" />
+            </div>
           <ul className="justify-content-end maxWidthAndHeight navigation padding-0">
             <li className="text-1 color-white margin-15">
               <Link href="/">{t("home")}</Link>
