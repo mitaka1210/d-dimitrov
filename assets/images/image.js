@@ -22,6 +22,7 @@ import img21 from "../../assets/images/svg-facebook.svg";
 import img22 from "../../assets/images/svg-twitter.svg";
 import img23 from "../../assets/images/svg-instagram.svg";
 import img24 from "../../assets/images/software-Consulting.png";
+import img25 from "../../assets/images/bitcoin-logo-svgrepo-com.svg";
 const imagesArray = [
   {
     id: 0,
@@ -118,6 +119,10 @@ const imagesArray = [
   {
     id: 23,
     url: img24,
+  },
+  {
+    id: 24,
+    url: img25,
   },
 ];
 export default imagesArray;
