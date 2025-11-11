@@ -225,7 +225,7 @@ Open [http://localhost:3000](http://localhost:3000) to view the portfolio locall
 
 3. **Environment Setup**
    ```bash
-   cp .env.example .env.local
+   cp .env.example .env.development
    ```
    Configure your environment variables:
    ```env

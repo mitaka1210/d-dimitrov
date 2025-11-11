@@ -9,8 +9,6 @@ import {fetchArticles} from "@/store/getArticles/getArticlesSlice";
 import NewsletterSignup from "@/app/newsletterSignup/newsletterSignup";
 
 const BlogHtml = () => {
-    const articlesAquariumNumbers = process.env.NEXT_PUBLIC_AQUARIUM_ARTICLES;
-    const articlesProgramingNumbers = process.env.NEXT_PUBLIC_PROGRAMING_ARTICLES;
     const { t } = useTranslation();
     const [blockCategoryAquariums, setBlockCategoryAquariums] = useState(false);
     const loadingState = useSelector((state) => state.articles);
@@ -20,7 +18,8 @@ const BlogHtml = () => {
     let lang = localStorage.getItem("i18nextLng");
     const status = useSelector((state) => state.articles.status);
     const articlesInfo = useSelector((state) => state.articles.data);
-
+    const articlesAquariumNumbers = process.env.NEXT_PUBLIC_AQUARIUM_ARTICLES;
+    const articlesProgramingNumbers = process.env.NEXT_PUBLIC_PROGRAMING_ARTICLES;
 
     useEffect(() => {
         if (status === 'idle') {
