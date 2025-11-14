@@ -31,5 +31,6 @@ printf "\n# Local env files\n.env\n.env.*\n" >> .gitignore
 
 #api keys
 /assets/upload/.stfolder
+.env.development
 .env.production
 package-lock.json
