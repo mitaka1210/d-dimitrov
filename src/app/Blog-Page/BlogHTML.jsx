@@ -9,18 +9,16 @@ import {fetchArticles} from "@/store/getArticles/getArticlesSlice";
 import NewsletterSignup from "@/app/newsletterSignup/newsletterSignup";
 
 const BlogHtml = () => {
-    const articlesAquariumNumbers = process.env.NEXT_PUBLIC_AQUARIUM_ARTICLES;
-    const articlesProgramingNumbers = process.env.NEXT_PUBLIC_PROGRAMING_ARTICLES;
     const { t } = useTranslation();
     const [blockCategoryAquariums, setBlockCategoryAquariums] = useState(false);
     const loadingState = useSelector((state) => state.articles);
     const [loading, setLoading] = useState(true);
     const dispatch = useDispatch();
     const router = useRouter();
-    let lang = localStorage.getItem("i18nextLng");
     const status = useSelector((state) => state.articles.status);
     const articlesInfo = useSelector((state) => state.articles.data);
-
+    // const articlesAquariumNumbers = process.env.NEXT_PUBLIC_AQUARIUM_ARTICLES;
+    // const articlesProgramingNumbers = process.env.NEXT_PUBLIC_PROGRAMING_ARTICLES;
 
     useEffect(() => {
         if (status === 'idle') {
@@ -80,7 +78,7 @@ const BlogHtml = () => {
               </div>
             </div>
             <div className="absolute bottom-4 px-4">
-              <span className="text-sm text-gray-500 -mb-1 block">{articlesAquariumNumbers} {articlesAquariumNumbers > 0 ? (( t("Onebr"))) :( t("br"))}</span>
+              <span className="text-sm text-gray-500 -mb-1 block">2 {1 > 0 ? (( t("Onebr"))) :( t("br"))}</span>
               <h2 className="text-xl text-green-800">{t("aquarium")}</h2>
             </div>
             <div
@@ -109,7 +107,7 @@ const BlogHtml = () => {
               </div>
             </div>
             <div className="absolute bottom-4 px-4">
-              <span className="text-sm text-gray-500 -mb-1 block">{articlesProgramingNumbers} {t("br")}</span>
+              <span className="text-sm text-gray-500 -mb-1 block">1{t("br")}</span>
               <h2 className="text-xl text-yellow-400">{t("programing")}</h2>
             </div>
             <div
