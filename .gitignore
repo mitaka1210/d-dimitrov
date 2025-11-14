@@ -1,5 +1,5 @@
 # See https://help.github.com/articles/ignoring-files/ for more Auto-typed-text ignoring files.
-.env*
+.env.*
 # dependencies
 /node_modules
 /.pnp
@@ -34,3 +34,4 @@ printf "\n# Local env files\n.env\n.env.*\n" >> .gitignore
 .env.development
 .env.production
 package-lock.json
+.env
