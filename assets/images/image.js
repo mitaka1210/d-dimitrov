@@ -23,6 +23,10 @@ import img22 from "../../assets/images/svg-twitter.svg";
 import img23 from "../../assets/images/svg-instagram.svg";
 import img24 from "../../assets/images/software-Consulting.png";
 import img25 from "../../assets/images/bitcoin-logo-svgrepo-com.svg";
+import img26 from "../../assets/images/econt.png";
+import img27 from "../../assets/images/financial_calculator.png";
+import img28 from "../../assets/images/invest-tracking.png";
+
 const imagesArray = [
   {
     id: 0,
@@ -123,6 +127,18 @@ const imagesArray = [
   {
     id: 24,
     url: img25,
+  },
+  {
+   id: 25,
+   url: img26,
+  },
+  {
+   id: 26,
+   url: img27,
+  },
+  {
+   id: 27,
+   url: img28,
   },
 ];
 export default imagesArray;
