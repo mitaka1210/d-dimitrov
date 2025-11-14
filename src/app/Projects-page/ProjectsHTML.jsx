@@ -420,17 +420,119 @@ const ProjectsHtml = () => {
             </figcaption>
             <span className="after"></span>
           </figure>
+          <figure className="shape-box shape-box_half">
+            <img src={img[26].url.src} alt="React-website" />
+                <div className="brk-abs-overlay z-index-0 bg-black opacity-60"></div>
+                <figcaption>
+                    <div className="show-cont">
+                        <h3 className="card-no">11</h3>
+                        <h4 className="card-main-title">{t("financialCalculator")}</h4>
+                    </div>
+                    <h5 className="card-content">{t("financialCalculatorSubText")}</h5>
+                    <h6 className="margin-top-5 border-color-bottom-gray">
+                        {t("technologies")}
+                    </h6>
+                    <ul className="card-content">
+                        <li>HTML</li>
+                        <li>SCSS</li>
+                        <li>JS</li>
+                    </ul>
+                    <div className="buttons-wrapper flex-horizontal-container justify-content-end text-align-center align-items-center">
+                        <a
+                            href="https://salary-calculator-ivory.vercel.app/"
+                            target="_blank"
+                            className="read-more-btn"
+                        >
+                            {t("application")}
+                        </a>
+                        <a
+                            href="https://github.com/mitaka1210/Salary-and-social-security-calculator-for-Bulgaria"
+                            target="_blank"
+                            className="read-more-btn"
+                        >
+                            {t("code")}
+                        </a>
+                    </div>
+                </figcaption>
+                <span className="after"></span>
+          </figure>
+            <figure className="shape-box shape-box_half">
+                <img src={img[27].url.src} alt="React-website" />
+                <div className="brk-abs-overlay z-index-0 bg-black opacity-60"></div>
+                <figcaption>
+                    <div className="show-cont">
+                        <h3 className="card-no">12</h3>
+                        <h4 className="card-main-title">{t("investTracking")}</h4>
+                    </div>
+                    <h5 className="card-content">{t("investTrackingSubText")}</h5>
+                    <h6 className="margin-top-5 border-color-bottom-gray">
+                        {t("technologies")}
+                    </h6>
+                    <ul className="card-content">
+                        <li>HTML</li>
+                        <li>SCSS</li>
+                        <li>JS</li>
+                    </ul>
+                    <div className="buttons-wrapper flex-horizontal-container justify-content-end text-align-center align-items-center">
+                        <a
+                            href="https://investment-tracking.vercel.app/"
+                            target="_blank"
+                            className="read-more-btn"
+                        >
+                            {t("application")}
+                        </a>
+                        <a
+                            href="https://github.com/mitaka1210/Investment-tracking"
+                            target="_blank"
+                            className="read-more-btn"
+                        >
+                            {t("code")}
+                        </a>
+                    </div>
+                </figcaption>
+                <span className="after"></span>
+            </figure>
         </div>
       </section>
       <section className="magic-novatio flex-vertical-container justify-content-center text-align-center">
         <h3>{t("iWantMore")}!</h3>
         <div className="box-wrapper">
+           <figure className="shape-box shape-box_half">
+                <img src={img[25].url.src} alt="React-website" />
+                <div className="brk-abs-overlay z-index-0 bg-black opacity-60"></div>
+                <figcaption>
+                    <div className="show-cont">
+                        <h3 className="card-no">13</h3>
+                        <h4 className="card-main-title">{t("econt")}</h4>
+                    </div>
+                    <h5 className="card-content">{t("econtSubText")}</h5>
+                    <h6 className="margin-top-5 border-color-bottom-gray">
+                        {t("technologies")}
+                    </h6>
+                    <ul className="card-content">
+                        <li>HTML</li>
+                        <li>SCSS</li>
+                        <li>AngularJS</li>
+                        <li>and more...</li>
+                    </ul>
+                    <div className="buttons-wrapper flex-horizontal-container justify-content-end text-align-center align-items-center">
+                        <a
+                            href="https://www.econt.com/"
+                            target="_blank"
+                            className="read-more-btn"
+                        >
+                            {t("application")}
+                        </a>
+                    </div>
+                </figcaption>
+                <span className="after"></span>
+          </figure>
           <figure className="shape-box shape-box_half">
             <img src={img[18].url.src} alt="React-website" />
             <div className="brk-abs-overlay z-index-0 bg-black opacity-60"></div>
             <figcaption>
               <div className="show-cont">
-                <h3 className="card-no">11</h3>
+                <h3 className="card-no">14</h3>
                 <h4 className="card-main-title">{t("novatio")}</h4>
               </div>
               <h5 className="card-content">{t("novatioText")}</h5>
@@ -458,7 +560,7 @@ const ProjectsHtml = () => {
             <div className="brk-abs-overlay z-index-0 bg-black opacity-60"></div>
             <figcaption>
               <div className="show-cont">
-                <h3 className="card-no">12</h3>
+                <h3 className="card-no">15</h3>
                 <h6 className="card-main-title">😏</h6>
               </div>
               <h5 className="card-content">{t("textForNextProject")}</h5>
