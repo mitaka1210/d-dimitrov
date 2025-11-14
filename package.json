@@ -4,7 +4,6 @@
   "private": true,
   "scripts": {
     "dev": "dotenv -e .env.development -- next dev --turbopack",
-    "local": "dotenv -e .env.local -- next dev --turbopack",
     "build:prod": "dotenv -e .env.production -- next build && next start",
     "build": "next build",
     "start": "next start",
