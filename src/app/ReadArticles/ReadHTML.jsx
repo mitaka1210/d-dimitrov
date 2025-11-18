@@ -139,20 +139,20 @@ const ReadHtml = () => {
             <section>
            <div className="share-menu-responsive">
              <div>
-                 <h2 className="read-title text-align-center">{articleTitle}</h2>
+                 <h4 className="read-title text-align-center">{articleTitle}</h4>
                  <hr className="add-line-after-header" />
-                 <div className="read-sections" style={{ maxWidth: "800px", margin: "50px auto", background: "rgba(255, 255, 255, 0.3)", padding: "20px", borderRadius: "8px", boxShadow: "0 0 10px rgba(0,0,0,0.1)", backdropFilter: "blur(10px)" }}>
+                 <div className="social-share-component-styles">
+                     <SocialShare data={articleTitle} />
+                 </div>
+                 <div className="read-sections">
                      {sectionArr.map((section, index) => (
                          <div key={index} className="read-section">
-                             <h2 className="read-section-title" style={{ fontSize: "28px", textAlign: "center", color: "#fff" }}>{index + 1}.{section.title}</h2>
+                             <h5 className="read-section-title text-align-center">{index + 1}.{section.title}</h5>
                              {/*<p className="read-section-text">{section.content}</p>*/}
                              <ul>{formattedContent(section.content)}</ul>
                          </div>
                      ))}
                  </div>
-             </div>
-             <div>
-                 <SocialShare data={articleTitle} />
              </div>
            </div>
             </section>

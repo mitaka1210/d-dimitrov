@@ -1,11 +1,28 @@
-import React, { useEffect } from "react";
+import React, {useEffect, useState} from "react";
 import Image from "next/image";
 import images from "../../../../assets/images/image";
 import './socialShare.scss';
 function SocialShare({ data }) {
+    const [toast, setToast] = useState({ visible: false, message: "" });
     const url = typeof window !== "undefined" ? window.location.href : ""; // Взимаме текущия URL
     const title = data || "Сподели тази статия!";
     const description = "Прочети повече на нашия сайт.";
+
+    //? CSS за тоаст съобщението
+    const toastStyle = {
+        position: "fixed",
+        bottom: "20px",
+        right: "20px",
+        background: "rgba(0,0,0,0.85)",
+        color: "#fff",
+        padding: "10px 14px",
+        borderRadius: "8px",
+        zIndex: 9999,
+        display: "flex",
+        alignItems: "center",
+        gap: "8px",
+        boxShadow: "0 4px 12px rgba(0,0,0,0.3)"
+    };
     useEffect(() => {
         if (window.FB) return; // Ако вече е заредено, спираме
 
@@ -44,18 +61,30 @@ function SocialShare({ data }) {
         );
     };
 
+    // const copyToClipboard = () => {
+    //     navigator.clipboard.writeText(url).then(() => {
+    //         alert("Линкът е копиран!");
+    //     }).catch((err) => {
+    //         alert("Грешка при копирането.");
+    //         console.error(err);
+    //     });
+    // };
+    const showToast = (message, ms = 2500) => {
+        setToast({ visible: true, message });
+        setTimeout(() => setToast({ visible: false, message: "" }), ms);
+    };
     const copyToClipboard = () => {
         navigator.clipboard.writeText(url).then(() => {
-            alert("Линкът е копиран!");
+            showToast("✅ Линкът е копиран!");
         }).catch((err) => {
-            alert("Грешка при копирането.");
+            showToast("❌ Грешка при копирането.");
             console.error(err);
         });
     };
 
     return (
-        <div className="social-share">
-            <p>Сподели в:</p>
+        <div className="social-share-article">
+            <h3 className="padding-0">Сподели в:</h3>
             <div className="social-icons">
                 <a href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}&text=${encodeURIComponent(title)}`} target="_blank" rel="noopener noreferrer">
                     <Image src={images[20].url.src} alt="Facebook" width={40} height={40} />
@@ -65,6 +94,12 @@ function SocialShare({ data }) {
                 </a>
             </div>
             <button onClick={copyToClipboard} className="copy-btn">Копирай линка</button>
+
+            {toast.visible && (
+                <div style={toastStyle} role="status" aria-live="polite">
+                    <span>{toast.message}</span>
+                </div>
+            )}
         </div>
     );
 }

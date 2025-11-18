@@ -1,7 +1,6 @@
 @use "../Footer-page/footer.scss";
 
 .read {
-  font-family: "Poppins", sans-serif;
   line-height: 1.6;
   padding: 0;
   background: linear-gradient(to bottom, #006994, #008bb5, #00a8cc);
@@ -153,11 +152,7 @@ article:hover {
   backdrop-filter: blur(5px);
 }
 h1 {
-  font-size: 24px;
   text-align: center;
-}
-p {
-  font-size: 18px;
 }
 .dislike-number{
   position: relative;
@@ -180,14 +175,45 @@ p {
   width: 50%;
   margin: 15px auto;
 }
-@media (max-width: 768px) {
-  h1 { font-size: 22px; }
-  p { font-size: 16px; }
+.read-section-title{
+  border-bottom: 1px dashed #45d5ef;
+  padding-bottom: 5px;
+  margin-bottom: 15px;
+}
+.social-share-component-styles{
+  display: flex;
+  flex-flow: row-reverse;
+  height: 50px;
+}
+.read-sections{
+  max-width: 800px;
+  margin: 20px auto;
+  background: rgba(255, 255, 255, 0.3);
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  backdrop-filter: blur(10px);
+}
+@media (max-width: 800px) {
+  .social-share-component-styles{
+    display: flex;
+    justify-content: center;
+    height: 84px;
+  }
+  .social-icons{
+    display: flex;
+  }
 }
 @media (max-width: 440px ) {
   .share-menu-responsive{
     display: flex;
     flex-flow: column;
+  }
+  .social-share-component-styles{
+    display: flex;
+    flex-flow: row-reverse;
+    height: 50px;
+    justify-content: center;
   }
   .social-share {
     position: absolute;

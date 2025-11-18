@@ -1,8 +1,9 @@
 .social-share {
   position: absolute;
   right: 27em;
-  top: 16.7em;
   text-align: justify;
+  height: 100px;
+  background-color: red;
 }
 
 .social-icons a {
@@ -59,12 +60,43 @@
 .social-icons a:hover .fa-linkedin-in {
   color: #3b5998;
 }
+.social-share-article{
+  flex-flow: column;
+  /* justify-content: center; */
+  /* align-items: center; */
+  display: flex;
+  position: fixed;
+  & p {
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+@media (max-width: 800px) {
+  .social-share-article{
+    flex-flow: row;
+    display: flex;
+  }
+}
 @media (max-width: 440px ) {
+  .social-share-article{
+    display: flex;
+    flex-flow: row;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    & p {
+      text-align: center;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  }
   .social-share {
     position: absolute;
     bottom: 4em;
     right: 4em;
-    top: 29.6em;
     text-align: justify;
     /* z-index: 5555; */
     display: flex;
