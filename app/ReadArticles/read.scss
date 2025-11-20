@@ -194,16 +194,7 @@ h1 {
   box-shadow: 0 0 10px rgba(0,0,0,0.1);
   backdrop-filter: blur(10px);
 }
-@media (max-width: 800px) {
-  .social-share-component-styles{
-    display: flex;
-    justify-content: center;
-    height: 84px;
-  }
-  .social-icons{
-    display: flex;
-  }
-}
+
 @media (max-width: 440px ) {
   .share-menu-responsive{
     display: flex;

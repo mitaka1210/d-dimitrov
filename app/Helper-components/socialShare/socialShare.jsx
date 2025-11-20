@@ -84,8 +84,8 @@ function SocialShare({ data }) {
 
     return (
         <div className="social-share-article">
-            <h3 className="padding-0">Сподели в:</h3>
-            <div className="social-icons">
+            <h4 className="padding-0">Сподели в:</h4>
+            <div className="social-icons margin-bottom-10">
                 <a href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}&text=${encodeURIComponent(title)}`} target="_blank" rel="noopener noreferrer">
                     <Image src={images[20].url.src} alt="Facebook" width={40} height={40} />
                 </a>
@@ -93,7 +93,7 @@ function SocialShare({ data }) {
                     <Image src={images[21].url.src} alt="Twitter" width={40} height={40} />
                 </a>
             </div>
-            <button onClick={copyToClipboard} className="copy-btn">Копирай линка</button>
+            <button onClick={copyToClipboard} className="copy-btn text-align-center justify-center">Копирай линка</button>
 
             {toast.visible && (
                 <div style={toastStyle} role="status" aria-live="polite">

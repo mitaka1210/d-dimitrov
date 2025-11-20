@@ -317,8 +317,8 @@
     }
 
     .read-more {
+      cursor: pointer;
       text-align: right;
-
       a {
         color: var(--color_prime);
         display: inline-block;
@@ -427,7 +427,7 @@
 }
 @media (max-width: 500px) {
   .add-scroll-aquarium-page{
-    height: 200dvh;
+    height: 245vh;
   }
   .mobile-devices-styles {
     text-align: center;

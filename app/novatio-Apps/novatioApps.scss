@@ -3,6 +3,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  height: 100vh;
 }
 
 .container-novatio-app {
@@ -201,9 +202,18 @@
 .btn-6 span:hover:after {
   width: 100%;
 }
-
+.mb-important {
+  margin-bottom: 5em !important;
+  transition: margin-bottom .2s ease;
+}
 
 @media (max-width: 480px) {
+  .novatio-apps {
+    height: 100%;
+  }
+  .container-novatio-app .card:hover {
+    height: 350px;
+  }
   .container-novatio-app{
     height: 100%;
   }

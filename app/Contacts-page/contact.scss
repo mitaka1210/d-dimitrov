@@ -2,6 +2,7 @@
 .bgr-gray {
   background: rgba(89, 228, 230, 1.0) !important;
   background: linear-gradient(135deg, rgba(89, 228, 230, 1.0), rgba(22, 183, 119, 1.0)) !important;
+  height: 100vh;
 }
 
 .add-position-relative {
@@ -40,6 +41,9 @@
   .add-position-relative {
     margin: calc(10vw - 8vw);
   }
+  .bgr-gray {
+    height: 151vh;
+  }
   .change-to-column{
     flex-direction: column !important;
   }
@@ -50,6 +54,10 @@
 
 
 @media screen and (max-width: 375px) {
+  .bgr-gray {
+    padding: 0.9em;
+    height: 181vh;
+  }
   .small-devices {
     flex-flow: column !important;
   }

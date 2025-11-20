@@ -1,11 +1,12 @@
 "use client";
-import React, { useState, useEffect } from "react";
-import { motion } from "framer-motion";
-import { FaCode, FaLaptopCode, FaDatabase, FaCloud } from "react-icons/fa";
+import React, {useEffect, useState} from "react";
+import {motion} from "framer-motion";
+import {FaCode, FaLaptopCode} from "react-icons/fa";
 import "./skillPyramid.scss";
 import LoaderHTML from "../loader/LoaderHTML";
-import { useTranslation } from "react-i18next";
+import {useTranslation} from "react-i18next";
 import MyServices from "../my-services/myServices";
+
 let lang = localStorage.getItem("i18nextLng");
 
 const skills = [
@@ -191,8 +192,7 @@ export default function SkillPyramid() {
     return <LoaderHTML />;
   }
   const relativeToLanguage = () => {
-    let newLang = localStorage.getItem("i18nextLng");
-    lang = newLang;
+      lang = localStorage.getItem("i18nextLng");
   };
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-gray-900 text-white p-5">
@@ -202,7 +202,7 @@ export default function SkillPyramid() {
         {skills.slice(0, visibleRows).map((row, index) => (
           <motion.div
             key={index}
-            className="flex gap-4 mt-2"
+            className="flex gap-1 margin-10"
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{
@@ -214,7 +214,7 @@ export default function SkillPyramid() {
             {row.map((skill) => (
               <motion.div
                 key={skill.name}
-                className={`px-4 py-2 rounded-lg shadow-lg cursor-pointer transition-transform ${
+                className={`px-4 py-2 rounded-lg shadow-lg cursor-pointer transition-transform padding-10 ${
                   skill.category === "old" ? "bg-gray-500" : "bg-blue-600"
                 }`}
                 whileHover={{ scale: 1.1 }}
@@ -235,7 +235,7 @@ export default function SkillPyramid() {
           transition={{ duration: 0.3 }}
         >
           <button
-            className="absolute top-2 right-2 bg-red-600 px-3 py-1 rounded-full text-sm"
+            className="absolute top-2 right-2 bg-red-600 px-3 py-1 rounded-full text-sm padding-10"
             onClick={() => setSelectedSkill(null)}
           >
             {t("close")}

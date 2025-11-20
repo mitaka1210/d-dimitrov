@@ -6,20 +6,23 @@
   background-color: red;
 }
 
-.social-icons a {
+.social-icons {
   display: flex;
-  background: #e3edf7;
-  height: 75px;
-  width: 75px;
-  margin: 15px 15px;
-  border-radius: 8px;
-  align-items: center;
-  justify-content: center;
-  text-decoration: none;
-  box-shadow: 6px 6px 10px -1px rgba(0, 0, 0, 0.15),
-  -6px -6px 10px -1px rgba(255, 255, 255, 0.7);
-  border: 1px solid rgba(0, 0, 0, 0);
-  transition: transform 0.5s;
+  & a {
+    display: flex;
+    background: #e3edf7;
+    height: 75px;
+    width: 75px;
+    margin: 15px 15px;
+    border-radius: 8px;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    box-shadow: 6px 6px 10px -1px rgba(0, 0, 0, 0.15),
+    -6px -6px 10px -1px rgba(255, 255, 255, 0.7);
+    border: 1px solid rgba(0, 0, 0, 0);
+    transition: transform 0.5s;
+  }
 }
 
 .social-icons a i {
@@ -73,6 +76,75 @@
     align-items: center;
   }
 }
+// SCSS (place in `app/Helper-components/socialShare/socialShare.scss`)
+.copy-btn {
+  --bg-a: #ff7a18;
+  --bg-b: #af002d;
+  --text: #ffffff;
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  border-radius: 12px;
+  border: none;
+  cursor: pointer;
+  color: var(--text);
+  background: linear-gradient(90deg, var(--bg-a), var(--bg-b));
+  box-shadow: 0 6px 18px rgba(175, 0, 45, 0.25), inset 0 -2px 6px rgba(0,0,0,0.12);
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 1;
+  transform: translateZ(0);
+  transition: transform .16s ease, box-shadow .16s ease, opacity .16s ease;
+  overflow: hidden;
+
+  &::after {
+    /* subtle moving shine */
+    content: "";
+    position: absolute;
+    top: -40%;
+    left: -60%;
+    width: 60%;
+    height: 200%;
+    background: linear-gradient(120deg, rgba(255,255,255,0.14), rgba(255,255,255,0.06), rgba(255,255,255,0));
+    transform: rotate(20deg) translateX(-100%);
+    transition: transform .6s cubic-bezier(.2,.9,.2,1);
+    pointer-events: none;
+  }
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 24px rgba(175,0,45,0.28), inset 0 -2px 8px rgba(0,0,0,0.14);
+    &::after { transform: rotate(20deg) translateX(40%); }
+  }
+
+  &:active {
+    transform: translateY(0) scale(.995);
+  }
+
+  &:focus {
+    outline: none;
+    box-shadow: 0 0 0 4px rgba(175,0,45,0.18), 0 8px 20px rgba(0,0,0,0.18);
+  }
+
+  .copy-icon {
+    display: inline-flex;
+    width: 20px;
+    height: 20px;
+    align-items: center;
+    justify-content: center;
+    color: rgba(255,255,255,0.95);
+    svg { display: block; width: 18px; height: 18px; stroke: currentColor; }
+  }
+
+  .copy-text { display: inline-block; transform: translateZ(0); }
+
+  @media (prefers-reduced-motion: reduce) {
+    transition: none;
+    &::after { transition: none; display: none; }
+  }
+}
 @media (max-width: 800px) {
   .social-share-article{
     flex-flow: row;
@@ -82,16 +154,20 @@
 @media (max-width: 440px ) {
   .social-share-article{
     display: flex;
-    flex-flow: row;
+    flex-flow: column;
     justify-content: center;
     align-items: center;
     position: relative;
+    margin-top: 40px;
     & p {
       text-align: center;
       display: flex;
       justify-content: center;
       align-items: center;
     }
+  }
+  .read-sections{
+    margin-top: 80px;
   }
   .social-share {
     position: absolute;
@@ -117,6 +193,16 @@
       justify-content: center;
       text-align: center;
     }
+  }
+}
+@media (max-width: 800px) {
+  .social-share-component-styles{
+    display: flex;
+    justify-content: center;
+    height: 84px;
+  }
+  .social-icons{
+    display: flex;
   }
 }
 @media (max-width: 393px) {

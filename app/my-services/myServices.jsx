@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+    import React, { useState, useEffect } from "react";
 import "./myServices.scss";
 import { motion } from "framer-motion";
 import { FaCode, FaLaptopCode, FaDatabase, FaCloud } from "react-icons/fa";
@@ -129,7 +129,7 @@ export default function MyServices() {
             ? servicesEN.map((service, index) => (
                 <motion.div
                   key={index}
-                  className="bg-gray-800 p-16 rounded-xl shadow-lg text-center flex flex-col items-center card-services"
+                  className="bg-gray-800 p-16 rounded-xl shadow-lg text-center flex flex-col items-center card-services padding-10"
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{
@@ -141,7 +141,7 @@ export default function MyServices() {
                   <div className="text-4xl mb-4 text-blue-400">
                     {service.icon}
                   </div>
-                  <h2 className="text-xl font-bold mb-4">{service.title}</h2>
+                  <h2 className="text-xl font-bold mb-4 text-white">{service.title}</h2>
                   <ul className="text-gray-400">
                     {service.details.map((detail, i) => (
                       <li key={i} className="mb-1 change-font-size-li">

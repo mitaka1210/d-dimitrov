@@ -53,7 +53,7 @@ const Navigation = () => {
             </div>
           <ul className="justify-content-end maxWidthAndHeight navigation padding-0">
             <li className="text-1 color-white margin-15">
-              <Link href="/public">{t("home")}</Link>
+              <Link href="/">{t("home")}</Link>
             </li>
             <li className="text-2 color-white margin-15">
               <Link href="/about-page">{t("about")}</Link>

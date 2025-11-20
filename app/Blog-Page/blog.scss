@@ -104,7 +104,9 @@
 .card:hover .card-overlay {
   opacity: 0.8;
 }
-
+.blog-category-container{
+  width: 1400px;
+}
 //h1, h2 {
 //  font-family: 'Playfair Display', serif;
 //}
@@ -120,5 +122,7 @@
 .add-img-height {
   height: 256px !important;
 }
-
+.svg-change-height{
+  height: 160px;
+}
 //card new end

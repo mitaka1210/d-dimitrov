@@ -38,7 +38,6 @@ const ReadHtml = () => {
     }, [searchParams]);
 
     useEffect(() => {
-        console.log("pesho", id);
         if (id) {
             dispatch(fetchArticles());
         }
@@ -96,7 +95,6 @@ const ReadHtml = () => {
         });
     };
     const handleLike = async () => {
-        console.log("pesho", isLiked, isDisliked);
         if (isLiked || isDisliked) return;
         setIsLiked(true);
         setLikeCount((prev) => prev + 1);
@@ -132,7 +130,7 @@ const ReadHtml = () => {
                 <div className="progress-bar" style={{ height: "4px", background: "#fc2e5a", width: `${progress}%`, transition: "width 0.3s ease-in-out" }}></div>
             </div>
             <div className="read-back-btn">
-                <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full" onClick={goBack}>
+                <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full padding-10" onClick={goBack}>
                     {t("back")}
                 </button>
             </div>

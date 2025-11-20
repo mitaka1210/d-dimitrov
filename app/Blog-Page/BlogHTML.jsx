@@ -67,14 +67,12 @@ const BlogHtml = () => {
     ].filter(Boolean).join(" ");
     return (
         <div className="blog-main-container">
-            <div className="min-h-screen bg-white grid place-content-center p-5">
-                <h1 className="capitalize text-3xl md:text-4xl lg:text-6xl text-center mb-10 lg:mb-20 text-indigo-600">
+            <div className="min-h-screen bg-white grid place-content-center p-5 blog-category-container">
+                <h2 className="capitalize text-3xl md:text-4xl lg:text-6xl text-center mb-10 lg:mb-20 text-indigo-600">
                     {t("category")}
-                </h1>
+                </h2>
                 <p className="text-align-center">{t("articleOnlyBG")}</p>
-                <div className="grid lg:grid-cols-2 gap-7 justify-center">
-                    <div className="bg-red-500 text-white p-4">Test Tailwind</div>
-
+                <div className="grid lg:grid-cols-3 gap-1 justify-center">
                     <div
                         className={classes}
                         aria-disabled={!blockCategoryAquariums}
@@ -96,18 +94,17 @@ const BlogHtml = () => {
                                 </svg>
                             </div>
                         </div>
-                        <div className="absolute bottom-4 px-4">
-                            <span className="text-sm text-gray-500 -mb-1 block">2 {1 > 0 ? t("Onebr") : t("br")}</span>
-                            <h2 className="text-xl text-green-800">{t("aquarium")}</h2>
+                        <div className="absolute bottom-4 px-4 add-display-content">
+                            <span className="text-sm text-gray-500 -mb-1 block margin-left-15">2 {1 > 0 ? t("Onebr") : t("br")}</span>
+                            <h1 className="text-xl text-green-800 margin-left-15">{t("aquarium")}</h1>
                         </div>
                         <div className="absolute top-0 right-0 bg-green-400 cursor-pointe z-50 w-full h-full flex justify-center items-center card-overlay">
-                            <svg xmlns="http://www.w3.org/2000/svg" className="h-16 w-16 text-white cursor-pointer" viewBox="0 0 20 20" fill="currentColor">
+                            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-16 text-white cursor-pointer " viewBox="0 0 20 20" fill="currentColor">
                                 <path fillRule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clipRule="evenodd" />
                             </svg>
                         </div>
                     </div>
-
-                    {/*<div className="max-w-sm shadow-xl relative card rounded-md overflow-hidden" onClick={() => redirectTo("programing")}>
+                    <div className="max-w-sm shadow-xl relative card rounded-md overflow-hidden" onClick={() => redirectTo("programing")}>
                         <div className="relative">
                             <img
                                 src="https://images.unsplash.com/photo-1485856407642-7f9ba0268b51?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
@@ -123,17 +120,16 @@ const BlogHtml = () => {
                                 </svg>
                             </div>
                         </div>
-                        <div className="absolute bottom-4 px-4">
-                            <span className="text-sm text-gray-500 -mb-1 block">1{t("br")}</span>
-                            <h2 className="text-xl text-yellow-400">{t("programing")}</h2>
+                        <div className="absolute bottom-4 px-4v add-display-content">
+                            <span className="text-sm text-gray-500 -mb-1 block margin-left-15">1{t("br")}</span>
+                            <h1 className="text-xl text-yellow-400 margin-left-15">{t("programing")}</h1>
                         </div>
                         <div className="absolute top-0 right-0 bg-yellow-400 cursor-pointe z-50 w-full h-full flex justify-center items-center card-overlay">
-                            <svg xmlns="http://www.w3.org/2000/svg" className="h-16 w-16 text-white cursor-pointer" viewBox="0 0 20 20" fill="currentColor">
+                            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-16 text-white cursor-pointer" viewBox="0 0 20 20" fill="currentColor">
                                 <path fillRule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clipRule="evenodd" />
                             </svg>
                         </div>
                     </div>
-
                     <div className="max-w-sm shadow-xl relative card rounded-md overflow-hidden">
                         <div className="relative">
                             <img src="https://images.pexels.com/photos/1083822/pexels-photo-1083822.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" alt="Funeral" className="max-w-full" />
@@ -146,16 +142,16 @@ const BlogHtml = () => {
                                 </svg>
                             </div>
                         </div>
-                        <div className="absolute bottom-4 px-4">
-                            <span className="text-sm text-gray-500 -mb-1 block">Скоро</span>
-                            <h2 className="text-xl text-green-700">В момента работя по нея!</h2>
+                        <div className="absolute bottom-4 px-4 add-display-content">
+                            <span className="text-sm text-gray-500 -mb-1 block margin-left-15">Скоро</span>
+                            <h1 className="text-xl text-green-700 margin-left-15">В момента работя по нея!</h1>
                         </div>
                         <div className="absolute top-0 right-0 bg-green-700 cursor-pointe z-50 w-full h-full flex justify-center items-center card-overlay">
-                            <svg xmlns="http://www.w3.org/2000/svg" className="h-16 w-16 text-white cursor-pointer" viewBox="0 0 20 20" fill="currentColor">
+                            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-16 text-white cursor-pointer" viewBox="0 0 20 20" fill="currentColor">
                                 <path fillRule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clipRule="evenodd" />
                             </svg>
                         </div>
-                    </div>*/}
+                    </div>
                 </div>
                 <div>
                     <NewsletterSignup />
