@@ -1,0 +1,5 @@
+# This directory is a Syncthing folder marker.
+# Do not delete.
+
+folderID: feyux-ruled
+created: 2025-11-12T13:12:14Z

@@ -1,0 +1,65 @@
+
+.bgr-gray {
+  background: rgba(89, 228, 230, 1.0) !important;
+  background: linear-gradient(135deg, rgba(89, 228, 230, 1.0), rgba(22, 183, 119, 1.0)) !important;
+  height: 100vh;
+}
+
+.add-position-relative {
+  margin-top: calc(10vh - 4vh);
+  background-color: white;
+}
+
+.add-height-section {
+  height:auto;
+  overflow: auto;
+}
+
+.contacts-page {
+  & .contacts-nav {
+    background-color: #000000;
+  }
+}
+
+.color-orange-text {
+  color: orangered;
+  text-decoration: underline;
+}
+.special-text {
+  font-size: 1.3em;
+  //font-weight: bold;
+  //font-style: italic;
+  color: #ff6600; /* Оранжев цвят за акцент */
+  text-align: center;
+  animation: fadeIn 1.5s ease-in-out;
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@media screen and (max-width: 500px) {
+  .add-position-relative {
+    margin: calc(10vw - 8vw);
+  }
+  .bgr-gray {
+    height: 151vh;
+  }
+  .change-to-column{
+    flex-direction: column !important;
+  }
+  .change-header-font-size{
+    font-size: 2em !important;
+  }
+}
+
+
+@media screen and (max-width: 375px) {
+  .bgr-gray {
+    padding: 0.9em;
+    height: 181vh;
+  }
+  .small-devices {
+    flex-flow: column !important;
+  }
+
+}

@@ -1,0 +1,244 @@
+@use '../variables';
+
+.nav-bar-about {
+  width: 100%;
+  background-color: #000000;
+}
+
+.box-1, .box-2, .box-3, .box-4, .box-5, .box-6 {
+  width: 100%;
+}
+
+.about-section {
+  margin-bottom: 2em;
+}
+
+.overlay-box {
+  background-color: #f5f5f5;
+  height: 100%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  margin: 1em;
+}
+
+.box-1 > .overlay-box {
+  background-image: var(--about-img-3);
+}
+
+.box-3 > .overlay-box {
+  background-image: var(--about-img-2);
+}
+
+.box-4 > .overlay-box {
+  background-image: var(--about-img-1);
+}
+
+.overlay-box:hover .desc,
+.overlay-box:focus .desc {
+  opacity: 1;
+}
+
+.overlay-box .desc {
+  opacity: 0.01;
+  min-height: 355px;
+  font-size: 1rem;
+  height: 100%;
+  padding: 30px 25px 20px;
+  transition: all 1s ease;
+  background: rgba(0, 0, 0, 0.7);
+  color: #fff;
+}
+
+
+.about-page {
+  height: 100vh;
+}
+
+.about-me {
+  height: 690px;
+  opacity: .3;
+  background-size: cover !important;
+  background: url("../../assets/images/for-me.jpeg") no-repeat center;
+
+  & h2 {
+    color: wheat;
+  }
+}
+
+.my-hobbi {
+  & .about-me-text {
+    //font-weight: 900;
+  }
+}
+
+//back to top
+.backToTop {
+  height: 50px;
+  position: fixed;
+  transition-timing-function: ease-in;
+  transition: 0.5s;
+  top: -75px;
+  text-align: end;
+  cursor: pointer;
+  right: 2em;
+}
+
+.backTo_Top {
+  position: fixed;
+  top: 25em;
+
+  & svg {
+    width: 2em;
+    height: 2em;
+    color: #00a80d;
+    border: 2px solid crimson;
+    border-radius: 50%;
+  }
+}
+
+//ul li
+.list-hobby > li {
+  list-style: none;
+  overflow: hidden;
+}
+
+.list-hobby > li:first-child {
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
+}
+
+.list-hobby > li:last-child {
+  border-bottom-left-radius: 4px;
+  border-bottom-right-radius: 4px;
+}
+
+.accordian {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 1rem 0;
+}
+
+.accordian-title {
+  position: relative;
+  cursor: pointer;
+  //font: 1.2em "roboto-regular";
+}
+
+li.active .accordian-title::after {
+  content: '-';
+}
+
+.accordian-content {
+  height: 0;
+  transition: height 0.2s ease-in-out;
+}
+
+.accordian-content p {
+  margin-bottom: 0.1em !important;
+  //font: 1em "roboto-regular";
+}
+
+li.active .accordian-content {
+  height: 100px;
+  padding: 0.5rem 1rem 1rem;
+  transition: height 0.5s ease-in-out;
+  border-top: 1px solid #ddd;
+  display: block;
+  overflow: auto;
+}
+
+
+.add-line-bottom {
+  margin: 1em 11em 1em 11em;
+}
+
+.container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  position: fixed;
+  flex-flow: column;
+  overflow: auto;
+  top: 0;
+  left: 0;
+  padding: 5px 20px;
+}
+
+
+.click-btn {
+  height: 40px;
+  margin: 0.5rem;
+  line-height: 35px;
+  border: 1px solid;
+  border-radius: var(--border-radius);
+  color: #000;
+  text-decoration: none;
+  transition: all 0.35s;
+}
+
+
+.add-height-click {
+  height: 150px;
+  overflow: auto;
+}
+
+.btn-style506 {
+  position: relative;
+  border-color: var(--btn-color);
+  color: var(--btn-color);
+  overflow: hidden;
+
+
+  &::before {
+    width: 6%;
+    height: 100%;
+    position: absolute;
+    top: 50%;
+    left: 0px;
+    background-color: var(--btn-color);
+    transform: rotateZ(-45deg) translate(-50%, -50%);
+    transition: all 0.3s;
+    content: "";
+    z-index: -1;
+  }
+
+  &:hover {
+    color: #fff;
+
+    &::before {
+      width: 100%;
+      top: 0;
+      transform: none;
+    }
+  }
+}
+
+.numbered-item {
+  display: flex;
+  &:before{
+    content: "№";
+    font-size: 16px; /* Може да промените размера на шрифта при нужда */
+    color: white; /* Може да промените цвета при нужда */
+    padding: 0 0 0 4px;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .info-bout-me {
+    flex-flow: column;
+  }
+  .navigation li a {
+    font-size: 1em;
+  }
+  .accordian-title {
+    font: 1em "roboto-regular";
+  }
+
+  .backTo_Top {
+    top: 17em;
+  }
+  .click-btn {
+    height: 160px;
+    padding: 7px;
+  }
+}

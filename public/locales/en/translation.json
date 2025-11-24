@@ -35,7 +35,7 @@
   "weatherApp": "Entering the city, you can easily access weather information through the app. It is compatible (ANDROID/IOS) and easy to install on your mobile device.",
   "technologies": "Technologies",
   "application": "Application",
-  "code": "Code on GitHub",
+  "code": "GitHub",
   "reactWebSite": "Pages with layout made with ReactJs and Figma. Responsive design",
   "reactToDo": "An app where you can write down your tasks and change it. Responsive design",
   "shoes": "Amazing shoes",
@@ -50,7 +50,7 @@
   "novatio": "Novatio",
   "uploadArticle": "Upload a blog article",
   "myBlog": "My blog",
-  "createMyBlog": "Creating my blog",
+  "createMyBlog": "Creating my blog and other personal projects",
   "myUploader": "My site for uploading a blog article",
   "iWantMore": "I continue to develop and build myself",
   "magic": "the magic",
@@ -145,5 +145,11 @@
   "seeMore": "Read more",
   "years": "2025",
   "allRights": "All rights reserved",
-  "automateArticleUpload": "Automating the article upload process"
+  "automateArticleUpload": "Automating the article upload process",
+  "econt": "Econt",
+  "econtSubText": "\uD83D\uDE9A Econt has been with you since 1993 and continues to be your trusted partner in deliveries. Our mission is simple \u2014 to make things as easy as possible for you. That's why we constantly find new ways to make our services faster, more convenient, and more useful for you and your business.",
+  "financialCalculator": "Financial calculator",
+  "financialCalculatorSubText": "\uD83D\uDCB0 What does this calculator do? I created this financial calculator to help you easily calculate your net salary, social contributions, taxes, and monthly expenses. Enter your gross salary, food expenses, mortgage and other costs - and you will get a clear idea of what actually remains in your pocket.",
+  "investTracking": "Investment tracking",
+  "investTrackingSubText": "\uD83D\uDCB8 This investment tracking tool is designed to help you monitor and manage your investment portfolio effectively. With this tool, you can easily track the performance of your investments, analyze returns, and make informed decisions to optimize your financial growth."
 }
