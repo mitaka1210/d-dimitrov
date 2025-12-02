@@ -1,7 +1,7 @@
 import pool  from "../../../database/db";
 import {NextRequest, NextResponse} from "next/server";
 
-export async function POST(req) {
+export async function POST(req: NextRequest) {
     try {
         const { email } = await req.json();
         console.log("🟡 Received email:", email);
