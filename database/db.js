@@ -4,14 +4,18 @@ const { Pool } = pg;
 
 // Primary database configuration
 let primaryConnectionString = process.env.DATABASE_URL;
+console.log("pesho 1",primaryConnectionString);
+console.log("pesho 1",process.env.DATABASE_URL);
 
-switch (process.env.NEXT_PUBLIC_ENV) {
+switch (primaryConnectionString) {
     case "development":
-        primaryConnectionString = process.env.DEV_DATABASE_URL || process.env.DATABASE_URL;
+        primaryConnectionString = process.env.DATABASE_URL || process.env.DATABASE_URL;
+        console.log("pesho 2 DEV",);
         break;
     case "production":
     default:
-        primaryConnectionString = process.env.PROD_DATABASE_URL || process.env.DATABASE_URL;
+        primaryConnectionString = process.env.DATABASE_URL || process.env.DATABASE_URL;
+        console.log("pesho 3 PROD",);
         break;
 }
 

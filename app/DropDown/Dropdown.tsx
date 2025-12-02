@@ -45,7 +45,7 @@ export default function Dropdown(props: any) {
                         >{item.title}
                         </button>
                         <div
-                            className={`absolute right-14 top-8 z-30 w-[250px] min-h-[300px] flex flex-col py-4 bg-zinc-400 rounded-md ${transClass}`}>
+                            className={`absolute right-1 top-2 z-30 w-[150px] min-h-[100px] flex flex-col py-4 bg-zinc-400 rounded-md ${transClass}`}>
                             {
                                 menuItems.map((menuItem:any, idx:any) =>
                                     <div key={idx}>

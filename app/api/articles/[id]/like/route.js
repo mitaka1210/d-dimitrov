@@ -55,37 +55,23 @@ import {NextRequest, NextResponse} from "next/server"; // Файлът db.js с�
  */
 
 
-export async function POST(req,context) {
-    const { params } = context; // Правилно извличаме `params`
+
+export async function POST(req, context) {
+    const { id } = await context.params;
+
     try {
-        const { id } = await params; // ✅ ID от URL параметрите
-        console.log("🔹 ID from params:", id);
-
-        // ✅ Четем тялото на заявката
         const { type } = await req.json();
-        console.log("🔹 Type:", type);
 
-        // ✅ Проверка за валидност на заявката
         if (!id || (type !== "like" && type !== "dislike")) {
             return NextResponse.json({ error: "Invalid request" }, { status: 400 });
         }
 
-        // ✅ Изпращаме заявка към външния API
-        const response = await fetch(`https://share.d-dimitrov.eu/api/post/like-dislike/${id}`, {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-                article_id: id,
-                type,
-            }),
-        });
+        await pool.query(
+            "INSERT INTO article_likes_dislikes (article_id, type) VALUES ($1, $2)",
+            [id, type]
+        );
 
-        const data = await response.json();
-
-        // ✅ Връщаме отговора от външния API
-        return NextResponse.json(data, { status: response.status });
+        return NextResponse.json({ success: true });
     } catch (error) {
         console.error("🔴 Error:", error);
         return NextResponse.json({ error: "Server error" }, { status: 500 });
