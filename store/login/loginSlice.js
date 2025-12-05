@@ -4,7 +4,7 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 //!production
 const url = `${process.env.NEXT_PUBLIC_APP_API_URL_PROD}`;
 //!development
-// const url = `${process.env.NEXT_PUBLIC_APP_API_URL_DEV}`;
+// const url = `${process..env.NEXT_PUBLIC_APP_API_URL_DEV}`;
 // Async Thunks за логин
 export const login = createAsyncThunk('auth/login', async ({ username, password, role }, { rejectWithValue }) => {
     try {

@@ -225,7 +225,7 @@ Open [http://localhost:3000](http://localhost:3000) to view the portfolio locall
 
 3. **Environment Setup**
    ```bash
-   cp .env.example .env.local
+   cp ..env.example ..env.local
    ```
    Configure your environment variables:
    ```env
@@ -362,7 +362,7 @@ server {
 ### Environment Variables
 
 ```bash
-# Production .env
+# Production ..env
 DATABASE_URL=postgresql://user:pass@postgres:5432/portfolio
 API_URL=http://backend:5000
 NEXTAUTH_URL=https://d-dimitrov.eu

@@ -4,7 +4,7 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 const url = `${process.env.NEXT_PUBLIC_APP_API_URL_PROD}`;
 
 //!development
-// const url = `${process.env.NEXT_PUBLIC_APP_API_URL_DEV}`;
+// const url = `${process..env.NEXT_PUBLIC_APP_API_URL_DEV}`;
 // Async thunk for creating an account
 export const createAccount = createAsyncThunk('account/createAccount', async (userData, thunkAPI) => {
     try {

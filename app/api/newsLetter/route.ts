@@ -1,29 +1,24 @@
+import pool  from "../../../database/db";
 import {NextRequest, NextResponse} from "next/server";
 
 export async function POST(req: NextRequest) {
     try {
-        const { email } = await req.json(); // Parse the body and get email
-        console.log('Received email:', email);
+        const { email } = await req.json();
+        console.log("🟡 Received email:", email);
 
-        // ✅ Четем тялото на заявката
+        if (!email) {
+            return NextResponse.json({ error: "Email is required" }, { status: 400 });
+        }
 
-        // ✅ Изпращаме заявка към външния API
-        const response = await fetch(`https://share.d-dimitrov.eu/api/newsletter`, {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-                email,
-            }),
-        });
+        // ✅ Записваме директно в базата
+        await pool.query(
+            "INSERT INTO newsletter_subscribers (email) VALUES ($1) ON CONFLICT (email) DO NOTHING",
+            [email]
+        );
 
-        const data = await response.json();
-
-        // ✅ Връщаме отговора от външния API
-        return NextResponse.json(data, { status: response.status });
+        return NextResponse.json({ success: true });
     } catch (error) {
-        console.error("🔴 Error:", error);
+        console.error("🔴 Database error:", error);
         return NextResponse.json({ error: "Server error" }, { status: 500 });
     }
 }
