@@ -28,21 +28,28 @@ import {NextRequest, NextResponse} from "next/server"; // Файлът db.js с�
 //     }
 // }
 
-export async function GET(req, {params}) {
-    const { id } = await params; // Await the context to get params
-    try {
-        const response = await fetch(`https://share.d-dimitrov.eu/api/get/all-like-dislike/${id}`);
 
-        if (!response.ok) {
-            throw new Error('Failed to fetch articles');
-        }
-        const articles = await response.json();
-        console.log("pesho", articles);
-        // Return the fetched articles as JSON
-        return NextResponse.json(articles);
+
+export async function GET(req, context) {
+    // 🔹 params е Promise → трябва да го await-нем
+    const { id } = await context.params;
+    console.log("🟡 Article ID:", id);
+
+    try {
+        const result = await pool.query(
+            `SELECT
+                 COUNT(*) FILTER (WHERE type = 'like') AS likes,
+                 COUNT(*) FILTER (WHERE type = 'dislike') AS dislikes
+             FROM article_likes_dislikes
+             WHERE article_id = $1`,
+            [id]
+        );
+
+        const data = result.rows[0] || { likes: 0, dislikes: 0 };
+        return NextResponse.json(data);
     } catch (error) {
         console.error("🔴 Database error:", error);
-        return new NextResponse(JSON.stringify({ error: "Server error" }), { status: 500 });
+        return NextResponse.json({ error: "Server error" }, { status: 500 });
     }
 }
 

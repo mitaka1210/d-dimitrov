@@ -54,7 +54,7 @@
     "typed.js": "^2.1.0",
     "typewriter-effect": "^2.22.0",
     "undici": "^7.16.0",
-    "vercel": "^48.10.3"
+    "vercel": "^32.0.1"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4.1.17",
@@ -72,7 +72,8 @@
     "eslint-plugin-react-hooks": "^7.0.1",
     "postcss": "^8",
     "tailwindcss": "^4.1.17",
-    "typescript": "^5"
+    "typescript": "^5",
+    "cross-spawn": "^7.0.3"
   },
   "sideEffects": [
     "./src/services/i18n.js"
