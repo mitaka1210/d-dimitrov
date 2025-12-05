@@ -7,6 +7,8 @@ services:
     volumes:
       - .:/app
     command: npm start
+    env_file:
+      - .env.production   # 👈 зарежда променливите
 networks:
   default:
     external:
