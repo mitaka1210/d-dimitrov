@@ -34,7 +34,7 @@
     "i18next-browser-languagedetector": "^8.2.0",
     "i18next-xhr-backend": "^3.2.2",
     "jsonwebtoken": "^9.0.2",
-    "next": "^16.0.3",
+    "next": "^16.0.7",
     "next-auth": "^4.24.13",
     "next-i18next": "^15.4.2",
     "nvm": "^0.0.4",
@@ -66,14 +66,14 @@
     "@types/react": "19.2.6",
     "@types/react-dom": "19.2.3",
     "autoprefixer": "^10.4.22",
+    "cross-spawn": "^7.0.3",
     "dotenv-cli": "^11.0.0",
     "eslint": "^9",
     "eslint-config-next": "16.0.3",
     "eslint-plugin-react-hooks": "^7.0.1",
     "postcss": "^8",
     "tailwindcss": "^4.1.17",
-    "typescript": "^5",
-    "cross-spawn": "^7.0.3"
+    "typescript": "^5"
   },
   "sideEffects": [
     "./src/services/i18n.js"
