@@ -1,23 +1,26 @@
-# Use the official Node.js 16 image as the base image
-FROM node:latest
+# Използвай официален Node образ (стабилна версия)
+FROM node:20-alpine
 
-# Set the working directory inside the container
+# Работна директория
 WORKDIR /app
 
-# Copy package.json and package-lock.json
+# Копирай package.json и lock файла
 COPY package*.json ./
 
-# Install dependencies
+# Инсталирай зависимости
 RUN npm install
 
-# Copy the rest of the application code
+# Копирай останалия код
 COPY . .
 
-# Build the Next.js application
+# Копирай .env.production вътре в контейнера
+COPY .env.production .env.production
+
+# Билдни Next.js приложението
 RUN npm run build
 
-# Expose the port the app runs on
+# Експонирай порта
 EXPOSE 3000
 
-# Start the Next.js application
-CMD ["npm", "start"]
+# Стартирай приложението с .env.production
+CMD ["npx", "dotenv", "-e", ".env.production", "--", "next", "start"]
