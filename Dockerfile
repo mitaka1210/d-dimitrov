@@ -1,26 +1,32 @@
-# Използвай официален Node образ (стабилна версия)
-FROM node:20-alpine
+# Use Node.js LTS
+FROM node:20-alpine AS builder
 
-# Работна директория
 WORKDIR /app
 
-# Копирай package.json и lock файла
+# Copy package files
 COPY package*.json ./
 
-# Инсталирай зависимости
+# Install dependencies
 RUN npm install
 
-# Копирай останалия код
-COPY . .
-
-# Копирай .env.production вътре в контейнера
+# Copy env file BEFORE build
 COPY .env.production .env.production
 
-# Билдни Next.js приложението
+# Copy the rest of the app
+COPY . .
+
+# Build Next.js
 RUN npm run build
 
-# Експонирай порта
+# Production image
+FROM node:20-alpine AS runner
+
+WORKDIR /app
+
+# Copy built app
+COPY --from=builder /app ./
+
+ENV NODE_ENV=production
 EXPOSE 3000
 
-# Стартирай приложението с .env.production
-CMD ["npx", "dotenv", "-e", ".env.production", "--", "next", "start"]
+CMD ["npm", "start"]

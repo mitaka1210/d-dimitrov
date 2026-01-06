@@ -2,109 +2,54 @@
 import pg from "pg";
 const { Pool } = pg;
 
-// Primary database configuration
-let primaryConnectionString = process.env.DATABASE_URL;
-console.log("pesho 1",primaryConnectionString);
-console.log("pesho 1",process.env.DATABASE_URL);
+// -----------------------------
+// CONFIG
+// -----------------------------
+const PRIMARY_DB = process.env.DATABASE_URL;
+const FALLBACK_DB = process.env.NEON_DATABASE_URL;
 
-switch (primaryConnectionString) {
-    case "development":
-        primaryConnectionString = process.env.DATABASE_URL || process.env.DATABASE_URL;
-        console.log("pesho 2 DEV",);
-        break;
-    case "production":
-    default:
-        primaryConnectionString = process.env.DATABASE_URL || process.env.DATABASE_URL;
-        console.log("pesho 3 PROD",);
-        break;
-}
-
-// Fallback (Neon DB) configuration
-const fallbackConnectionString = process.env.NEON_DATABASE_URL;
-
-const ssl =
+const sslPrimary =
     process.env.NODE_ENV === "production" && process.env.DATABASE_SSL === "true"
         ? { rejectUnauthorized: false }
         : false;
 
-// Tracking state
-let usingFallback = false;
-let lastHealthCheck = 0;
-let consecutiveFailures = 0;
-const HEALTH_CHECK_INTERVAL = 30000; // 30 seconds
-const MAX_FAILURES_BEFORE_FALLBACK = 2;
-const FALLBACK_RECHECK_INTERVAL = 60000; // 1 minute
+const sslFallback = { rejectUnauthorized: false }; // Neon always requires SSL
 
-// Primary pool
+// -----------------------------
+// POOLS
+// -----------------------------
 const primaryPool = new Pool({
-    connectionString: primaryConnectionString,
-    ssl,
+    connectionString: PRIMARY_DB,
+    ssl: sslPrimary,
     max: 10,
     idleTimeoutMillis: 30000,
     connectionTimeoutMillis: 5000,
 });
 
-// Fallback pool (Neon DB)
-let fallbackPool = null;
-if (fallbackConnectionString) {
-    fallbackPool = new Pool({
-        connectionString: fallbackConnectionString,
-        ssl: { rejectUnauthorized: false }, // Neon requires SSL
+const fallbackPool = FALLBACK_DB
+    ? new Pool({
+        connectionString: FALLBACK_DB,
+        ssl: sslFallback,
         max: 10,
         idleTimeoutMillis: 30000,
         connectionTimeoutMillis: 5000,
-    });
-}
+    })
+    : null;
 
-// Get active pool
-function getActivePool() {
-    return usingFallback && fallbackPool ? fallbackPool : primaryPool;
-}
+// -----------------------------
+// STATE
+// -----------------------------
+let usingFallback = false;
+let lastCheck = 0;
+let consecutiveFailures = 0;
 
-// Health check for primary database
-async function checkPrimaryHealth() {
-    try {
-        const client = await primaryPool.connect();
-        await client.query("SELECT 1");
-        client.release();
-        return true;
-    } catch (err) {
-        console.error("Primary DB health check failed:", err.message);
-        return false;
-    }
-}
+const HEALTH_CHECK_INTERVAL = 15000; // 15 sec
+const MAX_FAILURES = 2;
 
-// Switch to fallback database
-function switchToFallback() {
-    if (!fallbackPool) {
-        console.error("❌ No fallback database configured!");
-        return false;
-    }
-
-    if (!usingFallback) {
-        console.warn("⚠️  Switching to FALLBACK database (Neon DB)");
-        usingFallback = true;
-
-        // Send Telegram notification (if configured)
-        sendTelegramAlert("🚨 *DATABASE FAILOVER!*\n\nПревключихме към резервната база (Neon DB)\n\n⚠️ Основната база не отговаря!");
-    }
-    return true;
-}
-
-// Switch back to primary database
-async function switchToPrimary() {
-    if (usingFallback) {
-        console.log("✅ Switching back to PRIMARY database");
-        usingFallback = false;
-        consecutiveFailures = 0;
-
-        // Send Telegram notification
-        sendTelegramAlert("✅ *DATABASE RESTORED!*\n\nВъзстановихме връзката с основната база данни.");
-    }
-}
-
-// Send Telegram alert
-async function sendTelegramAlert(message) {
+// -----------------------------
+// TELEGRAM ALERTS
+// -----------------------------
+async function sendTelegram(message) {
     const botToken = process.env.TELEGRAM_BOT_TOKEN;
     const chatId = process.env.TELEGRAM_CHAT_ID;
 
@@ -121,130 +66,92 @@ async function sendTelegramAlert(message) {
             }),
         });
     } catch (err) {
-        console.error("Failed to send Telegram alert:", err);
+        console.error("Telegram send error:", err.message);
     }
 }
 
-// Periodic health check
-async function periodicHealthCheck() {
-    const now = Date.now();
-
-    // Skip if checked recently
-    if (now - lastHealthCheck < HEALTH_CHECK_INTERVAL) {
-        return;
+// -----------------------------
+// HEALTH CHECK
+// -----------------------------
+async function checkPrimary() {
+    try {
+        const client = await primaryPool.connect();
+        await client.query("SELECT 1");
+        client.release();
+        return true;
+    } catch {
+        return false;
     }
+}
 
-    lastHealthCheck = now;
+async function periodicCheck() {
+    const now = Date.now();
+    if (now - lastCheck < HEALTH_CHECK_INTERVAL) return;
 
-    const isHealthy = await checkPrimaryHealth();
+    lastCheck = now;
 
-    if (!isHealthy) {
+    const ok = await checkPrimary();
+
+    if (!ok) {
         consecutiveFailures++;
-        console.warn(`Primary DB failed health check (${consecutiveFailures}/${MAX_FAILURES_BEFORE_FALLBACK})`);
 
-        if (consecutiveFailures >= MAX_FAILURES_BEFORE_FALLBACK) {
-            switchToFallback();
+        if (consecutiveFailures >= MAX_FAILURES && fallbackPool) {
+            if (!usingFallback) {
+                usingFallback = true;
+                console.warn("⚠️ Switching to FALLBACK (NeonDB)");
+                sendTelegram("🚨 *DATABASE FAILOVER*\n\nОсновната база е недостъпна.\nПревключихме към резервната база (NeonDB).");
+            }
         }
     } else {
-        // Primary is healthy
         if (usingFallback) {
-            // Try to switch back to primary
-            console.log("Primary DB is healthy again, switching back...");
-            await switchToPrimary();
+            console.log("✅ Primary DB healthy again — switching back");
+            usingFallback = false;
+            consecutiveFailures = 0;
+
+            sendTelegram("✅ *DATABASE RESTORED*\n\nВъзстановихме връзката с основната база.\nРаботим отново на PRIMARY.");
         } else {
-            // Reset failure counter
             consecutiveFailures = 0;
         }
     }
 }
 
-// Enhanced connection with automatic failover
-async function ensureConnected(retries = 3, delayMs = 1000) {
-    // Run periodic health check
-    periodicHealthCheck().catch(console.error);
+// -----------------------------
+// QUERY WRAPPER
+// -----------------------------
+async function query(sql, params) {
+    await periodicCheck();
 
-    const pool = getActivePool();
-
-    try {
-        const client = await pool.connect();
-        client.release();
-        return;
-    } catch (err) {
-        console.error(`DB connect failed (${usingFallback ? 'FALLBACK' : 'PRIMARY'}):`, err.message);
-
-        // If primary failed, try fallback
-        if (!usingFallback && fallbackPool) {
-            console.warn("Attempting failover to Neon DB...");
-            switchToFallback();
-
-            // Try fallback connection
-            try {
-                const fbClient = await fallbackPool.connect();
-                fbClient.release();
-                return;
-            } catch (fbErr) {
-                console.error("Fallback DB also failed:", fbErr.message);
-            }
-        }
-
-        // Retry logic
-        if (retries <= 0) throw err;
-        console.warn(`Retrying connection, retries left=${retries}`);
-        await new Promise((r) => setTimeout(r, delayMs));
-        return ensureConnected(retries - 1, delayMs * 2);
-    }
-}
-
-// Query wrapper with automatic failover
-async function query(text, params) {
-    // Run health check periodically
-    periodicHealthCheck().catch(console.error);
-
-    const pool = getActivePool();
+    const pool = usingFallback && fallbackPool ? fallbackPool : primaryPool;
 
     try {
-        return await pool.query(text, params);
+        return await pool.query(sql, params);
     } catch (err) {
-        console.error(`Query failed on ${usingFallback ? 'FALLBACK' : 'PRIMARY'} DB:`, err.message);
+        console.error("Query error:", err.message);
 
-        // If primary failed, try fallback
         if (!usingFallback && fallbackPool) {
-            console.warn("Query failed, attempting failover...");
-            switchToFallback();
+            usingFallback = true;
+            console.warn("⚠️ Query failed — switching to fallback");
+            sendTelegram("🚨 *DATABASE FAILOVER*\n\nОсновната база отказа заявка.\nПревключихме към резервната база (NeonDB).");
 
-            try {
-                return await fallbackPool.query(text, params);
-            } catch (fbErr) {
-                console.error("Query also failed on fallback DB:", fbErr.message);
-                throw fbErr;
-            }
+            return await fallbackPool.query(sql, params);
         }
 
         throw err;
     }
 }
 
-// Get connection status
+// -----------------------------
+// PUBLIC API
+// -----------------------------
 function getConnectionStatus() {
     return {
         usingFallback,
         consecutiveFailures,
-        primaryConnection: primaryConnectionString?.substring(0, 30) + "...",
-        fallbackConnection: fallbackConnectionString?.substring(0, 30) + "...",
+        primary: PRIMARY_DB?.substring(0, 40) + "...",
+        fallback: FALLBACK_DB?.substring(0, 40) + "...",
         fallbackAvailable: !!fallbackPool,
     };
 }
 
-console.log("ENV FILE TEST:", process.env.NEXT_PUBLIC_ENV);
-console.log("Primary DB:", primaryConnectionString?.substring(0, 50) + "...");
-console.log("Fallback DB configured:", !!fallbackConnectionString);
-
-// Export both pool and query
-const pool = {
-    query,
-    connect: () => getActivePool().connect(),
-    end: () => Promise.all([primaryPool.end(), fallbackPool?.end()].filter(Boolean)),
-};
-
-export default pool;
-export { ensureConnected, getConnectionStatus };
+export default { query };
+export { getConnectionStatus };
