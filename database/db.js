@@ -123,7 +123,7 @@ async function query(sql, params) {
 
     const pool = usingFallback && fallbackPool ? fallbackPool : primaryPool;
     console.log(
-        `[DB] Using ${usingFallback ? "FALLBACK" : "PRIMARY"} | Query: ${text.split("\n")[0].trim()}`
+        `[DB] Using ${usingFallback ? "FALLBACK" : "PRIMARY"} | Query: ${sql.split("\n")[0].trim()}`
     );
     try {
         return await pool.query(sql, params);
