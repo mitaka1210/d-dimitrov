@@ -12,8 +12,8 @@ services:
       - default
     # ⚠️ Не монтирай целия проект върху /app, за да не презаписваш node_modules
     volumes:
-      - ./src:/app/src
-      - ./public:/app/public
+      - /ssd/docker/share_upload_images:/app/upload
+    restart: always
 
 networks:
   default:
