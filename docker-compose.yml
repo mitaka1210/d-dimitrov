@@ -4,11 +4,17 @@ services:
   app:
     build: .
     container_name: d-dimitrov
-    volumes:
-      - .:/app
-    command: npm start
+    ports:
+      - "3000:3000"
     env_file:
-      - .env.production   # 👈 зарежда променливите
+      - .env.production
+    networks:
+      - default
+    # ⚠️ Не монтирай целия проект върху /app, за да не презаписваш node_modules
+    volumes:
+      - /ssd/docker/share_upload_images:/app/upload
+    restart: always
+
 networks:
   default:
     external:

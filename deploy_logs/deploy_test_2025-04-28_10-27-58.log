@@ -1,0 +1,808 @@
+🧪 ТЕСТОВО ПУСКАНЕ НА СКРИПТА (НЕ ЗАСЯГА ПРОД)
+Контейнерът има ID: 
+Контейнерът има Име: d-dimitrov
+❗ Контейнерът d-dimitrov не е активен. Стартирам нов за тест...
+Building app
+#0 building with "default" instance using docker driver
+
+#1 [internal] load build definition from Dockerfile
+#1 transferring dockerfile: 479B done
+#1 DONE 0.0s
+
+#2 [internal] load metadata for docker.io/library/node:latest
+#2 DONE 1.1s
+
+#3 [internal] load .dockerignore
+#3 transferring context: 2B done
+#3 DONE 0.0s
+
+#4 [1/6] FROM docker.io/library/node:latest@sha256:c5bfe90b30e795ec57bcc0040065ca6f284af84a1dafd22a207bd6b48c39ce01
+#4 DONE 0.0s
+
+#5 [internal] load build context
+#5 transferring context: 5.73MB 5.0s
+#5 transferring context: 6.17MB 5.5s done
+#5 DONE 5.8s
+
+#6 [2/6] WORKDIR /app
+#6 CACHED
+
+#7 [3/6] COPY package*.json ./
+#7 CACHED
+
+#8 [4/6] RUN npm install
+#8 CACHED
+
+#9 [5/6] COPY . .
+#9 DONE 33.3s
+
+#10 [6/6] RUN npm run build
+#10 1.486 
+#10 1.486 > mitaka-website@0.1.0 build
+#10 1.486 > next build
+#10 1.486 
+#10 2.355  ⚠ Invalid next.config.js options detected: 
+#10 2.356  ⚠     Unrecognized key(s) in object: 'swcMinify'
+#10 2.356  ⚠ See more info here: https://nextjs.org/docs/messages/invalid-next-config
+#10 2.396 Attention: Next.js now collects completely anonymous telemetry regarding usage.
+#10 2.396 This information is used to shape Next.js' roadmap and prioritize features.
+#10 2.396 You can learn more, including how to opt-out if you'd not like to participate in this anonymous program, by visiting the following URL:
+#10 2.396 https://nextjs.org/telemetry
+#10 2.396 
+#10 2.505    ▲ Next.js 15.2.5
+#10 2.506    - Environments: .env
+#10 2.506 
+#10 2.686    Creating an optimized production build ...
+#10 37.38  ✓ Compiled successfully
+#10 37.48    Linting and checking validity of types ...
+#10 51.03    Collecting page data ...
+#10 54.81    Generating static pages (0/35) ...
+#10 55.92 react-i18next:: You will need to pass in an i18next instance by using initReactI18next
+#10 56.66    Generating static pages (8/35) 
+#10 56.66    Generating static pages (17/35) 
+#10 56.66    Generating static pages (26/35) 
+#10 56.66  ✓ Generating static pages (35/35)
+#10 56.66 [
+#10 56.66   {
+#10 56.66     id: 0,
+#10 56.66     url: {
+#10 56.66       src: '/_next/static/media/PWA_weather.a61b6269.png',
+#10 56.66       height: 106,
+#10 56.66       width: 173,
+#10 56.66       blurDataURL: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAFCAMAAABPT11nAAAAS1BMVEV0k6aalIIvNUF5cFsZJz0/SFZXdYemnos8NS5QaoBkYmFlY2ZefpawqJhRVF5khYRLY1QzTR11fXyKgHRMRj5xYEdsa2pgTzGYj3cqlQhKAAAACXBIWXMAAA7DAAAOwwHHb6hkAAAAMUlEQVR4nAXBhQEAIAwDsKLbcIf/LyUBkm+KVAZQu6FHEPFj7mtgrdbMvOBciTGE8wEfAAF+B+oXewAAAABJRU5ErkJggg==',
+#10 56.66       blurWidth: 8,
+#10 56.66       blurHeight: 5
+#10 56.66     }
+#10 56.66   },
+#10 56.66   {
+#10 56.66     id: 1,
+#10 56.66     url: {
+#10 56.66       src: '/_next/static/media/React_website.d525875a.png',
+#10 56.66       height: 421,
+#10 56.66       width: 1124,
+#10 56.66       blurDataURL: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAADCAMAAACZFr56AAAAJ1BMVEUiSn00X5gWLlUeP3IIOXUhOGRFa586U4BebIQVSoo0R2kpUZJTdqT5avP5AAAACXBIWXMAAA7DAAAOwwHHb6hkAAAAIklEQVR4nAXBiQEAIAjEsB6vgvvPa0IADsGV6pUWM+8zmR8EGgBlNWO80QAAAABJRU5ErkJggg==',
+#10 56.66       blurWidth: 8,
+#10 56.66       blurHeight: 3
+#10 56.66     }
+#10 56.66   },
+#10 56.66   {
+#10 56.66     id: 2,
+#10 56.66     url: {
+#10 56.66       src: '/_next/static/media/React_Todo.0175e6b7.png',
+#10 56.66       height: 286,
+#10 56.66       width: 825,
+#10 56.66       blurDataURL: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAADCAMAAACZFr56AAAAIVBMVEVIEpwmE0gjHDp7M/9gI9EvHUtuJe1OB71bA+E6H2FMB7nMlf5zAAAACXBIWXMAAA7DAAAOwwHHb6hkAAAAIElEQVR4nGPgYAABNmYGLiZWJk5WFmYGdiZGRlZGFmYABDsAUgvhMncAAAAASUVORK5CYII=',
+#10 56.66       blurWidth: 8,
+#10 56.66       blurHeight: 3
+#10 56.66     }
+#10 56.66   },
+#10 56.66   {
+#10 56.66     id: 3,
+#10 56.66     url: {
+#10 56.66       src: '/_next/static/media/React_Site.8ad43afb.png',
+#10 56.66       height: 602,
+#10 56.66       width: 1252,
+#10 56.66       blurDataURL: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAECAMAAACEE47CAAAAHlBMVEURESAYGCcpH0grKTxaNaE7J248I3coGVNERk9BQ0yFPEvJAAAACXBIWXMAAA7DAAAOwwHHb6hkAAAAI0lEQVR4nBXBgREAIAjEsPZB0f0X9kxQPrmnZG1Iqd0ygUp8BLYARlSDUPIAAAAASUVORK5CYII=',
+#10 56.66       blurWidth: 8,
+#10 56.66       blurHeight: 4
+#10 56.66     }
+#10 56.66   },
+#10 56.66   {
+#10 56.66     id: 4,
+#10 56.66     url: {
+#10 56.66       src: '/_next/static/media/shoes.e13ae4a7.png',
+#10 56.66       height: 776,
+#10 56.66       width: 1309,
+#10 56.66       blurDataURL: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAFCAMAAABPT11nAAAAM1BMVEX39fW2trbaxcmVzt3v8PDM0dWtrq/6/Pvi5eXx8vLP4OWys7OOpa/Cn6Vjf428aHPR2t7P3a5DAAAACXBIWXMAAA7DAAAOwwHHb6hkAAAALElEQVR4nAXBhwEAIAjAsKIswfH/tyaItLu3QGhmaqD2xrVZrHFs10yUIGB9FUMA7a/qTeUAAAAASUVORK5CYII=',
+#10 56.66       blurWidth: 8,
+#10 56.66       blurHeight: 5
+#10 56.66     }
+#10 56.66   },
+#10 56.66   {
+#10 56.66     id: 5,
+#10 56.66     url: {
+#10 56.66       src: '/_next/static/media/payment_ts_site.6d31d02d.png',
+#10 56.66       height: 448,
+#10 56.66       width: 1201,
+#10 56.66       blurDataURL: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAADCAMAAACZFr56AAAAD1BMVEXv7u/8+vvExcTEvcHExsRMS5R6AAAACXBIWXMAAA7DAAAOwwHHb6hkAAAAF0lEQVR4nGNgYmJiZmZiYWJghAIGGAAAAkQAHXH62+MAAAAASUVORK5CYII=',
+#10 56.66       blurWidth: 8,
+#10 56.66       blurHeight: 3
+#10 56.66     }
+#10 56.66   },
+#10 56.66   {
+#10 56.66     id: 6,
+#10 56.66     url: {
+#10 56.66       src: '/_next/static/media/pizza.f2bb1c41.png',
+#10 56.66       height: 134,
+#10 56.66       width: 444,
+#10 56.66       blurDataURL: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAACCAMAAABSSm3fAAAAElBMVEXy8vHg39/v7On9+Nz////39/iG9nO7AAAACXBIWXMAAA7DAAAOwwHHb6hkAAAAGklEQVR4nGNgZmBkZGRlYWFgZmJiYGBgYQEAAT0AIwnUwVYAAAAASUVORK5CYII=',
+#10 56.66       blurWidth: 8,
+#10 56.66       blurHeight: 2
+#10 56.66     }
+#10 56.66   },
+#10 56.66   {
+#10 56.66     id: 7,
+#10 56.66     url: {
+#10 56.66       src: '/_next/static/media/home-aquarium.3c65a610.jpg',
+#10 56.66       height: 450,
+#10 56.66       width: 600,
+#10 56.66       blurDataURL: 'data:image/jpeg;base64,/9j/2wBDAAoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/2wBDAQoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/wgARCAAGAAgDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAP/xAAVAQEBAAAAAAAAAAAAAAAAAAACBf/aAAwDAQACEAMQAAAAqIy//8QAGhAAAwEAAwAAAAAAAAAAAAAAAQIDBAARof/aAAgBAQABPwCU9+qolOiKk3KsrHsHzn//xAAZEQEAAgMAAAAAAAAAAAAAAAABAjEAESH/2gAIAQIBAT8Ad0Tmdakmf//EABkRAAEFAAAAAAAAAAAAAAAAAAIAARExQf/aAAgBAwEBPwAhGaxl/9k=',
+#10 56.66       blurWidth: 8,
+#10 56.66       blurHeight: 6
+#10 56.66     }
+#10 56.66   },
+#10 56.66   {
+#10 56.66     id: 8,
+#10 56.66     url: {
+#10 56.66       src: '/_next/static/media/uploader_website.912e34de.png',
+#10 56.66       height: 925,
+#10 56.66       width: 1185,
+#10 56.66       blurDataURL: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAGCAMAAADJ2y/JAAAAGFBMVEX+/v/q3/mwf/DVvvLq6e3f1+vn1vTCnfMylTMiAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAIUlEQVR4nGNgYGBgYWVmYmJgYGBgZASRyAxMwMbMzsQEAAQSACk+Aq5EAAAAAElFTkSuQmCC',
+#10 56.66       blurWidth: 8,
+#10 56.66       blurHeight: 6
+#10 56.66     }
+#10 56.66   },
+#10 56.66   {
+#10 56.66     id: 9,
+#10 56.66     url: {
+#10 56.66       src: '/_next/static/media/warehouse.ada4e9a1.png',
+#10 56.66       height: 917,
+#10 56.66       width: 466,
+#10 56.66       blurDataURL: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAICAMAAADp7a43AAAAFVBMVEXHy8rN0dH7+fn////49PG9v7vs6OFbkMQDAAAACXBIWXMAAA7DAAAOwwHHb6hkAAAAJElEQVR4nGNgZWNhYGBgYmZkYGBhYmRgYGKCcUEEIzOYxcIIAAU5ADyUbPEIAAAAAElFTkSuQmCC',
+#10 56.66       blurWidth: 4,
+#10 56.66       blurHeight: 8
+#10 56.66     }
+#10 56.66   },
+#10 56.66   {
+#10 56.66     id: 10,
+#10 56.66     url: {
+#10 56.66       src: '/_next/static/media/client.0c282162.png',
+#10 56.66       height: 1256,
+#10 56.66       width: 2547,
+#10 56.66       blurDataURL: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAECAMAAACEE47CAAAABlBMVEX6+vrz8vNPjdCfAAAACXBIWXMAAA7DAAAOwwHHb6hkAAAAFElEQVR4nGNgYGRkgABGEIRxkAEAAMAAB0tFTdQAAAAASUVORK5CYII=',
+#10 56.66       blurWidth: 8,
+#10 56.66       blurHeight: 4
+#10 56.66     }
+#10 56.66   },
+#10 56.66   {
+#10 56.66     id: 11,
+#10 56.66     url: {
+#10 56.66       src: '/_next/static/media/driver.bb8d38d2.webp',
+#10 56.66       height: 1024,
+#10 56.66       width: 450,
+#10 56.66       blurDataURL: 'data:image/webp;base64,UklGRnIAAABXRUJQVlA4WAoAAAAQAAAAAwAABwAAQUxQSCEAAAAA4v//2+b//9/q///k7v//5/L//+r2///v+v//7+L3+eEAVlA4ICoAAACwAQCdASoEAAgAAkA4JaQAAudZBywAAP76WQDDaoFhfiiPkvdYhgnjgAA=',
+#10 56.66       blurWidth: 4,
+#10 56.66       blurHeight: 8
+#10 56.66     }
+#10 56.66   },
+#10 56.66   {
+#10 56.66     id: 12,
+#10 56.66     url: {
+#10 56.66       src: '/_next/static/media/dispetcher.b316492a.webp',
+#10 56.66       height: 972,
+#10 56.66       width: 1024,
+#10 56.66       blurDataURL: 'data:image/webp;base64,UklGRqQAAABXRUJQVlA4WAoAAAAQAAAABwAABwAAQUxQSDoAAAAFYFTbtpKLu0MTyjCkh49dWpCLDu7SISImIHAM0zRMJSXxSRBf+DnJj9OTxI4oabYHDkIcAbjZ5g8AVlA4IEQAAACQAQCdASoIAAgAAkA4JZwAAuWt2ogA/vm0nSoBoZucYKaadZqCIUZeQ+LteR2JeyrGQ9uignEPIgtE8xwNgGUDKgAAAA==',
+#10 56.66       blurWidth: 8,
+#10 56.66       blurHeight: 8
+#10 56.66     }
+#10 56.66   },
+#10 56.66   {
+#10 56.66     id: 13,
+#10 56.66     url: {
+#10 56.66       src: '/_next/static/media/reception.6937d763.png',
+#10 56.66       height: 976,
+#10 56.66       width: 2546,
+#10 56.66       blurDataURL: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAADCAMAAACZFr56AAAAIVBMVEXx9Pb4+frS0uDq7fbn5u3F2Mrc0+jl8urY3ubLuM/Zy+WsmpUBAAAACXBIWXMAAA7DAAAOwwHHb6hkAAAAHklEQVR4nGNgZOFiY+ZgYmZgYOPkYmFlZWdgZIAAAAXGAFVaUEuwAAAAAElFTkSuQmCC',
+#10 56.66       blurWidth: 8,
+#10 56.66       blurHeight: 3
+#10 56.66     }
+#10 56.66   },
+#10 56.66   {
+#10 56.66     id: 14,
+#10 56.66     url: {
+#10 56.66       src: '/_next/static/media/customer.f5e27952.png',
+#10 56.66       height: 438,
+#10 56.66       width: 1221,
+#10 56.66       blurDataURL: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAADCAMAAACZFr56AAAABlBMVEX7+/vw7/RiQwoJAAAACXBIWXMAAA7DAAAOwwHHb6hkAAAAFElEQVR4nGNgZGRkZAABMAPChAAAAMcACjgEJrIAAAAASUVORK5CYII=',
+#10 56.66       blurWidth: 8,
+#10 56.66       blurHeight: 3
+#10 56.66     }
+#10 56.66   },
+#10 56.66   {
+#10 56.66     id: 15,
+#10 56.66     url: {
+#10 56.66       src: '/_next/static/media/blog-img.108a744a.png',
+#10 56.66       height: 931,
+#10 56.66       width: 1906,
+#10 56.66       blurDataURL: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAECAMAAACEE47CAAAABlBMVEUMAg0UCBHjSVNfAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAE0lEQVR4nGNgQABGRkZGVAYEAAAAtAAJfUakvwAAAABJRU5ErkJggg==',
+#10 56.66       blurWidth: 8,
+#10 56.66       blurHeight: 4
+#10 56.66     }
+#10 56.66   },
+#10 56.66   {
+#10 56.66     id: 16,
+#10 56.66     url: {
+#10 56.66       src: '/_next/static/media/en-flag.72b130da.png',
+#10 56.66       height: 512,
+#10 56.66       width: 512,
+#10 56.66       blurDataURL: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAICAMAAADz0U65AAAAJ1BMVEUpABTJeILPiZFPTn1bXYmxiJpMS3nPiJDFgo5JR3bNhpDYjZXLhZG+t8iVAAAAC3RSTlMF2fz+/vzasPyysPAC3E4AAAAJcEhZcwAACxMAAAsTAQCanBgAAAAySURBVHicPctLEgAQDATRSeSDcf/zKim8VW8aeEZEiEiimbVFsqKrKtzd9QQvTCn57w0lBAEILw1QbAAAAABJRU5ErkJggg==',
+#10 56.66       blurWidth: 8,
+#10 56.66       blurHeight: 8
+#10 56.66     }
+#10 56.66   },
+#10 56.66   {
+#10 56.66     id: 17,
+#10 56.66     url: {
+#10 56.66       src: '/_next/static/media/bg-flag.749f2749.png',
+#10 56.66       height: 240,
+#10 56.66       width: 240,
+#10 56.66       blurDataURL: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAICAMAAADz0U65AAAAHlBMVEXGjIwYg1zYJBEcpoTw7vDYJREcpoPv7e/y8/LaKhZsBXSQAAAACHRSTlMF/dr92rL9svLhkqoAAAAJcEhZcwAACxMAAAsTAQCanBgAAAAnSURBVHicY2CAAXYWMGBn4IACBjZmMGBjYIQCBk4oYGBlAgNWuG4AIo8A60L8CJQAAAAASUVORK5CYII=',
+#10 56.66       blurWidth: 8,
+#10 56.66       blurHeight: 8
+#10 56.66     }
+#10 56.66   },
+#10 56.66   {
+#10 56.66     id: 18,
+#10 56.66     url: {
+#10 56.66       src: '/_next/static/media/novatio-project.890a254f.png',
+#10 56.66       height: 243,
+#10 56.66       width: 566,
+#10 56.66       blurDataURL: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAADCAMAAACZFr56AAAAHlBMVEVUksn1+PxlmMZulMVOibnR2+Lv8PM4gbkvda1HkMg9ZS2mAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAIUlEQVR4nAXBgQEAMAjCsALq5v8PmyBN90gksV0FLPD+AQPiAErRnM1UAAAAAElFTkSuQmCC',
+#10 56.66       blurWidth: 8,
+#10 56.66       blurHeight: 3
+#10 56.66     }
+#10 56.66   },
+#10 56.66   {
+#10 56.66     id: 19,
+#10 56.66     url: {
+#10 56.66       src: '/_next/static/media/next-proejct.c1fc847d.jpg',
+#10 56.66       height: 4912,
+#10 56.66       width: 7360,
+#10 56.66       blurDataURL: 'data:image/jpeg;base64,/9j/2wBDAAoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/2wBDAQoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/wgARCAAFAAgDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAT/xAAUAQEAAAAAAAAAAAAAAAAAAAAC/9oADAMBAAIQAxAAAAC8Mf/EAB0QAAICAQUAAAAAAAAAAAAAAAECAwQAERMhMVL/2gAIAQEAAT8AoWdyOeoFICRF+W1Xvzn/xAAVEQEBAAAAAAAAAAAAAAAAAAAAEf/aAAgBAgEBPwCP/8QAGBEAAgMAAAAAAAAAAAAAAAAAATEAMkH/2gAIAQMBAT8ABsmcn//Z',
+#10 56.66       blurWidth: 8,
+#10 56.66       blurHeight: 5
+#10 56.66     }
+#10 56.66   },
+#10 56.66   {
+#10 56.66     id: 20,
+#10 56.66     url: {
+#10 56.66       src: '/_next/static/media/svg-facebook.d0b0206c.svg',
+#10 56.66       height: 48,
+#10 56.66       width: 48,
+#10 56.66       blurWidth: 0,
+#10 56.66       blurHeight: 0
+#10 56.66     }
+#10 56.66   },
+#10 56.66   {
+#10 56.66     id: 21,
+#10 56.66     url: {
+#10 56.66       src: '/_next/static/media/svg-twitter.12a1692d.svg',
+#10 56.66       height: 48,
+#10 56.66       width: 48,
+#10 56.66       blurWidth: 0,
+#10 56.66       blurHeight: 0
+#10 56.66     }
+#10 56.66   },
+#10 56.66   {
+#10 56.66     id: 22,
+#10 56.66     url: {
+#10 56.66       src: '/_next/static/media/svg-instagram.c6e35df4.svg',
+#10 56.66       height: 48,
+#10 56.66       width: 48,
+#10 56.66       blurWidth: 0,
+#10 56.66       blurHeight: 0
+#10 56.66     }
+#10 56.66   },
+#10 56.66   {
+#10 56.66     id: 23,
+#10 56.66     url: {
+#10 56.66       src: '/_next/static/media/software-Consulting.0cb88642.png',
+#10 56.66       height: 1024,
+#10 56.66       width: 1024,
+#10 56.66       blurDataURL: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAICAMAAADz0U65AAAAdVBMVEUGHVMiI1MkRYIcP3ICEUI9WI8oMloBBTIwda1bl8JKTXabb3dHa6I9TIErTHdCLVw8cJ8xTmUVHERUhKpua31kgLI4P3RWkLBUfoWR0OBZYosWBj+dTHU9GkiNlZ1gm81iWKxvepsdL291k6ZOZKRZxOI/c6kyt0j7AAAACXBIWXMAAA7EAAAOxAGVKw4bAAAARUlEQVR4nAXBhQHAIBAEsEMfh7p7u/+KTUC1FppJAnON8WsCeGv7GF4B1U3zkiyHGmy4y+NQjYcx35WBeO6+GIAk8gZJP3WeA3Nex2mkAAAAAElFTkSuQmCC',
+#10 56.66       blurWidth: 8,
+#10 56.66       blurHeight: 8
+#10 56.66     }
+#10 56.66   }
+#10 56.66 ]
+#10 56.67 react-i18next:: You will need to pass in an i18next instance by using initReactI18next
+#10 57.31    Finalizing page optimization ...
+#10 57.31    Collecting build traces ...
+#10 69.58 
+#10 69.58 Route (app)                                   Size  First Load JS
+#10 69.58 ┌ ○ /_not-found                              990 B         104 kB
+#10 69.58 ├ ○ /about-page                            2.47 kB         105 kB
+#10 69.58 ├ ○ /addComments                           1.34 kB         104 kB
+#10 69.58 ├ ƒ /api/addComments                         175 B         103 kB
+#10 69.58 ├ ƒ /api/articles/[id]/like                  175 B         103 kB
+#10 69.58 ├ ƒ /api/articles/[id]/likes                 175 B         103 kB
+#10 69.58 ├ ƒ /api/auth/[...nextauth]                  175 B         103 kB
+#10 69.58 ├ ƒ /api/dislike                             175 B         103 kB
+#10 69.58 ├ ƒ /api/getArticles                         175 B         103 kB
+#10 69.58 ├ ƒ /api/getArticleSectionById               175 B         103 kB
+#10 69.58 ├ ƒ /api/like                                175 B         103 kB
+#10 69.58 ├ ƒ /api/login                               175 B         103 kB
+#10 69.58 ├ ƒ /api/loginWithGoogle                     175 B         103 kB
+#10 69.58 ├ ○ /Blog-Page                             2.53 kB         105 kB
+#10 69.58 ├ ○ /cardAquariums                         21.3 kB         135 kB
+#10 69.58 ├ ○ /Contacts-page                         1.51 kB         104 kB
+#10 69.58 ├ ○ /Email-form                            18.7 kB         124 kB
+#10 69.58 ├ ○ /Footer-page                           31.6 kB         137 kB
+#10 69.58 ├ ○ /Home-page                             1.76 kB         104 kB
+#10 69.58 ├ ○ /Improvements-website                  2.52 kB         105 kB
+#10 69.58 ├ ○ /leaveComment                            245 B         103 kB
+#10 69.58 ├ ○ /Like                                    175 B         103 kB
+#10 69.58 ├ ○ /loader                                1.33 kB         104 kB
+#10 69.58 ├ ○ /Login-page                            1.56 kB         120 kB
+#10 69.58 ├ ○ /mobileLoginSignUpForm                   280 B         119 kB
+#10 69.58 ├ ○ /mobileSkills                          16.8 kB         165 kB
+#10 69.58 ├ ○ /my-services                             303 B         148 kB
+#10 69.58 ├ ○ /novatio-Apps                           1.5 kB         104 kB
+#10 69.58 ├ ○ /programingArticles                      175 B         103 kB
+#10 69.58 ├ ○ /Projects-page                         1.51 kB         104 kB
+#10 69.58 ├ ○ /ReadArticles                          2.35 kB         105 kB
+#10 69.58 ├ ○ /SignUpForm                            1.58 kB         104 kB
+#10 69.58 ├ ○ /skill-Pyramid                         1.37 kB         104 kB
+#10 69.58 ├ ○ /Skills-page                           1.86 kB         104 kB
+#10 69.58 └ ○ /Timeline-page                         1.67 kB         104 kB
+#10 69.58 + First Load JS shared by all               103 kB
+#10 69.58   ├ chunks/1684-96fb76ff5856716e.js        45.8 kB
+#10 69.58   ├ chunks/4bd1b696-539ea4eaa0532386.js    53.3 kB
+#10 69.58   └ other shared chunks (total)            3.59 kB
+#10 69.58 
+#10 69.58 Route (pages)                                 Size  First Load JS
+#10 69.58 ─   /_app                                      0 B         135 kB
+#10 69.58 + First Load JS shared by all               135 kB
+#10 69.58   ├ chunks/framework-ed5a0f9c89facbdb.js   44.8 kB
+#10 69.58   ├ chunks/main-98e5118e11617f73.js        34.2 kB
+#10 69.58   ├ chunks/pages/_app-152f93d33e2ad402.js  52.8 kB
+#10 69.58   └ other shared chunks (total)            3.37 kB
+#10 69.58 
+#10 69.58 ○  (Static)   prerendered as static content
+#10 69.58 ƒ  (Dynamic)  server-rendered on demand
+#10 69.58 
+#10 69.66 npm notice
+#10 69.66 npm notice New major version of npm available! 10.9.2 -> 11.3.0
+#10 69.66 npm notice Changelog: https://github.com/npm/cli/releases/tag/v11.3.0
+#10 69.66 npm notice To update run: npm install -g npm@11.3.0
+#10 69.66 npm notice
+#10 DONE 70.0s
+
+#11 exporting to image
+#11 exporting layers
+#11 exporting layers 31.1s done
+#11 writing image sha256:cdf58203c73a72284a35c6c9b767faf6f5aec92fa6f403d0e29b60eeebba336c 0.0s done
+#11 naming to docker.io/library/mitaka-website_app 0.1s done
+#11 DONE 31.4s
+Creating d-dimitrov ... 
+Creating d-dimitrov ... done
+Нов контейнер ID: 512d8ae8068e
+📦 Създаване на бекъп на текущото състояние: d-dimitrov-backup:2025-04-28-10-27-58
+sha256:1d9756d5fc91c9f5343f159911cdb3b3815b078064a3e803c4a44c65f0402d56
+🚫 Спиране на старите контейнери...
+Stopping d-dimitrov ... 
+Stopping d-dimitrov ... done
+Removing d-dimitrov ... 
+Removing d-dimitrov ... done
+Network docker_network is external, skipping
+📥 Обновяване на тестовия код от GitHub...
+From https://github.com/mitaka1210/mitaka-website
+ * branch            stage      -> FETCH_HEAD
+Already up to date.
+🔨 Стартиране на нов билд...
+Building app
+#0 building with "default" instance using docker driver
+
+#1 [internal] load build definition from Dockerfile
+#1 transferring dockerfile: 479B done
+#1 DONE 0.1s
+
+#2 [internal] load metadata for docker.io/library/node:latest
+#2 DONE 0.7s
+
+#3 [internal] load .dockerignore
+#3 transferring context: 2B done
+#3 DONE 0.1s
+
+#4 [1/6] FROM docker.io/library/node:latest@sha256:c5bfe90b30e795ec57bcc0040065ca6f284af84a1dafd22a207bd6b48c39ce01
+#4 DONE 0.0s
+
+#5 [internal] load build context
+#5 transferring context: 4.51MB 5.0s
+#5 transferring context: 6.03MB 6.7s done
+#5 DONE 7.3s
+
+#6 [2/6] WORKDIR /app
+#6 CACHED
+
+#7 [3/6] COPY package*.json ./
+#7 CACHED
+
+#8 [4/6] RUN npm install
+#8 CACHED
+
+#9 [5/6] COPY . .
+#9 DONE 42.5s
+
+#10 [6/6] RUN npm run build
+#10 1.615 
+#10 1.615 > mitaka-website@0.1.0 build
+#10 1.615 > next build
+#10 1.615 
+#10 2.494  ⚠ Invalid next.config.js options detected: 
+#10 2.495  ⚠     Unrecognized key(s) in object: 'swcMinify'
+#10 2.495  ⚠ See more info here: https://nextjs.org/docs/messages/invalid-next-config
+#10 2.509 Attention: Next.js now collects completely anonymous telemetry regarding usage.
+#10 2.509 This information is used to shape Next.js' roadmap and prioritize features.
+#10 2.509 You can learn more, including how to opt-out if you'd not like to participate in this anonymous program, by visiting the following URL:
+#10 2.509 https://nextjs.org/telemetry
+#10 2.509 
+#10 2.592    ▲ Next.js 15.2.5
+#10 2.592    - Environments: .env
+#10 2.592 
+#10 2.750    Creating an optimized production build ...
+#10 37.85  ✓ Compiled successfully
+#10 37.96    Linting and checking validity of types ...
+#10 50.29    Collecting page data ...
+#10 54.09    Generating static pages (0/35) ...
+#10 55.33    Generating static pages (8/35) 
+#10 55.86 react-i18next:: You will need to pass in an i18next instance by using initReactI18next
+#10 55.87    Generating static pages (17/35) 
+#10 55.87    Generating static pages (26/35) 
+#10 55.87 [
+#10 55.87   {
+#10 55.87     id: 0,
+#10 55.87     url: {
+#10 55.87       src: '/_next/static/media/PWA_weather.a61b6269.png',
+#10 55.87       height: 106,
+#10 55.87       width: 173,
+#10 55.87       blurDataURL: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAFCAMAAABPT11nAAAAS1BMVEV0k6aalIIvNUF5cFsZJz0/SFZXdYemnos8NS5QaoBkYmFlY2ZefpawqJhRVF5khYRLY1QzTR11fXyKgHRMRj5xYEdsa2pgTzGYj3cqlQhKAAAACXBIWXMAAA7DAAAOwwHHb6hkAAAAMUlEQVR4nAXBhQEAIAwDsKLbcIf/LyUBkm+KVAZQu6FHEPFj7mtgrdbMvOBciTGE8wEfAAF+B+oXewAAAABJRU5ErkJggg==',
+#10 55.87       blurWidth: 8,
+#10 55.87       blurHeight: 5
+#10 55.87     }
+#10 55.87   },
+#10 55.87   {
+#10 55.87     id: 1,
+#10 55.87     url: {
+#10 55.87       src: '/_next/static/media/React_website.d525875a.png',
+#10 55.87       height: 421,
+#10 55.87       width: 1124,
+#10 55.87       blurDataURL: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAADCAMAAACZFr56AAAAJ1BMVEUiSn00X5gWLlUeP3IIOXUhOGRFa586U4BebIQVSoo0R2kpUZJTdqT5avP5AAAACXBIWXMAAA7DAAAOwwHHb6hkAAAAIklEQVR4nAXBiQEAIAjEsB6vgvvPa0IADsGV6pUWM+8zmR8EGgBlNWO80QAAAABJRU5ErkJggg==',
+#10 55.87       blurWidth: 8,
+#10 55.87       blurHeight: 3
+#10 55.87     }
+#10 55.87   },
+#10 55.87   {
+#10 55.87     id: 2,
+#10 55.87     url: {
+#10 55.87       src: '/_next/static/media/React_Todo.0175e6b7.png',
+#10 55.87       height: 286,
+#10 55.87       width: 825,
+#10 55.87       blurDataURL: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAADCAMAAACZFr56AAAAIVBMVEVIEpwmE0gjHDp7M/9gI9EvHUtuJe1OB71bA+E6H2FMB7nMlf5zAAAACXBIWXMAAA7DAAAOwwHHb6hkAAAAIElEQVR4nGPgYAABNmYGLiZWJk5WFmYGdiZGRlZGFmYABDsAUgvhMncAAAAASUVORK5CYII=',
+#10 55.87       blurWidth: 8,
+#10 55.87       blurHeight: 3
+#10 55.87     }
+#10 55.87   },
+#10 55.87   {
+#10 55.87     id: 3,
+#10 55.87     url: {
+#10 55.87       src: '/_next/static/media/React_Site.8ad43afb.png',
+#10 55.87       height: 602,
+#10 55.87       width: 1252,
+#10 55.87       blurDataURL: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAECAMAAACEE47CAAAAHlBMVEURESAYGCcpH0grKTxaNaE7J248I3coGVNERk9BQ0yFPEvJAAAACXBIWXMAAA7DAAAOwwHHb6hkAAAAI0lEQVR4nBXBgREAIAjEsPZB0f0X9kxQPrmnZG1Iqd0ygUp8BLYARlSDUPIAAAAASUVORK5CYII=',
+#10 55.87       blurWidth: 8,
+#10 55.87       blurHeight: 4
+#10 55.87     }
+#10 55.87   },
+#10 55.87   {
+#10 55.87     id: 4,
+#10 55.87     url: {
+#10 55.87       src: '/_next/static/media/shoes.e13ae4a7.png',
+#10 55.87       height: 776,
+#10 55.87       width: 1309,
+#10 55.87       blurDataURL: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAFCAMAAABPT11nAAAAM1BMVEX39fW2trbaxcmVzt3v8PDM0dWtrq/6/Pvi5eXx8vLP4OWys7OOpa/Cn6Vjf428aHPR2t7P3a5DAAAACXBIWXMAAA7DAAAOwwHHb6hkAAAALElEQVR4nAXBhwEAIAjAsKIswfH/tyaItLu3QGhmaqD2xrVZrHFs10yUIGB9FUMA7a/qTeUAAAAASUVORK5CYII=',
+#10 55.87       blurWidth: 8,
+#10 55.87       blurHeight: 5
+#10 55.87     }
+#10 55.87   },
+#10 55.87   {
+#10 55.87     id: 5,
+#10 55.87     url: {
+#10 55.87       src: '/_next/static/media/payment_ts_site.6d31d02d.png',
+#10 55.87       height: 448,
+#10 55.87       width: 1201,
+#10 55.87       blurDataURL: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAADCAMAAACZFr56AAAAD1BMVEXv7u/8+vvExcTEvcHExsRMS5R6AAAACXBIWXMAAA7DAAAOwwHHb6hkAAAAF0lEQVR4nGNgYmJiZmZiYWJghAIGGAAAAkQAHXH62+MAAAAASUVORK5CYII=',
+#10 55.87       blurWidth: 8,
+#10 55.87       blurHeight: 3
+#10 55.87     }
+#10 55.87   },
+#10 55.87   {
+#10 55.87     id: 6,
+#10 55.87     url: {
+#10 55.87       src: '/_next/static/media/pizza.f2bb1c41.png',
+#10 55.87       height: 134,
+#10 55.87       width: 444,
+#10 55.87       blurDataURL: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAACCAMAAABSSm3fAAAAElBMVEXy8vHg39/v7On9+Nz////39/iG9nO7AAAACXBIWXMAAA7DAAAOwwHHb6hkAAAAGklEQVR4nGNgZmBkZGRlYWFgZmJiYGBgYQEAAT0AIwnUwVYAAAAASUVORK5CYII=',
+#10 55.87       blurWidth: 8,
+#10 55.87       blurHeight: 2
+#10 55.87     }
+#10 55.87   },
+#10 55.87   {
+#10 55.87     id: 7,
+#10 55.87     url: {
+#10 55.87       src: '/_next/static/media/home-aquarium.3c65a610.jpg',
+#10 55.87       height: 450,
+#10 55.87       width: 600,
+#10 55.87       blurDataURL: 'data:image/jpeg;base64,/9j/2wBDAAoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/2wBDAQoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/wgARCAAGAAgDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAP/xAAVAQEBAAAAAAAAAAAAAAAAAAACBf/aAAwDAQACEAMQAAAAqIy//8QAGhAAAwEAAwAAAAAAAAAAAAAAAQIDBAARof/aAAgBAQABPwCU9+qolOiKk3KsrHsHzn//xAAZEQEAAgMAAAAAAAAAAAAAAAABAjEAESH/2gAIAQIBAT8Ad0Tmdakmf//EABkRAAEFAAAAAAAAAAAAAAAAAAIAARExQf/aAAgBAwEBPwAhGaxl/9k=',
+#10 55.87       blurWidth: 8,
+#10 55.87       blurHeight: 6
+#10 55.87     }
+#10 55.87   },
+#10 55.87   {
+#10 55.87     id: 8,
+#10 55.87     url: {
+#10 55.87       src: '/_next/static/media/uploader_website.912e34de.png',
+#10 55.87       height: 925,
+#10 55.87       width: 1185,
+#10 55.87       blurDataURL: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAGCAMAAADJ2y/JAAAAGFBMVEX+/v/q3/mwf/DVvvLq6e3f1+vn1vTCnfMylTMiAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAIUlEQVR4nGNgYGBgYWVmYmJgYGBgZASRyAxMwMbMzsQEAAQSACk+Aq5EAAAAAElFTkSuQmCC',
+#10 55.87       blurWidth: 8,
+#10 55.87       blurHeight: 6
+#10 55.87     }
+#10 55.87   },
+#10 55.87   {
+#10 55.87     id: 9,
+#10 55.87     url: {
+#10 55.87       src: '/_next/static/media/warehouse.ada4e9a1.png',
+#10 55.87       height: 917,
+#10 55.87       width: 466,
+#10 55.87       blurDataURL: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAICAMAAADp7a43AAAAFVBMVEXHy8rN0dH7+fn////49PG9v7vs6OFbkMQDAAAACXBIWXMAAA7DAAAOwwHHb6hkAAAAJElEQVR4nGNgZWNhYGBgYmZkYGBhYmRgYGKCcUEEIzOYxcIIAAU5ADyUbPEIAAAAAElFTkSuQmCC',
+#10 55.87       blurWidth: 4,
+#10 55.87       blurHeight: 8
+#10 55.87     }
+#10 55.87   },
+#10 55.87   {
+#10 55.87     id: 10,
+#10 55.87     url: {
+#10 55.87       src: '/_next/static/media/client.0c282162.png',
+#10 55.87       height: 1256,
+#10 55.87       width: 2547,
+#10 55.87       blurDataURL: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAECAMAAACEE47CAAAABlBMVEX6+vrz8vNPjdCfAAAACXBIWXMAAA7DAAAOwwHHb6hkAAAAFElEQVR4nGNgYGRkgABGEIRxkAEAAMAAB0tFTdQAAAAASUVORK5CYII=',
+#10 55.87       blurWidth: 8,
+#10 55.87       blurHeight: 4
+#10 55.87     }
+#10 55.87   },
+#10 55.87   {
+#10 55.87     id: 11,
+#10 55.87     url: {
+#10 55.87       src: '/_next/static/media/driver.bb8d38d2.webp',
+#10 55.87       height: 1024,
+#10 55.87       width: 450,
+#10 55.87       blurDataURL: 'data:image/webp;base64,UklGRnIAAABXRUJQVlA4WAoAAAAQAAAAAwAABwAAQUxQSCEAAAAA4v//2+b//9/q///k7v//5/L//+r2///v+v//7+L3+eEAVlA4ICoAAACwAQCdASoEAAgAAkA4JaQAAudZBywAAP76WQDDaoFhfiiPkvdYhgnjgAA=',
+#10 55.87       blurWidth: 4,
+#10 55.87       blurHeight: 8
+#10 55.87     }
+#10 55.87   },
+#10 55.87   {
+#10 55.87     id: 12,
+#10 55.87     url: {
+#10 55.87       src: '/_next/static/media/dispetcher.b316492a.webp',
+#10 55.87       height: 972,
+#10 55.87       width: 1024,
+#10 55.87       blurDataURL: 'data:image/webp;base64,UklGRqQAAABXRUJQVlA4WAoAAAAQAAAABwAABwAAQUxQSDoAAAAFYFTbtpKLu0MTyjCkh49dWpCLDu7SISImIHAM0zRMJSXxSRBf+DnJj9OTxI4oabYHDkIcAbjZ5g8AVlA4IEQAAACQAQCdASoIAAgAAkA4JZwAAuWt2ogA/vm0nSoBoZucYKaadZqCIUZeQ+LteR2JeyrGQ9uignEPIgtE8xwNgGUDKgAAAA==',
+#10 55.87       blurWidth: 8,
+#10 55.87       blurHeight: 8
+#10 55.87     }
+#10 55.87   },
+#10 55.87   {
+#10 55.87     id: 13,
+#10 55.87     url: {
+#10 55.87       src: '/_next/static/media/reception.6937d763.png',
+#10 55.87       height: 976,
+#10 55.87       width: 2546,
+#10 55.87       blurDataURL: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAADCAMAAACZFr56AAAAIVBMVEXx9Pb4+frS0uDq7fbn5u3F2Mrc0+jl8urY3ubLuM/Zy+WsmpUBAAAACXBIWXMAAA7DAAAOwwHHb6hkAAAAHklEQVR4nGNgZOFiY+ZgYmZgYOPkYmFlZWdgZIAAAAXGAFVaUEuwAAAAAElFTkSuQmCC',
+#10 55.87       blurWidth: 8,
+#10 55.87       blurHeight: 3
+#10 55.87     }
+#10 55.87   },
+#10 55.87   {
+#10 55.87     id: 14,
+#10 55.87     url: {
+#10 55.87       src: '/_next/static/media/customer.f5e27952.png',
+#10 55.87       height: 438,
+#10 55.87       width: 1221,
+#10 55.87       blurDataURL: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAADCAMAAACZFr56AAAABlBMVEX7+/vw7/RiQwoJAAAACXBIWXMAAA7DAAAOwwHHb6hkAAAAFElEQVR4nGNgZGRkZAABMAPChAAAAMcACjgEJrIAAAAASUVORK5CYII=',
+#10 55.87       blurWidth: 8,
+#10 55.87       blurHeight: 3
+#10 55.87     }
+#10 55.87   },
+#10 55.87   {
+#10 55.87     id: 15,
+#10 55.87     url: {
+#10 55.87       src: '/_next/static/media/blog-img.108a744a.png',
+#10 55.87       height: 931,
+#10 55.87       width: 1906,
+#10 55.87       blurDataURL: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAECAMAAACEE47CAAAABlBMVEUMAg0UCBHjSVNfAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAE0lEQVR4nGNgQABGRkZGVAYEAAAAtAAJfUakvwAAAABJRU5ErkJggg==',
+#10 55.87       blurWidth: 8,
+#10 55.87       blurHeight: 4
+#10 55.87     }
+#10 55.87   },
+#10 55.87   {
+#10 55.87     id: 16,
+#10 55.87     url: {
+#10 55.87       src: '/_next/static/media/en-flag.72b130da.png',
+#10 55.87       height: 512,
+#10 55.87       width: 512,
+#10 55.87       blurDataURL: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAICAMAAADz0U65AAAAJ1BMVEUpABTJeILPiZFPTn1bXYmxiJpMS3nPiJDFgo5JR3bNhpDYjZXLhZG+t8iVAAAAC3RSTlMF2fz+/vzasPyysPAC3E4AAAAJcEhZcwAACxMAAAsTAQCanBgAAAAySURBVHicPctLEgAQDATRSeSDcf/zKim8VW8aeEZEiEiimbVFsqKrKtzd9QQvTCn57w0lBAEILw1QbAAAAABJRU5ErkJggg==',
+#10 55.87       blurWidth: 8,
+#10 55.87       blurHeight: 8
+#10 55.87     }
+#10 55.87   },
+#10 55.87   {
+#10 55.87     id: 17,
+#10 55.87     url: {
+#10 55.87       src: '/_next/static/media/bg-flag.749f2749.png',
+#10 55.87       height: 240,
+#10 55.87       width: 240,
+#10 55.87       blurDataURL: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAICAMAAADz0U65AAAAHlBMVEXGjIwYg1zYJBEcpoTw7vDYJREcpoPv7e/y8/LaKhZsBXSQAAAACHRSTlMF/dr92rL9svLhkqoAAAAJcEhZcwAACxMAAAsTAQCanBgAAAAnSURBVHicY2CAAXYWMGBn4IACBjZmMGBjYIQCBk4oYGBlAgNWuG4AIo8A60L8CJQAAAAASUVORK5CYII=',
+#10 55.87       blurWidth: 8,
+#10 55.87       blurHeight: 8
+#10 55.87     }
+#10 55.87   },
+#10 55.87   {
+#10 55.87     id: 18,
+#10 55.87     url: {
+#10 55.87       src: '/_next/static/media/novatio-project.890a254f.png',
+#10 55.87       height: 243,
+#10 55.87       width: 566,
+#10 55.87       blurDataURL: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAADCAMAAACZFr56AAAAHlBMVEVUksn1+PxlmMZulMVOibnR2+Lv8PM4gbkvda1HkMg9ZS2mAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAIUlEQVR4nAXBgQEAMAjCsALq5v8PmyBN90gksV0FLPD+AQPiAErRnM1UAAAAAElFTkSuQmCC',
+#10 55.87       blurWidth: 8,
+#10 55.87       blurHeight: 3
+#10 55.87     }
+#10 55.87   },
+#10 55.87   {
+#10 55.87     id: 19,
+#10 55.87     url: {
+#10 55.87       src: '/_next/static/media/next-proejct.c1fc847d.jpg',
+#10 55.87       height: 4912,
+#10 55.87       width: 7360,
+#10 55.87       blurDataURL: 'data:image/jpeg;base64,/9j/2wBDAAoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/2wBDAQoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/wgARCAAFAAgDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAT/xAAUAQEAAAAAAAAAAAAAAAAAAAAC/9oADAMBAAIQAxAAAAC8Mf/EAB0QAAICAQUAAAAAAAAAAAAAAAECAwQAERMhMVL/2gAIAQEAAT8AoWdyOeoFICRF+W1Xvzn/xAAVEQEBAAAAAAAAAAAAAAAAAAAAEf/aAAgBAgEBPwCP/8QAGBEAAgMAAAAAAAAAAAAAAAAAATEAMkH/2gAIAQMBAT8ABsmcn//Z',
+#10 55.87       blurWidth: 8,
+#10 55.87       blurHeight: 5
+#10 55.87     }
+#10 55.87   },
+#10 55.87   {
+#10 55.87     id: 20,
+#10 55.87     url: {
+#10 55.87       src: '/_next/static/media/svg-facebook.d0b0206c.svg',
+#10 55.87       height: 48,
+#10 55.87       width: 48,
+#10 55.87       blurWidth: 0,
+#10 55.87       blurHeight: 0
+#10 55.87     }
+#10 55.87   },
+#10 55.87   {
+#10 55.87     id: 21,
+#10 55.87     url: {
+#10 55.87       src: '/_next/static/media/svg-twitter.12a1692d.svg',
+#10 55.87       height: 48,
+#10 55.87       width: 48,
+#10 55.87       blurWidth: 0,
+#10 55.87       blurHeight: 0
+#10 55.87     }
+#10 55.87   },
+#10 55.87   {
+#10 55.87     id: 22,
+#10 55.87     url: {
+#10 55.87       src: '/_next/static/media/svg-instagram.c6e35df4.svg',
+#10 55.87       height: 48,
+#10 55.87       width: 48,
+#10 55.87       blurWidth: 0,
+#10 55.87       blurHeight: 0
+#10 55.87     }
+#10 55.87   },
+#10 55.87   {
+#10 55.87     id: 23,
+#10 55.87     url: {
+#10 55.87       src: '/_next/static/media/software-Consulting.0cb88642.png',
+#10 55.87       height: 1024,
+#10 55.87       width: 1024,
+#10 55.87       blurDataURL: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAICAMAAADz0U65AAAAdVBMVEUGHVMiI1MkRYIcP3ICEUI9WI8oMloBBTIwda1bl8JKTXabb3dHa6I9TIErTHdCLVw8cJ8xTmUVHERUhKpua31kgLI4P3RWkLBUfoWR0OBZYosWBj+dTHU9GkiNlZ1gm81iWKxvepsdL291k6ZOZKRZxOI/c6kyt0j7AAAACXBIWXMAAA7EAAAOxAGVKw4bAAAARUlEQVR4nAXBhQHAIBAEsEMfh7p7u/+KTUC1FppJAnON8WsCeGv7GF4B1U3zkiyHGmy4y+NQjYcx35WBeO6+GIAk8gZJP3WeA3Nex2mkAAAAAElFTkSuQmCC',
+#10 55.87       blurWidth: 8,
+#10 55.87       blurHeight: 8
+#10 55.87     }
+#10 55.87   }
+#10 55.87 ]
+#10 55.87  ✓ Generating static pages (35/35)
+#10 55.87 react-i18next:: You will need to pass in an i18next instance by using initReactI18next
+#10 56.53    Finalizing page optimization ...
+#10 56.53    Collecting build traces ...
+#10 68.91 
+#10 68.92 Route (app)                                   Size  First Load JS
+#10 68.92 ┌ ○ /_not-found                              990 B         104 kB
+#10 68.92 ├ ○ /about-page                            2.47 kB         105 kB
+#10 68.92 ├ ○ /addComments                           1.34 kB         104 kB
+#10 68.92 ├ ƒ /api/addComments                         175 B         103 kB
+#10 68.92 ├ ƒ /api/articles/[id]/like                  175 B         103 kB
+#10 68.92 ├ ƒ /api/articles/[id]/likes                 175 B         103 kB
+#10 68.92 ├ ƒ /api/auth/[...nextauth]                  175 B         103 kB
+#10 68.92 ├ ƒ /api/dislike                             175 B         103 kB
+#10 68.92 ├ ƒ /api/getArticles                         175 B         103 kB
+#10 68.92 ├ ƒ /api/getArticleSectionById               175 B         103 kB
+#10 68.92 ├ ƒ /api/like                                175 B         103 kB
+#10 68.92 ├ ƒ /api/login                               175 B         103 kB
+#10 68.92 ├ ƒ /api/loginWithGoogle                     175 B         103 kB
+#10 68.92 ├ ○ /Blog-Page                             2.53 kB         105 kB
+#10 68.92 ├ ○ /cardAquariums                         21.3 kB         135 kB
+#10 68.92 ├ ○ /Contacts-page                         1.51 kB         104 kB
+#10 68.92 ├ ○ /Email-form                            18.7 kB         124 kB
+#10 68.92 ├ ○ /Footer-page                           31.6 kB         137 kB
+#10 68.92 ├ ○ /Home-page                             1.76 kB         104 kB
+#10 68.92 ├ ○ /Improvements-website                  2.52 kB         105 kB
+#10 68.92 ├ ○ /leaveComment                            245 B         103 kB
+#10 68.92 ├ ○ /Like                                    175 B         103 kB
+#10 68.92 ├ ○ /loader                                1.33 kB         104 kB
+#10 68.92 ├ ○ /Login-page                            1.56 kB         120 kB
+#10 68.92 ├ ○ /mobileLoginSignUpForm                   280 B         119 kB
+#10 68.92 ├ ○ /mobileSkills                          16.8 kB         165 kB
+#10 68.92 ├ ○ /my-services                             303 B         148 kB
+#10 68.92 ├ ○ /novatio-Apps                           1.5 kB         104 kB
+#10 68.92 ├ ○ /programingArticles                      175 B         103 kB
+#10 68.92 ├ ○ /Projects-page                         1.51 kB         104 kB
+#10 68.92 ├ ○ /ReadArticles                          2.35 kB         105 kB
+#10 68.92 ├ ○ /SignUpForm                            1.58 kB         104 kB
+#10 68.92 ├ ○ /skill-Pyramid                         1.37 kB         104 kB
+#10 68.92 ├ ○ /Skills-page                           1.86 kB         104 kB
+#10 68.92 └ ○ /Timeline-page                         1.67 kB         104 kB
+#10 68.92 + First Load JS shared by all               103 kB
+#10 68.92   ├ chunks/1684-96fb76ff5856716e.js        45.8 kB
+#10 68.92   ├ chunks/4bd1b696-539ea4eaa0532386.js    53.3 kB
+#10 68.92   └ other shared chunks (total)            3.59 kB
+#10 68.92 
+#10 68.92 Route (pages)                                 Size  First Load JS
+#10 68.92 ─   /_app                                      0 B         135 kB
+#10 68.92 + First Load JS shared by all               135 kB
+#10 68.92   ├ chunks/framework-ed5a0f9c89facbdb.js   44.8 kB
+#10 68.92   ├ chunks/main-98e5118e11617f73.js        34.2 kB
+#10 68.92   ├ chunks/pages/_app-152f93d33e2ad402.js  52.8 kB
+#10 68.92   └ other shared chunks (total)            3.37 kB
+#10 68.92 
+#10 68.92 ○  (Static)   prerendered as static content
+#10 68.92 ƒ  (Dynamic)  server-rendered on demand
+#10 68.92 
+#10 69.00 npm notice
+#10 69.00 npm notice New major version of npm available! 10.9.2 -> 11.3.0
+#10 69.00 npm notice Changelog: https://github.com/npm/cli/releases/tag/v11.3.0
+#10 69.00 npm notice To update run: npm install -g npm@11.3.0
+#10 69.00 npm notice
+#10 DONE 69.3s
+
+#11 exporting to image
+#11 exporting layers
+#11 exporting layers 30.0s done
+#11 writing image sha256:3f86959f6d67a3fb757373bfb13ea299dbe2f1a93efb2eef4d7d95232e88d9c6 0.0s done
+#11 naming to docker.io/library/mitaka-website_app 0.1s done
+#11 DONE 30.3s
+Creating d-dimitrov ... 
+Creating d-dimitrov ... done
+✅ Тестовият билд е стартиран успешно!
+🧪 Тестов деплой приключи. Лог: /ssd/docker/mitaka-website/deploy_logs/deploy_test_2025-04-28_10-27-58.log
