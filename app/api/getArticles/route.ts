@@ -1,5 +1,5 @@
 export const dynamic = "force-dynamic";
-
+export const revalidate = 0; // Добави и това за всеки случай
 import { NextResponse } from "next/server";
 import pool from "../../../database/db";
 
@@ -16,6 +16,7 @@ interface ArticleRow {
 }
 
 export async function GET() {
+    console.log("!!! API GETArticles е извикан !!!"); // Добави това
     try {
         const articlesQuery = `
             SELECT
@@ -27,13 +28,14 @@ export async function GET() {
                 s.title      AS section_title,
                 s.content    AS section_content,
                 s.position   AS section_position,
-                s.image_url  AS section_image_url
+                s.section_image_url AS section_image_url
             FROM articles a
                      LEFT JOIN sections s ON a.id = s.article_id
             ORDER BY a.id, s.position;
         `;
 
         const result = await pool.query(articlesQuery);
+        console.log("✅ Данните са извлечени успешно, брой редове:", result.rows.length); // Добави това
         const rows = result.rows as unknown as ArticleRow[];
 
         const articlesMap: Record<number, any> = {};
