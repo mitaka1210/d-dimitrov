@@ -5,7 +5,7 @@ services:
     build: .
     container_name: d-dimitrov
     ports:
-      - "3400:3000"
+      - "3444:3000"
     env_file:
       - .env.production
     networks:
