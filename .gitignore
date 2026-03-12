@@ -29,6 +29,10 @@ yarn-error.log*
 
 printf "\n# Local env files\n.env\n.env.*\n" >> .gitignore
 
+# deploy
+/deploy_logs
+docker-compose.rollback.yml
+
 #api keys
 /assets/upload/.stfolder
 .env.development
