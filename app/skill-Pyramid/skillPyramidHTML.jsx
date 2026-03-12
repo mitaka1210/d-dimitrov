@@ -6,7 +6,6 @@ import "./skillPyramid.scss";
 import LoaderHTML from "../loader/LoaderHTML";
 import {useTranslation} from "react-i18next";
 import MyServices from "../my-services/myServices";
-import { useStoredLanguage } from "../lib/useStoredLanguage";
 
 const skills = [
   [{ name: "HTML", icon: "📝", category: "old" }],
@@ -127,8 +126,8 @@ const services = [
 ];
 
 export default function SkillPyramid() {
-  const { t } = useTranslation();
-  const lang = useStoredLanguage();
+  const { t, i18n } = useTranslation();
+  const lang = i18n.language?.startsWith("bg") ? "bg" : "en";
   const [visibleRows, setVisibleRows] = useState(0);
   const [lastScrollTop, setLastScrollTop] = useState(0);
   const [selectedSkill, setSelectedSkill] = useState(null);
@@ -142,7 +141,7 @@ export default function SkillPyramid() {
     setTimeout(() => {
       setLoading(false);
     }, 2000);
-  }, [lang]);
+  }, []);
   useEffect(() => {
     let reduceInterval;
     const handleScroll = () => {
@@ -184,7 +183,7 @@ export default function SkillPyramid() {
     };
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
-  }, [lastScrollTop, hasTriggered, lang]);
+  }, [lastScrollTop, hasTriggered]);
   if (loading) {
     return <LoaderHTML />;
   }
