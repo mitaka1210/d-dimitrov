@@ -223,6 +223,21 @@ li.active .accordian-content {
   }
 }
 
+
+.cv-download{
+  border: 1px solid #e8e2e2;
+  padding: 5px 10px;
+  width: 250px;
+  border-radius:  15px;
+
+  &:hover{
+    background-color: #dc143c;
+    color: white;
+    cursor: pointer;
+    transition: background-color .6s ease;
+  }
+}
+
 @media screen and (max-width: 700px) {
   .info-bout-me {
     flex-flow: column;

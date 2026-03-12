@@ -3,10 +3,11 @@ import React, {useEffect, useRef} from "react";
 import Typed from "typed.js";
 import "./auto-type.scss";
 import {useTranslation} from "react-i18next";
+import { useStoredLanguage } from "../lib/useStoredLanguage";
 
 const AutoTypedText = () => {
   const el = useRef(null);
-  let lang = localStorage.getItem("i18nextLng");
+  const lang = useStoredLanguage();
   const {t} = useTranslation();
   const langBG = ["Front-end Програмист", "Акварист", "Дизайнер", "Програмист" +
   " на свободна практика", "Авиационен инженер"];

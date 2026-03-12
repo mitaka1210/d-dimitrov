@@ -54,11 +54,10 @@ function LoginPageHtml(props) {
             return;
         }
         const result = await dispatch(login({ username, password, role: 'user' }));
-        if (result.payload.token) {
-            // Повикай checkAuth след login
-            // await dispatch(checkAuth());
+        if (result.meta?.requestStatus === 'fulfilled') {
+            dispatch(checkAuth());
             router.push('/');
-        }else {
+        } else {
             // Може би покажи съобщение за неуспешен логин
             console.error("Login failed: ", result.error || "Unknown error");
             setIsLoggedIn(true); // това вече го имаш за да покаже error съобщение

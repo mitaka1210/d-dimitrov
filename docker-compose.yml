@@ -5,7 +5,7 @@ services:
     build: .
     container_name: d-dimitrov
     ports:
-      - "3000:3000"
+      - "3400:3000"
     env_file:
       - .env.production
     networks:
@@ -16,6 +16,5 @@ services:
     restart: always
 
 networks:
-  default:
-    external:
-      name: docker_network
+  docker_network:
+    external: true

@@ -5,6 +5,7 @@ import React, {useEffect, useRef, useState} from "react";
 import LoaderHTML from "../loader/LoaderHTML";
 import dynamic from "next/dynamic";
 import { useTranslation } from "react-i18next";
+import { useStoredLanguage } from "../lib/useStoredLanguage";
 
 const HomePageHTML = dynamic(
     () => import('./HomePageHTML'),
@@ -17,12 +18,10 @@ const Navigation = dynamic(
 
 const HomePage = () => {
   const [showMenu, setShowMenu] = useState(true);
-  const [language, setLanguage] = useState('en');
+  const storedLang = useStoredLanguage();
   useEffect(() => {
     // change meta title on page load
-    const storedLang  = localStorage.getItem("i18nextLng") || 'en'; // Достъп до localStorage само в браузъра
-    setLanguage(storedLang);
-    document.title = storedLang ===  'bg' ? 'Начална страница' : 'Home page';
+    document.title = storedLang === 'bg' ? 'Начална страница' : 'Home page';
     // Проверка само ако сме в браузърна среда
     if (typeof window !== 'undefined') {
       const nextauth = localStorage.getItem("nextauth.message");
@@ -45,7 +44,7 @@ const HomePage = () => {
 
       return () => clearTimeout(timer);
     }
-  }, [language]); // Празен dependency масив
+  }, [storedLang]);
 
   return (
       <>

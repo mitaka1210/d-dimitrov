@@ -3,9 +3,10 @@ import React, {useEffect, useState} from 'react';
 import dynamic from "next/dynamic";
 import './read.scss';
 import SEO from "../SEO/seo";
+import { useStoredLanguage } from "../lib/useStoredLanguage";
 
 const Page = () => {
-    const [language, setLanguage] = useState('en');
+    const storedLang = useStoredLanguage();
     const [pageUrl, setUrl ] = useState('');
 
     const ReadHtml = dynamic(
@@ -21,16 +22,13 @@ const Page = () => {
     {ssr: false}
   );
     useEffect(() => {
-        const storedLang  = localStorage.getItem("i18nextLng") || 'en'; // Достъп до localStorage само в браузъра
-        setLanguage(storedLang);
         setUrl (window.location.href != '' ? window.location.href : window.location.origin);
-
     }, []);
-    const title = language === 'bg' ? 'Статия' : 'Article';
-    const description = language === 'bg' ? "Статия за старт на аквариум" : "Article for start of aquarium";
+    const title = storedLang === 'bg' ? 'Статия' : 'Article';
+    const description = storedLang === 'bg' ? "Статия за старт на аквариум" : "Article for start of aquarium";
   return (
       <>
-      <SEO title={title} description={description} url={pageUrl} lang={language} />
+      <SEO title={title} description={description} url={pageUrl} lang={storedLang} />
 
     <div>
       <Navigation/>

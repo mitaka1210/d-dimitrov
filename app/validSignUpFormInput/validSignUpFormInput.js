@@ -1,7 +1,8 @@
 //! ERROR input default state
+import { getStoredLanguage } from "../lib/stored-language";
 
 export const validateInput = (username, password, firstName, lastName, email, confirmPassword) => {
-    const storedLang  = localStorage.getItem("i18nextLng") || 'en'; // Достъп до localStorage само в браузъра
+    const storedLang = getStoredLanguage();
     let errors = {};
     console.log("pesho valid", firstName);
 

@@ -2,6 +2,7 @@
 
 import React, {useEffect, useState} from 'react';
 import dynamic from "next/dynamic";
+import { useStoredLanguage } from "../lib/useStoredLanguage";
 const TimeLineHtml = dynamic(
     () => import('./TimeLineHTML'),
     {ssr: false}
@@ -15,14 +16,11 @@ const Navigation = dynamic(
     {ssr: false}
 );
 const Page = () => {
-    const [language, setLanguage] = useState('en');
+    const storedLang = useStoredLanguage();
 
     useEffect(() => {
-        const storedLang  = localStorage.getItem("i18nextLng") || 'en'; // Достъп до localStorage само в браузъра
-        setLanguage(storedLang);
-        document.title = storedLang ===  'bg' ? 'Историята ми! - инж.Димитров' : 'Professional Skills' +
-            ' - eng.Dimitrov';
-    }, []);
+        document.title = storedLang === 'bg' ? 'Историята ми! - инж.Димитров' : 'Professional Skills' + ' - eng.Dimitrov';
+    }, [storedLang]);
   return (
     <div className="timeline-page">
       <div className="timeline-nav flex-horizontal-container text-align-center justify-content-end align-items-center">

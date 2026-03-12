@@ -1,6 +1,6 @@
 export const dynamic = "force-dynamic";
 export const revalidate = 0; // Добави и това за всеки случай
-import { NextResponse } from "next/server";
+import {NextResponse} from "next/server";
 import pool from "../../../database/db";
 
 interface ArticleRow {
@@ -16,26 +16,23 @@ interface ArticleRow {
 }
 
 export async function GET() {
-    console.log("!!! API GETArticles е извикан !!!"); // Добави това
     try {
         const articlesQuery = `
-            SELECT
-                a.id         AS article_id,
-                a.title      AS article_title,
-                a.created_at AS article_created_at,
-                a.status     AS status,
-                s.id         AS section_id,
-                s.title      AS section_title,
-                s.content    AS section_content,
-                s.position   AS section_position,
-                s.section_image_url AS section_image_url
+            SELECT a.id                AS article_id,
+                   a.title             AS article_title,
+                   a.created_at        AS article_created_at,
+                   a.status            AS status,
+                   s.id                AS section_id,
+                   s.title             AS section_title,
+                   s.content           AS section_content,
+                   s.position          AS section_position,
+                   s.section_image_url AS section_image_url
             FROM articles a
                      LEFT JOIN sections s ON a.id = s.article_id
             ORDER BY a.id, s.position;
         `;
 
         const result = await pool.query(articlesQuery);
-        console.log("✅ Данните са извлечени успешно, брой редове:", result.rows.length); // Добави това
         const rows = result.rows as unknown as ArticleRow[];
 
         const articlesMap: Record<number, any> = {};
@@ -69,6 +66,6 @@ export async function GET() {
 
     } catch (error: any) {
         console.error("Database error:", error);
-        return NextResponse.json({ error: error.message }, { status: 500 });
+        return NextResponse.json({error: error.message}, {status: 500});
     }
 }

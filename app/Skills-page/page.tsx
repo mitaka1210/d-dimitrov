@@ -4,6 +4,7 @@ import React, {useEffect, useRef, useState} from 'react';
 import './skill.scss';
 import useWindowSize from "../Helper-components/getWindowSize/windowSize";
 import dynamic from "next/dynamic";
+import { useStoredLanguage } from "../lib/useStoredLanguage";
 const SkillPageHtml = dynamic(
     () => import('./SkillPageHTML'),
     {ssr: false}
@@ -18,14 +19,11 @@ const Navigation = dynamic(
 );
 const Page = () => {
   const size = useWindowSize();
-    const [language, setLanguage] = useState('en');
+  const storedLang = useStoredLanguage();
 
-    useEffect(() => {
-        const storedLang  = localStorage.getItem("i18nextLng") || 'en'; // Достъп до localStorage само в браузъра
-        setLanguage(storedLang);
-        document.title = storedLang ===  'bg' ? 'Професионални умения - инж.Димитров' : 'Professional Skills' +
-            ' - eng.Dimitrov';
-    }, []);
+  useEffect(() => {
+    document.title = storedLang === 'bg' ? 'Професионални умения - инж.Димитров' : 'Professional Skills' + ' - eng.Dimitrov';
+  }, [storedLang]);
   return (
     <div className="projects-page">
       <div className="skills-page flex-horizontal-container text-align-center justify-content-end align-items-center">

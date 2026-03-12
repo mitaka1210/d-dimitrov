@@ -1,0 +1,18 @@
+services:
+  social-bot:
+    build: .
+    container_name: social_media_bot
+    restart: unless-stopped
+    env_file:
+      - .env
+    volumes:
+      - bot_data:/data
+    networks:
+      - docker_network  # <--- Сложи го в същата мрежа като сайта
+
+volumes:
+  bot_data:
+
+networks:
+  docker_network:
+    external: true

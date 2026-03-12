@@ -5,26 +5,25 @@ import "./project.scss";
 import { useTranslation } from "react-i18next";
 import images from "../../assets/images/image";
 import LoaderHTML from "../loader/LoaderHTML";
+import { useStoredLanguage } from "../lib/useStoredLanguage";
+
 const ProjectsHtml = () => {
   const { t } = useTranslation();
   let img = images;
-
-  const [language, setLanguage] = useState("en");
+  const storedLang = useStoredLanguage();
   const [loading, setLoading] = useState(true);
+
   useEffect(() => {
-    // Симулираме зареждане (например от API или изображения)
     setTimeout(() => {
       setLoading(false);
     }, 2000);
   }, []);
   useEffect(() => {
-    const storedLang = localStorage.getItem("i18nextLng") || "en"; // Достъп до localStorage само в браузъра
-    setLanguage(storedLang);
     document.title =
       storedLang === "bg"
         ? "Моята история -" + " инж.Димитров"
         : "My Timeline - eng.Dimitrov";
-  }, []);
+  }, [storedLang]);
 
   if (loading) {
     return <LoaderHTML />;

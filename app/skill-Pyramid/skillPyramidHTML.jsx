@@ -6,8 +6,7 @@ import "./skillPyramid.scss";
 import LoaderHTML from "../loader/LoaderHTML";
 import {useTranslation} from "react-i18next";
 import MyServices from "../my-services/myServices";
-
-let lang = localStorage.getItem("i18nextLng");
+import { useStoredLanguage } from "../lib/useStoredLanguage";
 
 const skills = [
   [{ name: "HTML", icon: "📝", category: "old" }],
@@ -129,8 +128,8 @@ const services = [
 
 export default function SkillPyramid() {
   const { t } = useTranslation();
+  const lang = useStoredLanguage();
   const [visibleRows, setVisibleRows] = useState(0);
-  const [lan, setlan] = useState("bg");
   const [lastScrollTop, setLastScrollTop] = useState(0);
   const [selectedSkill, setSelectedSkill] = useState(null);
   const [showServices, setShowServices] = useState(false);
@@ -183,17 +182,12 @@ export default function SkillPyramid() {
 
       setLastScrollTop(scrollTop);
     };
-    setlan(lang);
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
-  }, [lastScrollTop, hasTriggered, lang]); // Добавям `hasTriggered`, за да
-  // избегнем излишни обновявания
+  }, [lastScrollTop, hasTriggered, lang]);
   if (loading) {
     return <LoaderHTML />;
   }
-  const relativeToLanguage = () => {
-      lang = localStorage.getItem("i18nextLng");
-  };
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-gray-900 text-white p-5">
       <h2 className="">{t("mySkills")}</h2>
@@ -241,7 +235,7 @@ export default function SkillPyramid() {
             {t("close")}
           </button>
           <h2 className="text-lg font-bold">{selectedSkill}</h2>
-          <p className="mt-2 text-gray-300" onClick={relativeToLanguage()}>
+          <p className="mt-2 text-gray-300">
             {/* {skillDescriptionsBG[selectedSkill]} */}
             {lang === "bg"
               ? skillDescriptionsBG[selectedSkill]

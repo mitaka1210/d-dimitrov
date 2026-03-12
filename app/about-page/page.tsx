@@ -4,6 +4,7 @@ import React, {useEffect, useState} from 'react';
 import dynamic from 'next/dynamic';
 import './about.scss';
 import SEO from "../SEO/seo";
+import { useStoredLanguage } from "../lib/useStoredLanguage";
 const AboutHtml = dynamic(
     () => import('./AboutHTML'),
     {ssr: false}
@@ -17,23 +18,19 @@ const Navigation = dynamic(
     {ssr: false}
 );
 const AboutPage = () => {
-  const [language, setLanguage] = useState('en');
+  const storedLang = useStoredLanguage();
   const [pageUrl, setUrl ] = useState('');
   useEffect(() => {
-    const storedLang  = localStorage.getItem("i18nextLng") || 'en'; // Достъп до localStorage само в браузъра
-    setLanguage(storedLang);
-    document.title = storedLang ===  'bg' ? 'За мен - инж.Димитров' : 'About Me' +
-        ' - eng.Dimitrov';
+    document.title = storedLang === 'bg' ? 'За мен - инж.Димитров' : 'About Me' + ' - eng.Dimitrov';
     setUrl (window.location.href != '' ? window.location.href : window.location.origin);
-
-  }, []);
-  const title = language === 'bg' ? 'За мен - инж.Димитров' : 'About Me- eng.Dimitrov';
-  const description = language === 'bg'
+  }, [storedLang]);
+  const title = storedLang === 'bg' ? 'За мен - инж.Димитров' : 'About Me- eng.Dimitrov';
+  const description = storedLang === 'bg'
       ? "За мен Димитър Димитров."
       : "About Me- eng.Dimitrov";
   return (
     <>     {/* SEO мета тагове */}
-      <SEO title={title} description={description} url={pageUrl} lang={language} />
+      <SEO title={title} description={description} url={pageUrl} lang={storedLang} />
       <main className="images">
         <div>
           <div className="about-page">

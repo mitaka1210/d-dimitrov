@@ -3,29 +3,28 @@
 import React, { useEffect, useState } from 'react';
 import dynamic from 'next/dynamic';
 import SEO from '../SEO/seo';
+import { useStoredLanguage } from "../lib/useStoredLanguage";
 
 const Improvements = dynamic(() => import('./Improvements-website'), { ssr: false });
 const FooterHTML = dynamic(() => import('../Footer-page/page'), { ssr: false });
 const Navigation = dynamic(() => import('../Navigation-component/navigation'), { ssr: false });
 
 const Page = () => {
-    const [language, setLanguage] = useState('en');
+    const storedLang = useStoredLanguage();
     const [pageUrl, setUrl ] = useState('');
 
     useEffect(() => {
-        const storedLang = localStorage.getItem("i18nextLng") || 'en';
-        setLanguage(storedLang);
         document.title = storedLang === 'bg' ? 'Блог - Димитър Димитров' : 'Blog - Dimitar Dimitrov';
         setUrl (window.location.href != '' ? window.location.href : window.location.origin);
-    }, []);
-    const title = language === 'bg' ? 'Блог - Димитър Димитров' : 'Blog - Dimitar Dimitrov';
-    const description = language === 'bg'
+    }, [storedLang]);
+    const title = storedLang === 'bg' ? 'Блог - Димитър Димитров' : 'Blog - Dimitar Dimitrov';
+    const description = storedLang === 'bg'
         ? "Чети статии за програмиране и акваристика. Последните новини и съвети от Димитър Димитров."
         : "Read articles about programming and aquariums. Latest news and tips from Dimitar Dimitrov.";
     return (
         <>
             {/* SEO мета тагове */}
-            <SEO title={title} description={description} url={pageUrl} lang={language} />
+            <SEO title={title} description={description} url={pageUrl} lang={storedLang} />
             {/* Основно съдържание */}
             <div className="improvements-page">
                 <div className="nav-bar-blog flex-vertical-container text-align-center justify-content-end">

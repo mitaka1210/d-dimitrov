@@ -12,16 +12,13 @@ export const login = createAsyncThunk('auth/login', async ({ username, password,
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ username, password, role }),
+            credentials: 'include',
         });
 
         const data = await response.json();
         if (!response.ok) {
             throw new Error(data.message || 'Login failed');
         }
-
-        localStorage.setItem('token', data.token); // Съхранява токена
-        localStorage.setItem('role', data.role); // Съхранява ролята
-        localStorage.setItem('name', data.username); // Съхранява името
 
         return data;
     } catch (error) {
@@ -31,11 +28,8 @@ export const login = createAsyncThunk('auth/login', async ({ username, password,
 
 export const checkAuth = createAsyncThunk('auth/checkAuth', async (_, { rejectWithValue }) => {
     try {
-        const token = localStorage.getItem('token');
-        if (!token) throw new Error('No token found');
-
         const response = await fetch(`${'https://share.d-dimitrov.eu'}/api/check-auth`, {
-            headers: { Authorization: token },
+            credentials: 'include',
         });
 
         const data = await response.json();
@@ -61,7 +55,6 @@ const authSlice = createSlice({
         logout: (state) => {
             state.user = null;
             state.isAuthenticated = false;
-            localStorage.removeItem('token'); // Премахва токена
         },
     },
     extraReducers: (builder) => {
@@ -73,7 +66,8 @@ const authSlice = createSlice({
             .addCase(login.fulfilled, (state, action) => {
                 state.loading = false;
                 state.isAuthenticated = true;
-                state.user = action.payload;
+                const p = action.payload;
+                state.user = p ? { ...p, username: p.username ?? p.name } : null;
             })
             .addCase(login.rejected, (state, action) => {
                 state.loading = false;
@@ -85,7 +79,8 @@ const authSlice = createSlice({
             .addCase(checkAuth.fulfilled, (state, action) => {
                 state.loading = false;
                 state.isAuthenticated = true;
-                state.user = action.payload;
+                const p = action.payload;
+                state.user = p ? { ...p, username: p.username ?? p.name } : null;
             })
             .addCase(checkAuth.rejected, (state, action) => {
                 state.loading = false;
@@ -93,6 +88,14 @@ const authSlice = createSlice({
                 state.error = action.payload;
             });
     },
+});
+
+export const logoutApi = createAsyncThunk('auth/logoutApi', async (_, { dispatch }) => {
+    await fetch(`${'https://share.d-dimitrov.eu'}/api/logout`, {
+        method: 'POST',
+        credentials: 'include',
+    });
+    dispatch(logout());
 });
 
 export const { logout } = authSlice.actions;

@@ -6,29 +6,25 @@ import withClickOutside from "../Helper-components/Click-outside/WithClickOutSid
 import ScrollTop from "../Helper-components/scrollToTop/scrollTop";
 import {useTranslation} from "react-i18next";
 import LoaderHTML from "../loader/LoaderHTML";
+import { useStoredLanguage } from "../lib/useStoredLanguage";
+import { getStoredLanguage } from "../lib/stored-language";
 
 const AboutHtml = forwardRef(({open, setOpen}, ref) => {
-    // property
-    // imported from library
     const [active, setActive] = useState(-1);
     const [accordion, setAccordion] = useState(accordianBG);
     const [hideDiv, setHideDiv] = useState(true);
     const {t} = useTranslation();
     const [loading, setLoading] = useState(true);
-    // localStorage
-    if (typeof window !== 'undefined') {
-        let lang = localStorage.getItem('i18nextLng');
-        // update data
-        useEffect(() => {
-            if (lang === "bg") {
-                setAccordion(accordianBG);
-            } else {
-                setAccordion(accordianEN);
-            }
-        }, [lang]);
-    }
+    const lang = useStoredLanguage();
+
     useEffect(() => {
-        // Симулираме зареждане (например от API или изображения)
+        if (lang === "bg") {
+            setAccordion(accordianBG);
+        } else {
+            setAccordion(accordianEN);
+        }
+    }, [lang]);
+    useEffect(() => {
         setTimeout(() => {
             setLoading(false);
         }, 2000)
@@ -41,6 +37,11 @@ const AboutHtml = forwardRef(({open, setOpen}, ref) => {
             setActive(index);
             setHideDiv(false);
         }
+    };
+    const downloadCV = () => {
+        const currentLang = getStoredLanguage();
+        const url = currentLang === 'bg' ? '/cv/cv - eng.Dimitar Dimitrov.pdf' : '/cv/cv - инж. Димитър Димитров.pdf';
+        window.open(url, '_blank');
     };
     const closeDiv = () => {
         if (!open && !hideDiv) {
@@ -66,6 +67,9 @@ const AboutHtml = forwardRef(({open, setOpen}, ref) => {
                     onClick={closeDiv}>
                     <span className="about-me-text margin-15">{t("whoIam")}</span>
                     <span className="about-me-text">{t("goals")}</span>
+                    <div className="margin-20">
+                        <button className="cv-download" onClick={downloadCV}>{t("cv")}</button>
+                    </div>
                     <ul className=" text-align-justify accordian">
                         {accordion.map((item, index) => {
                             return (

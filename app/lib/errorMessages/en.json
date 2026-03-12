@@ -1,0 +1,7 @@
+{
+  "username_required": "Username is required",
+  "password_required": "Password is required",
+  "invalid_credentials": "Invalid username or password",
+  "max_attempts": "Maximum attempts exceeded. Contact administrator: ",
+  "internal_error": "Internal error. Please try again later."
+}

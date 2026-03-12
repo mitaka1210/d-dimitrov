@@ -4,6 +4,7 @@ import React, {useEffect, useState} from 'react';
 import dynamic from "next/dynamic";
 import './cardAquariums.scss';
 import CardAquariumsHTML from "./CardAquariumsHTML";
+import { useStoredLanguage } from "../lib/useStoredLanguage";
 
 const CardAquariumsHtml = dynamic(
     () => import('./CardAquariumsHTML'),
@@ -18,13 +19,11 @@ const Navigation = dynamic(
     {ssr: false}
 );
 const Page = () => {
-    const [language, setLanguage] = useState('en');
+    const storedLang = useStoredLanguage();
 
     useEffect(() => {
-        const storedLang  = localStorage.getItem("i18nextLng") || 'en'; // Достъп до localStorage само в браузъра
-        setLanguage(storedLang);
-        document.title = storedLang ===  'bg' ? 'Блог - Димитър Димитров' : 'Blog - Dimitar Dimitrov';
-    }, []);
+        document.title = storedLang === 'bg' ? 'Блог - Димитър Димитров' : 'Blog - Dimitar Dimitrov';
+    }, [storedLang]);
   return (
     <div>
       <Navigation/>

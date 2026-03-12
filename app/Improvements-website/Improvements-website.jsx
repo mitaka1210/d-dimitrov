@@ -4,19 +4,13 @@ import { useTranslation } from "react-i18next";
 import LoaderHTML from "../loader/LoaderHTML";
 import {accordianBG} from "../../content-BG";
 import {accordianEN} from "../../content-EN";
+import { useStoredLanguage } from "../lib/useStoredLanguage";
 
 export default function ImprovementsWebsite() {
   const [loading, setLoading] = useState(true);
-  const [changeLang, setChangeLang] = useState('bg');
+  const changeLang = useStoredLanguage();
   const { t } = useTranslation();
-  // localStorage
-  if (typeof window !== 'undefined') {
-    let getLang = localStorage.getItem('i18nextLng');
-    // update data
-    useEffect(() => {
-      setChangeLang(getLang)
-    }, [getLang]);
-  }
+
   useEffect(() => {
     setLoading(false);
   }, []);

@@ -151,5 +151,6 @@
   "financialCalculator": "Financial calculator",
   "financialCalculatorSubText": "\uD83D\uDCB0 What does this calculator do? I created this financial calculator to help you easily calculate your net salary, social contributions, taxes, and monthly expenses. Enter your gross salary, food expenses, mortgage and other costs - and you will get a clear idea of what actually remains in your pocket.",
   "investTracking": "Investment tracking",
-  "investTrackingSubText": "\uD83D\uDCB8 This investment tracking tool is designed to help you monitor and manage your investment portfolio effectively. With this tool, you can easily track the performance of your investments, analyze returns, and make informed decisions to optimize your financial growth."
+  "investTrackingSubText": "\uD83D\uDCB8 This investment tracking tool is designed to help you monitor and manage your investment portfolio effectively. With this tool, you can easily track the performance of your investments, analyze returns, and make informed decisions to optimize your financial growth.",
+  "cv": "Autobiography"
 }
