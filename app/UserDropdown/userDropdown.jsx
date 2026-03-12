@@ -1,22 +1,26 @@
 // components/UserDropdown.js
 import {useEffect, useState} from "react";
+import {useDispatch} from "react-redux";
 import TruncateText from "../Helper-components/truncateText/truncateText";
 import {signOut} from "next-auth/react";
+import {logoutApi} from "../../store/login/loginSlice";
 
 export default function UserDropdown({userLoginName}) {
     const [open, setOpen] = useState(false);
-    const [userName, setUsername] = useState(userLoginName || ''); // Initialize with userLoginName prop
+    const [userName, setUsername] = useState(userLoginName || "");
+    const dispatch = useDispatch();
     useEffect(() => {
-        setUsername(userLoginName)
-        console.log("pesho", userLoginName);
-    }, [userLoginName])
+        setUsername(userLoginName);
+    }, [userLoginName]);
     const handleLogout = () => {
-        signOut({ callbackUrl: "/" }).then((r) => {});
-        localStorage.clear();
+        console.log("pesho", userName);
+        signOut({callbackUrl: "/"}).then((r) => {
+        });
+        dispatch(logoutApi());
     };
 
     return (
-        <div style={{ position: "relative", display: "inline-block" }}>
+        <div style={{position: "relative", display: "inline-block"}}>
             <button
                 onClick={() => setOpen((v) => !v)}
                 style={{
@@ -28,8 +32,9 @@ export default function UserDropdown({userLoginName}) {
                 aria-label="User menu"
             >
                 <svg width="32" height="32" viewBox="0 0 24 24" fill="none">
-                    <circle cx="12" cy="8" r="4" stroke="#333" strokeWidth="2" />
-                    <path d="M4 20c0-4 16-4 16 0" stroke="#333" strokeWidth="2" />
+                    <circle cx="12" cy="8" r="4" stroke="#333" strokeWidth="2"/>
+                    <path d="M4 20c0-4 16-4 16 0" stroke="#333"
+                          strokeWidth="2"/>
                 </svg>
             </button>
             {open && (
@@ -47,7 +52,11 @@ export default function UserDropdown({userLoginName}) {
                         padding: "12px",
                     }}
                 >
-                    <div style={{ marginBottom: "12px", fontWeight: "bold", color: "#333" }}>
+                    <div style={{
+                        marginBottom: "12px",
+                        fontWeight: "bold",
+                        color: "#333"
+                    }}>
                         {TruncateText(userName, 20)}
                     </div>
                     <button

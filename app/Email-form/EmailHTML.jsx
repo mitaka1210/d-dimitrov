@@ -5,9 +5,11 @@ import React, {useEffect, useRef, useState} from "react";
 import "./form.scss";
 import {useTranslation} from "react-i18next";
 import LoaderHTML from "../loader/LoaderHTML";
+import { useStoredLanguage } from "../lib/useStoredLanguage";
 
 const EmailHtml = () => {
   const {t} = useTranslation();
+  const storedLang = useStoredLanguage();
   const [loading, setLoading] = useState(true);
   const [msgTrue, setMsgTrue] = useState(false);
   let [emptyInputName, setEmptyInputName] = useState(false);
@@ -16,14 +18,10 @@ const EmailHtml = () => {
   const [inputValueText, setInputValueText] = useState("");
   const [inputValueEmail, setInputValueEmail] = useState("");
   const [inputValueName, setInputValueName] = useState("");
-  const [language, setLanguage] = useState('en');
   const ref = useRef(null);
   useEffect(() => {
-    const storedLang  = localStorage.getItem("i18nextLng") || 'en'; // Достъп до localStorage само в браузъра
-    setLanguage(storedLang);
-    document.title = storedLang ===  'bg' ? 'Контакти - инж.Димитров' : 'Contacts' +
-    ' - eng.Dimitrov';
-  }, []);
+    document.title = storedLang === 'bg' ? 'Контакти - инж.Димитров' : 'Contacts' + ' - eng.Dimitrov';
+  }, [storedLang]);
   const showPopUp = () => {
     setMsgTrue(!msgTrue);
   };

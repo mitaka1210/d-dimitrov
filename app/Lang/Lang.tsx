@@ -2,6 +2,7 @@ import React, {useEffect} from "react";
 import Link from "next/link";
 import Dropdown from "../DropDown/Dropdown";
 import images from "../../assets/images/image";
+import { useStoredLanguage } from "../lib/useStoredLanguage";
 export interface MenuItem {
   title: string;
   route?: string;
@@ -41,7 +42,7 @@ const menuItemsBG: MenuItem[] = [
 ];
 
 export default function ChangeLang() {
-  let lang = localStorage.getItem("i18nextLng");
+  const lang = useStoredLanguage();
   let img = images;
   // useEffect(() => {
   // }, [lang]);

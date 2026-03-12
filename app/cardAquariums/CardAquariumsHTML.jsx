@@ -72,8 +72,7 @@ setTimeout(() => {
               {article.status === true && articlesInfo.length > 0 ?
                <div className="blog-card margin-15" key={index}>
                 <div className="meta">
-                 <div className="photo" style={{ backgroundImage: `url(${img[7].url.src})` }}
-                 ></div>
+                 <div className="photo" style={{ backgroundImage: `url(${img[7].url.src})` }}></div>
                  <ul className="details">
                   <li className="author">
                    <a>{article.title.substring(0, 60)}....</a></li>

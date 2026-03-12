@@ -1,5 +1,7 @@
+import { getStoredLanguage } from "../lib/stored-language";
+
 export const validLoginInput = (username, password) => {
-    const storedLang  = localStorage.getItem("i18nextLng") || 'en'; // Достъп до localStorage само в браузъра
+    const storedLang = getStoredLanguage();
     let errors = {};
 
     if (!username) {

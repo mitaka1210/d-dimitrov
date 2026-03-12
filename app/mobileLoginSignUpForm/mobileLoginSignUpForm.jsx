@@ -34,11 +34,10 @@ function MobileLoginSignUpForm() {
             return;
         }
         const result = await dispatch(login({username, password, role: "user"}));
-        if (result.payload.token) {
-            // Повикай checkAuth след login
+        if (result.meta?.requestStatus === 'fulfilled') {
             dispatch(checkAuth());
-             router.push('/');
-        }else {
+            router.push('/');
+        } else {
             // Може би покажи съобщение за неуспешен логин
             console.error("Login failed: ", result.error || "Unknown error");
             setIsLoggedIn(true); // това вече го имаш за да покаже error съобщение

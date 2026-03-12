@@ -4,6 +4,7 @@ import { Provider } from "react-redux";
 import store from "../store/storeState/store";
 import { SessionProvider } from "next-auth/react";
 import React from "react";
+import AuthInit from "./AuthInit/AuthInit";
 
 export default function Providers({
                                       children,
@@ -15,7 +16,9 @@ export default function Providers({
     return (
         <SessionProvider session={session}>
             <Provider store={store}>
-                {children}
+                <AuthInit>
+                    {children}
+                </AuthInit>
             </Provider>
         </SessionProvider>
     );

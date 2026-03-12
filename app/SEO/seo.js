@@ -7,7 +7,6 @@ const SEO = ({ title, description, url, lang = 'en' }) => {
 
     return (
         <Head>
-            <title>{title}</title>
             <meta name="description" content={description} />
             <meta name="keywords" content="blog, programming, frontend, React, Angular, aquariums, аквариуми, програмиране" />
             <meta name="author" content="Dimitar Dimitrov" />

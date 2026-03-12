@@ -1,9 +1,11 @@
 "use client";
-import React, {useEffect, useState} from "react";
+import React, {useState} from "react";
 import styled from "styled-components";
 import {useTranslation} from "react-i18next";
 import ChangeLang from "../Lang/Lang";
 import {signOut, useSession} from "next-auth/react";
+import {useDispatch, useSelector} from "react-redux";
+import {logoutApi} from "../../store/login/loginSlice";
 import Link from "next/link";
 
 const COLORS = {
@@ -133,20 +135,15 @@ function HamburgerMenu() {
   const {t} = useTranslation();
   const [click, setClick] = useState(false);
   const handleClick = () => setClick(!click);
+  const dispatch = useDispatch();
   const { data: session } = useSession();
-  const [userName, setUserName] = useState("");
-  useEffect(() => {
-    if (session && session.user) {
-      setUserName(session.user.name);
-    }else if(localStorage.getItem('token') !== undefined && localStorage.getItem('token') !== null && localStorage.getItem('token') !== ''){
-      setUserName(localStorage.getItem('role'));
-    }
-  }, [userName]);
+  const authUser = useSelector((state) => state.auth?.user);
+  const isAuthenticated = useSelector((state) => state.auth?.isAuthenticated);
+  const userName = session?.user?.name ?? (isAuthenticated && authUser ? (authUser.username ?? authUser.name ?? "") : "");
 
   const goToHome = () => {
     signOut({ callbackUrl: "/" }).then((r) => {});
-    localStorage.removeItem("token");
-    localStorage.removeItem("role");
+    dispatch(logoutApi());
   };
   return (
     <>

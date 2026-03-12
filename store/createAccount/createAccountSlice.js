@@ -14,6 +14,7 @@ export const createAccount = createAsyncThunk('account/createAccount', async (us
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify(userData),
+            credentials: 'include',
         });
 
         const data = await response.json();
@@ -22,7 +23,6 @@ export const createAccount = createAsyncThunk('account/createAccount', async (us
             return thunkAPI.rejectWithValue(data); // ще влезе в .rejected и catch
         }
 
-        localStorage.setItem('token', data.token);
         return data;
     } catch (err) {
         return thunkAPI.rejectWithValue({ message: 'Неуспешна регистрация', error: err });
