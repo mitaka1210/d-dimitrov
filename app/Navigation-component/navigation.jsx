@@ -31,6 +31,10 @@ const Navigation = () => {
     const ImprovementsWebsite = () => {
         router.push("/Improvements-website");
     };
+    const bitcoinStudy = () => {
+        const url = "https://studybitcoin.space/";
+        window.open(url, "_blank");
+    };
     return (
         <header
             className="maxWidthAndHeight bgr-dark flex-horizontal-container justify-content-end text-align-center">
@@ -52,7 +56,8 @@ const Navigation = () => {
                     >
                         <span>🚀</span>
                     </div>
-                    <div className="bitcoin-logo-improvements">
+                    <div className="bitcoin-logo-improvements"
+                         onClick={bitcoinStudy}>
                         <img src={bitcoin[24].url.src} alt="React-website"/>
                     </div>
                     <ul className="justify-content-end maxWidthAndHeight navigation padding-0">
