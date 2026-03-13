@@ -35,7 +35,7 @@ const AboutHtml = forwardRef(({open, setOpen}, ref) => {
     };
     const downloadCV = () => {
         const currentLang = getStoredLanguage();
-        const url = currentLang === "bg" ? "/cv/cv - инж. Димитър Димитров.pdf" : "/cv/cv - eng.Dimitar Dimitrov.pdf";
+        const url = currentLang === "bg" ? "/cv/CV-инж.Димитър Димитров.pdf" : "/cv/CV-eng.Dimitar Dimitrov.pdf";
         window.open(url, "_blank");
     };
     const closeDiv = () => {
