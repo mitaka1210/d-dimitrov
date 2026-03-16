@@ -23,8 +23,9 @@ jobs:
         run: npm ci
 
       - name: 🔍 Run Lint
-        # Тук просто викаме скрипта от package.json
+        # Форсираме изпълнението точно в корена на хранилището
         run: npm run lint
+        working-directory: ${{ github.workspace }}
 
   test:
     name: 🧪 Unit Tests (Jest)
