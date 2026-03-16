@@ -10,6 +10,10 @@ jobs:
   eslint_check:
     name: 🔍 Lint & Code Quality
     runs-on: ubuntu-latest
+    # Това принуждава всички стъпки в този job да стартират от корена на хранилището
+    defaults:
+      run:
+        working-directory: ./
     steps:
       - name: 📥 Checkout Code
         uses: actions/checkout@v4
@@ -23,9 +27,10 @@ jobs:
         run: npm ci
 
       - name: 🔍 Run Lint
-        # Форсираме изпълнението точно в корена на хранилището
-        run: npm run lint
-        working-directory: ${{ github.workspace }}
+        # Стартираме го директно през npx, за да избегнем проблеми с обвивката на npm
+        run: npx next lint
+        env:
+          CI: true
 
   test:
     name: 🧪 Unit Tests (Jest)
