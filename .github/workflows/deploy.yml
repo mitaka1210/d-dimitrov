@@ -27,8 +27,8 @@ jobs:
         run: npm ci
 
       - name: 🔍 Run Lint
-        # Стартираме го директно през npx, за да избегнем проблеми с обвивката на npm
-        run: npx next lint
+        # Next.js 16 няма подкоманда "lint" в CLI — използваме eslint от package.json
+        run: npm run lint
         env:
           CI: true
 
