@@ -3,7 +3,8 @@ name: 🚀 CI/CD Pipeline
 on:
   push:
     branches:
-      - main
+      - stage
+  workflow_dispatch:
 
 jobs:
   lint:
