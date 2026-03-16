@@ -23,8 +23,8 @@ jobs:
         run: npm ci
 
       - name: 🔍 Run Lint
-        # Използваме абсолютен път, за да спре Next.js да гадае
-        run: npx next lint --dir $GITHUB_WORKSPACE
+        # Тук просто викаме скрипта от package.json
+        run: npm run lint
 
   test:
     name: 🧪 Unit Tests (Jest)
