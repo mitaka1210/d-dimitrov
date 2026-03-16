@@ -11,12 +11,20 @@ jobs:
     name: 🔍 Lint & Code Quality
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - name: 📥 Checkout Code
+        uses: actions/checkout@v4
+
+      - name: 🟢 Setup Node.js
+        uses: actions/setup-node@v4
         with:
           node-version: 20
-      - run: npm ci
-      - run: npm run lint
+
+      - name: 📦 Install Dependencies
+        run: npm ci
+
+      - name: 🔍 Run Lint
+        # Използваме абсолютен път, за да спре Next.js да гадае
+        run: npx next lint --dir $GITHUB_WORKSPACE
 
   test:
     name: 🧪 Unit Tests (Jest)
