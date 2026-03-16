@@ -11,6 +11,7 @@ import {
 import {fetchArticles} from "../../store/getArticles/getArticlesSlice";
 import LoaderHTML from "../loader/LoaderHTML";
 import SocialShare from "../Helper-components/socialShare/socialShare";
+import { getUploadImageUrl } from "../Helper-components/utils/imageUrl";
 
 const ReadHtml = () => {
     const dispatch = useDispatch();
@@ -146,7 +147,11 @@ const ReadHtml = () => {
                      {sectionArr.map((section, index) => (
                          <div key={index} className="read-section">
                              <h5 className="read-section-title text-align-center">{index + 1}.{section.title}</h5>
-                             {/*<p className="read-section-text">{section.content}</p>*/}
+                             {section.image_url && getUploadImageUrl(section.image_url) && (
+                                 <div className="article-image-container">
+                                     <img src={getUploadImageUrl(section.image_url)} alt={section.title} />
+                                 </div>
+                             )}
                              <ul>{formattedContent(section.content)}</ul>
                          </div>
                      ))}
