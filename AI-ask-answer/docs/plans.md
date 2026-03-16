@@ -4,6 +4,7 @@
 
 ---
 
-## Планове (да се попълнят)
+## Планове
 
-- *Добавете тук планове, цели и приоритети.*
+- **[GitHub Actions (self-hosted) – деплой при push в master](./plan-github-actions-master-deploy.md)** – автоматично пускане на `test_deploy.sh` при push в `master` чрез self-hosted runner.
+- **[API за upload снимки и показване в блога](./plan-upload-images-api.md)** – API route за обслужване на снимки от `upload/`, показване в карточките и в страницата за четене на статия.
