@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import path from "path";
 import fs from "fs";
+import { Readable } from "stream";
 
 const UPLOAD_DIR = path.join(process.cwd(), "upload");
 
@@ -53,8 +54,10 @@ export async function GET(
   const ext = path.extname(resolved).toLowerCase();
   const contentType = MIME[ext] ?? "application/octet-stream";
 
-  const stream = fs.createReadStream(resolved);
-  return new NextResponse(stream, {
+  const nodeStream = fs.createReadStream(resolved);
+  const webStream = Readable.toWeb(nodeStream) as unknown as ReadableStream<Uint8Array>;
+
+  return new NextResponse(webStream, {
     status: 200,
     headers: {
       "Content-Type": contentType,
