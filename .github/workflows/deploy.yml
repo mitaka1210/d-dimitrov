@@ -28,7 +28,7 @@ jobs:
 
       - name: 🔍 Run Lint
         # Стартираме го директно през npx, за да избегнем проблеми с обвивката на npm
-        run: npx next lint
+        run: npm next lint
         env:
           CI: true
 
