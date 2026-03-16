@@ -7,7 +7,7 @@
     "build:prod": "dotenv -e .env.production -- next build && next start",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint ."
+    "lint": "next lint"
   },
   "dependencies": {
     "@emotion/react": "^11.14.0",
