@@ -37,5 +37,4 @@ docker-compose.rollback.yml
 /assets/upload/.stfolder
 .env.development
 .env.production
-package-lock.json
 .env
