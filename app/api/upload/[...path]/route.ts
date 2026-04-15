@@ -3,7 +3,16 @@ import path from "path";
 import fs from "fs";
 import { Readable } from "stream";
 
-const UPLOAD_DIR = path.join(process.cwd(), "upload");
+const isDev = process.env.NODE_ENV === "development";
+
+// В dev: първо public/article_images/, после upload/
+// В prod: само upload/ (Docker volume)
+const UPLOAD_DIRS = isDev
+  ? [
+      path.join(process.cwd(), "public", "article_images"),
+      path.join(process.cwd(), "upload"),
+    ]
+  : [path.join(process.cwd(), "upload")];
 
 const MIME: Record<string, string> = {
   ".png": "image/png",
@@ -13,6 +22,28 @@ const MIME: Record<string, string> = {
   ".webp": "image/webp",
   ".svg": "image/svg+xml",
 };
+
+async function findFile(pathSegments: string[]): Promise<string | null> {
+  for (const dir of UPLOAD_DIRS) {
+    const filePath = path.join(dir, ...pathSegments);
+    const resolved = path.normalize(filePath);
+
+    // Security check
+    if (!resolved.startsWith(dir)) {
+      continue;
+    }
+
+    try {
+      const stat = await fs.promises.stat(resolved);
+      if (stat.isFile()) {
+        return resolved;
+      }
+    } catch {
+      // File not found in this directory, try next
+    }
+  }
+  return null;
+}
 
 export async function GET(
   _req: NextRequest,
@@ -29,26 +60,9 @@ export async function GET(
     return NextResponse.json({ error: "Invalid path" }, { status: 400 });
   }
 
-  const filePath = path.join(UPLOAD_DIR, ...pathSegments);
-  const resolved = path.normalize(filePath);
-  if (!resolved.startsWith(UPLOAD_DIR)) {
-    return NextResponse.json({ error: "Invalid path" }, { status: 400 });
-  }
-
-  try {
-    const stat = await fs.promises.stat(resolved);
-    if (!stat.isFile()) {
-      return NextResponse.json({ error: "Not a file" }, { status: 404 });
-    }
-  } catch (e) {
-    const code = (e as NodeJS.ErrnoException)?.code;
-    if (code === "ENOENT") {
-      return NextResponse.json({ error: "Not found" }, { status: 404 });
-    }
-    return NextResponse.json(
-      { error: "Server error" },
-      { status: 500 }
-    );
+  const resolved = await findFile(pathSegments);
+  if (!resolved) {
+    return NextResponse.json({ error: "Not found" }, { status: 404 });
   }
 
   const ext = path.extname(resolved).toLowerCase();

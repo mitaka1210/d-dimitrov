@@ -7,7 +7,9 @@
     "build:prod": "dotenv -e .env.production -- next build && next start",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "format": "prettier --write .",
+    "format:check": "prettier --check ."
   },
   "dependencies": {
     "@emotion/react": "^11.14.0",
@@ -21,6 +23,7 @@
     "@mui/material": "^7.3.5",
     "@react-oauth/google": "^0.12.2",
     "@reduxjs/toolkit": "^2.10.1",
+    "@tailwindcss/postcss": "^4.1.17",
     "autotyping": "^1.2.6",
     "axios": "^1.13.2",
     "bcrypt": "^6.0.0",
@@ -54,8 +57,7 @@
     "typed.js": "^2.1.0",
     "typewriter-effect": "^2.22.0",
     "undici": "^7.16.0",
-    "vercel": "^32.0.1",
-    "@tailwindcss/postcss": "^4.1.17"
+    "vercel": "^32.0.1"
   },
   "devDependencies": {
     "@types/bcrypt": "^6.0.0",
@@ -70,8 +72,11 @@
     "dotenv-cli": "^11.0.0",
     "eslint": "^9",
     "eslint-config-next": "16.0.3",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-prettier": "^5.5.5",
     "eslint-plugin-react-hooks": "^7.0.1",
     "postcss": "^8",
+    "prettier": "^3.8.3",
     "tailwindcss": "^4.1.17",
     "typescript": "^5"
   },

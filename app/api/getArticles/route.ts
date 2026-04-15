@@ -13,6 +13,7 @@ interface ArticleRow {
     section_content: string | null;
     section_position: number | null;
     section_image_url: string | null;
+    main_image_url: string | null;
 }
 
 export async function GET() {
@@ -21,6 +22,7 @@ export async function GET() {
             SELECT a.id                AS article_id,
                    a.title             AS article_title,
                    a.created_at        AS article_created_at,
+                   a.main_image_url    AS main_image_url,
                    a.status            AS status,
                    s.id                AS section_id,
                    s.title             AS section_title,
@@ -34,19 +36,18 @@ export async function GET() {
 
         const result = await pool.query(articlesQuery);
         const rows = result.rows as unknown as ArticleRow[];
-
+        console.log('pesho', rows)
         const articlesMap: Record<number, any> = {};
 
         for (const row of rows) {
             const articleId = row.article_id;
-
             if (!articlesMap[articleId]) {
                 articlesMap[articleId] = {
                     id: articleId,
                     title: row.article_title,
                     status: row.status,
                     createData: row.article_created_at,
-                    images: row.section_image_url,
+                    images: row.main_image_url,
                     sections: [],
                 };
             }
