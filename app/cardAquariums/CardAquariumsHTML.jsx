@@ -9,19 +9,16 @@ import { getUploadImageUrl } from '../Helper-components/utils/imageUrl';
 import { fetchArticles } from '../../store/getArticles/getArticlesSlice';
 import { t } from 'i18next';
 import LoaderHTML from '../loader/LoaderHTML';
+import { useStoredLanguage } from '../lib/useStoredLanguage';
 
 const CardAquariumsHTML = () => {
  const dispatch = useDispatch();
- setTimeout(() => {
-  // const { t } = useTranslation();
- }, 2000);
  const router = useRouter();
+ const lang = useStoredLanguage();
  const status = useSelector((state) => state.articles.status);
  useEffect(() => {
-  if (status === 'idle') {
-   dispatch(fetchArticles());
-  }
- }, [status, dispatch]);
+  dispatch(fetchArticles(lang));
+ }, [lang, dispatch]);
  const loading = useSelector((state) => state.articles);
  const articlesInfo = useSelector((state) => state.articles.data);
  let img = images;

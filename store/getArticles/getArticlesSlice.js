@@ -3,8 +3,9 @@ import {
  validateArticles
 } from "../../helperMethods/checkArticleSectionNotNull/checkArticleSectionNotNull";
 
-export const fetchArticles = createAsyncThunk('getArticles', async () => {
- const response = await fetch('/api/getArticles');
+export const fetchArticles = createAsyncThunk('getArticles', async (lang) => {
+ const url = lang ? `/api/getArticles?lang=${encodeURIComponent(lang)}` : '/api/getArticles';
+ const response = await fetch(url);
  if ( !response.ok) {
   console.error('API Error:', response.statusText);
   throw new Error('Failed to fetch articles');

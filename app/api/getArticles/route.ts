@@ -1,6 +1,6 @@
 export const dynamic = "force-dynamic";
 export const revalidate = 0; // Добави и това за всеки случай
-import {NextResponse} from "next/server";
+import {NextRequest, NextResponse} from "next/server";
 import pool from "../../../database/db";
 
 interface ArticleRow {
@@ -16,27 +16,54 @@ interface ArticleRow {
     main_image_url: string | null;
 }
 
-export async function GET() {
+export async function GET(request: NextRequest) {
     try {
-        const articlesQuery = `
-            SELECT a.id                AS article_id,
-                   a.title             AS article_title,
-                   a.created_at        AS article_created_at,
-                   a.main_image_url    AS main_image_url,
-                   a.status            AS status,
-                   s.id                AS section_id,
-                   s.title             AS section_title,
-                   s.content           AS section_content,
-                   s.position          AS section_position,
-                   s.section_image_url AS section_image_url
-            FROM articles a
-                     LEFT JOIN sections s ON a.id = s.article_id
-            ORDER BY a.id, s.position;
-        `;
+        const { searchParams } = new URL(request.url);
+        const lang = searchParams.get("lang");
 
-        const result = await pool.query(articlesQuery);
+        let articlesQuery: string;
+        let queryParams: string[];
+
+        if (lang) {
+            articlesQuery = `
+                SELECT a.id                                   AS article_id,
+                       COALESCE(at.title, a.title)            AS article_title,
+                       a.created_at                           AS article_created_at,
+                       a.main_image_url                       AS main_image_url,
+                       a.status                               AS status,
+                       s.id                                   AS section_id,
+                       COALESCE(st.title, s.title)            AS section_title,
+                       COALESCE(st.content, s.content)        AS section_content,
+                       s.position                             AS section_position,
+                       s.section_image_url                    AS section_image_url
+                FROM articles a
+                         LEFT JOIN article_translations at ON at.article_id = a.id AND at.language = $1
+                         LEFT JOIN sections s ON a.id = s.article_id
+                         LEFT JOIN section_translations st ON st.section_id = s.id AND st.language = $1
+                ORDER BY a.id, s.position;
+            `;
+            queryParams = [lang];
+        } else {
+            articlesQuery = `
+                SELECT a.id                AS article_id,
+                       a.title             AS article_title,
+                       a.created_at        AS article_created_at,
+                       a.main_image_url    AS main_image_url,
+                       a.status            AS status,
+                       s.id                AS section_id,
+                       s.title             AS section_title,
+                       s.content           AS section_content,
+                       s.position          AS section_position,
+                       s.section_image_url AS section_image_url
+                FROM articles a
+                         LEFT JOIN sections s ON a.id = s.article_id
+                ORDER BY a.id, s.position;
+            `;
+            queryParams = [];
+        }
+
+        const result = await pool.query(articlesQuery, queryParams);
         const rows = result.rows as unknown as ArticleRow[];
-        console.log('pesho', rows)
         const articlesMap: Record<number, any> = {};
 
         for (const row of rows) {

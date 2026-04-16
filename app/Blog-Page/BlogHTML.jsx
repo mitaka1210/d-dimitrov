@@ -8,12 +8,14 @@ import LoaderHTML from "../loader/LoaderHTML";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchArticles } from "../../store/getArticles/getArticlesSlice";
 import NewsletterSignup from "../newsletterSignup/newsletterSignup";
+import { useStoredLanguage } from "../lib/useStoredLanguage";
 
 const BlogHtml = () => {
     // All hooks called unconditionally and in a stable order
     const { t } = useTranslation();
     const dispatch = useDispatch();
     const router = useRouter();
+    const lang = useStoredLanguage();
 
     // Consolidated selector so Hooks count/order doesn't change
     const { status, data: articlesInfo = [], isLoading } = useSelector(
@@ -25,7 +27,7 @@ const BlogHtml = () => {
 
     useEffect(() => {
         if (status === "idle") {
-            dispatch(fetchArticles());
+            dispatch(fetchArticles(lang));
         }
 
         if (status === "succeeded") {
