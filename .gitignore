@@ -38,3 +38,8 @@ docker-compose.rollback.yml
 .env.development
 .env.production
 .env
+
+
+# AI Agent configuration and docs
+.claude/*
+tools/tmp/
