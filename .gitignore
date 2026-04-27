@@ -41,5 +41,5 @@ docker-compose.rollback.yml
 
 
 # AI Agent configuration and docs
-.claude/
+.claude/*
 tools/tmp/
