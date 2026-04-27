@@ -7,42 +7,28 @@ on:
   workflow_dispatch:
 
 jobs:
-  build:
-    name: 🏗️ Build
+  deploy:
+    name: 🚀 Deploy to Production
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      
-      - uses: actions/setup-node@v4
+      - name: 📥 Checkout Code
+        uses: actions/checkout@v4
+
+      - name: 🟢 Setup Node.js
+        uses: actions/setup-node@v4
         with:
           node-version: 20
-          
-      - run: npm ci
-      
-      - run: npm run build
+
+      - name: 📦 Install Dependencies
+        run: npm ci
+
+      - name: 🏗️ Build Project
+        run: npm run build
         env:
           NODE_ENV: production
-          
-      - name: 📦 Запазване на build артефакти
-        uses: actions/upload-artifact@v4
-        with:
-          name: next-build
-          path: .next
 
-  deploy:
-    name: 🚀 Deploy
-    runs-on: ubuntu-latest
-    needs: build
-    steps:
-      - uses: actions/checkout@v4
-      
-      - name: 📥 Възстановяване на build артефакти
-        uses: actions/download-artifact@v4
-        with:
-          name: next-build
-          path: .next
-          
-      - uses: appleboy/ssh-action@v1.0.3
+      - name: 🚀 Deploy via SSH
+        uses: appleboy/ssh-action@v1.0.3
         with:
           host: ${{ secrets.SSH_HOST }}
           username: ${{ secrets.SSH_USER }}
@@ -50,6 +36,4 @@ jobs:
           port: ${{ secrets.SSH_PORT }}
           script: |
             cd ${{ secrets.PROJECT_DIR }}
-            git pull
-            npm ci
-            pm2 restart all
+            bash test_deploy.sh
