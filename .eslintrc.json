@@ -1,0 +1,13 @@
+{
+ "extends": [
+ "next/core-web-vitals",
+ "plugin:prettier/recommended"
+],
+ "rules": {
+ "prettier/prettier": "warn",
+  "react/no-unescaped-entities": "off",
+  "react/display-name": "off",
+  "@next/next/no-img-element": "off",
+  "react-hooks/exhaustive-deps": "warn"
+}
+}
