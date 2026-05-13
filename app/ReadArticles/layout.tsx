@@ -1,5 +1,10 @@
 export const metadata = {
-  title: "Article",
+  title: 'Статия - Dimitar Dimitrov',
+  description: 'Прочети статия за аквариуми',
+  openGraph: {
+    type: 'article' as const,
+    siteName: 'Dimitar Dimitrov',
+  },
 };
 
 export default function ReadArticlesLayout({
