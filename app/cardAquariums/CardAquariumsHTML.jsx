@@ -24,6 +24,7 @@ const CardAquariumsHTML = () => {
  }, [status, dispatch]);
  const loading = useSelector((state) => state.articles);
  const articlesInfo = useSelector((state) => state.articles.data);
+ const showAquariumsArticlesOnly = articlesInfo.filter((article) => article.category === 'Аквариуми');
  let img = images;
  if (articlesInfo.length === 0 && status === 'failed') {
   router.push('/');
@@ -58,14 +59,14 @@ const CardAquariumsHTML = () => {
       </div>
 
       <div className="flex flex-wrap mx-auto mt-6 border-t pt-12 justify-center">
-       {articlesInfo.length > 0
-        ? articlesInfo.map((article, index) => {
+       {showAquariumsArticlesOnly.length > 0
+        ? showAquariumsArticlesOnly.map((article, index) => {
            if (article.status === false) {
             backToHome();
            }
            return (
             <div key={index}>
-             {article.status === true && articlesInfo.length > 0 ? (
+             {article.status === true && showAquariumsArticlesOnly.length > 0 ? (
               <div className="blog-card margin-15" key={index}>
                <div className="meta">
                 <div className="photo" style={{ backgroundImage: `url(${getUploadImageUrl(article.images) || img[7].url.src})` }}></div>
