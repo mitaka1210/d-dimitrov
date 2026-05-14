@@ -4,10 +4,10 @@
  * @returns {string | null} URL за img src или null ако path е невалиден
  */
 export function getUploadImageUrl(path) {
-  if (typeof path !== "string" || !path.trim()) return null;
-  const trimmed = path.trim();
-  if (!trimmed.startsWith("/upload/")) return null;
-  const filename = trimmed.slice("/upload/".length);
-  if (!filename) return null;
-  return `/api/upload/${filename}`;
+ if (typeof path !== 'string' || !path.trim()) return null;
+ const trimmed = path.trim();
+ if (!trimmed.startsWith('/upload/')) return null;
+ const filename = trimmed.slice('/upload/'.length);
+ if (!filename) return null;
+ return `/api/upload/${filename}`;
 }

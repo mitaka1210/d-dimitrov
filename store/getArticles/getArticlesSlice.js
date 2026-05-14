@@ -1,11 +1,9 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import {
- validateArticles
-} from "../../helperMethods/checkArticleSectionNotNull/checkArticleSectionNotNull";
+import { validateArticles } from '../../helperMethods/checkArticleSectionNotNull/checkArticleSectionNotNull';
 
 export const fetchArticles = createAsyncThunk('getArticles', async () => {
  const response = await fetch('/api/getArticles');
- if ( !response.ok) {
+ if (!response.ok) {
   console.error('API Error:', response.statusText);
   throw new Error('Failed to fetch articles');
  }
@@ -38,27 +36,29 @@ const articlesSlice = createSlice({
    let articlesArr = [];
    state.data = validateArticles(action.payload);
    state.status = 'succeeded';
-   if (action.payload.error === undefined){
+   if (action.payload.error === undefined) {
     for (let i = 0; i < state.data.length; i++) {
-        if (state.data[i].status === true) {
-         let createArticleDate = new Date(state.data[i].createData).toLocaleString(undefined, {
-          year: 'numeric',
-          month: '2-digit',
-          day: '2-digit',
-          weekday: 'long',
-         });
-         articlesArr.push({
-          create_article_date: createArticleDate,
-          status: state.data[i].status,
-          id: state.data[i].id,
-          title: state.data[i].title,
-          sections: state.data[i].sections,
-          images: state.data[i].images,
-         });        }
+     if (state.data[i].status === true) {
+      let createArticleDate = new Date(state.data[i].createData).toLocaleString(undefined, {
+       year: 'numeric',
+       month: '2-digit',
+       day: '2-digit',
+       weekday: 'long',
+      });
+      articlesArr.push({
+       create_article_date: createArticleDate,
+       status: state.data[i].status,
+       category: state.data[i].category,
+       id: state.data[i].id,
+       title: state.data[i].title,
+       sections: state.data[i].sections,
+       images: state.data[i].images,
+      });
+     }
     }
     //? return last created article first
     state.data = articlesArr;
-   }else {
+   } else {
     state.status = 'failed';
     state.error = true;
     state.error = action.payload.error;

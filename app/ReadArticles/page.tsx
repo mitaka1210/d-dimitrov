@@ -1,42 +1,75 @@
-"use client";
-import React, {useEffect, useState} from 'react';
-import dynamic from "next/dynamic";
+import { headers } from 'next/headers';
+import pool from '../../database/db';
 import './read.scss';
-import SEO from "../SEO/seo";
-import { useStoredLanguage } from "../lib/useStoredLanguage";
+import ReadArticlesContent from './ReadArticlesContent';
 
-const Page = () => {
-    const storedLang = useStoredLanguage();
-    const [pageUrl, setUrl ] = useState('');
+export async function generateMetadata({
+  searchParams,
+}: {
+  searchParams: Promise<{ id?: string }>;
+}) {
+  const { id } = await searchParams;
+  const defaultMeta = {
+    title: 'Статия - Dimitar Dimitrov',
+    description: 'Прочети статия за аквариуми',
+    openGraph: {
+      title: 'Статия - Dimitar Dimitrov',
+      description: 'Прочети статия за аквариуми',
+      type: 'article' as const,
+      siteName: 'Dimitar Dimitrov',
+    },
+  };
 
-    const ReadHtml = dynamic(
-    () => import('./ReadHTML'),
-    {ssr: false}
-  );
-  const FooterHTML = dynamic(
-    () => import('../Footer-page/page'),
-    {ssr: false}
-  );
-  const Navigation = dynamic(
-    () => import('../Navigation-component/navigation'),
-    {ssr: false}
-  );
-    useEffect(() => {
-        setUrl (window.location.href != '' ? window.location.href : window.location.origin);
-    }, []);
-    const title = storedLang === 'bg' ? 'Статия' : 'Article';
-    const description = storedLang === 'bg' ? "Статия за старт на аквариум" : "Article for start of aquarium";
-  return (
-      <>
-      <SEO title={title} description={description} url={pageUrl} lang={storedLang} />
+  if (!id) return defaultMeta;
 
-    <div>
-      <Navigation/>
-      <ReadHtml/>
-      <FooterHTML/>
-    </div>
-    </>
-  );
-};
+  try {
+    const result = await pool.query(
+      `SELECT a.title, s.section_image_url
+       FROM articles a
+       LEFT JOIN sections s ON a.id = s.article_id
+       WHERE a.id = $1
+       ORDER BY s.position
+       LIMIT 1`,
+      [id]
+    );
 
-export default Page;
+    const article = result.rows[0];
+    if (!article) return defaultMeta;
+
+    const headersList = await headers();
+    const host = headersList.get('host') ?? 'localhost:3000';
+    const protocol = process.env.NODE_ENV === 'production' ? 'https' : 'http';
+    const baseUrl = `${protocol}://${host}`;
+    const pageUrl = `${baseUrl}/ReadArticles?id=${id}`;
+
+    const imageUrl = article.section_image_url
+      ? `${baseUrl}/api/upload/${article.section_image_url.replace('/upload/', '')}`
+      : `${baseUrl}/images/start-aqua.jpg`;
+
+    return {
+      title: article.title,
+      description: `Статия: ${article.title}`,
+      openGraph: {
+        title: article.title,
+        description: `Статия: ${article.title}`,
+        url: pageUrl,
+        images: [{ url: imageUrl, width: 1200, height: 630 }],
+        type: 'article',
+        siteName: 'Dimitar Dimitrov',
+      },
+      twitter: {
+        card: 'summary_large_image',
+        title: article.title,
+        description: `Статия: ${article.title}`,
+        images: [imageUrl],
+      },
+    };
+  } catch (err) {
+    console.error('[generateMetadata] DB error:', err);
+    return defaultMeta;
+  }
+}
+
+export default function Page() {
+  return <ReadArticlesContent />;
+}
