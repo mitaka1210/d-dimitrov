@@ -119,11 +119,11 @@ jobs:
     if: always()
     steps:
       - name: Send Telegram Notification
-          uses: appleboy/telegram-action@v1.0.0
-          with:
-            to: ${{ secrets.TELEGRAM_CHAT_ID }}
-            token: ${{ secrets.TELEGRAM_BOT_TOKEN }}
-            message: |
+        uses: appleboy/telegram-action@v1.0.0
+        with:
+          to: ${{ secrets.TELEGRAM_CHAT_ID }}
+          token: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          message: |
               ${{ (needs.ci.result == 'success' && needs.deploy.result == 'success' && needs.healthcheck_and_rollback.result == 'success') && '✅ Deploy SUCCESS' || '❌ Deploy FAILED' }}
               
               Repo: ${{ github.repository }}
