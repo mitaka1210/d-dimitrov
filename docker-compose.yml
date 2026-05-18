@@ -9,12 +9,11 @@ services:
     env_file:
       - .env.production
     networks:
-      - default
-    # ⚠️ Не монтирай целия проект върху /app, за да не презаписваш node_modules
+      - docker_network  # <--- ПРОМЯНА: Смени 'default' с името на твоята външна мрежа
     volumes:
       - /ssd/docker/share_upload_images:/app/upload
     restart: always
 
 networks:
-  docker_network:
+  docker_network: # Тази мрежа вече си я дефинирал правилно като външна
     external: true
