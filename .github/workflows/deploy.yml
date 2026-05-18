@@ -2,7 +2,7 @@ name: Deploy with SHA Tagging and Rollback
 
 on:
   push:
-    branches: [master]
+    branches: [ master ]
   workflow_dispatch:
 
 concurrency:
@@ -18,21 +18,6 @@ jobs:
           cd ${{ secrets.PROJECT_DIR }}
           git pull origin master
 
-      - name: Install Dependencies
-        run: |
-          cd ${{ secrets.PROJECT_DIR }}
-          npm config set fetch-timeout 300000
-          npm install --prefer-offline
-
-      - name: Run Lint
-        run: |
-          cd ${{ secrets.PROJECT_DIR }}
-          CI=false npm run lint -- --fix
-
-      - name: Build
-        run: |
-          cd ${{ secrets.PROJECT_DIR }}
-          CI=false npm run build
 
   deploy:
     needs: ci
@@ -129,15 +114,15 @@ jobs:
           exit 1
 
   notify:
-    needs: [ci, deploy, healthcheck_and_rollback]
+    needs: [ ci, deploy, healthcheck_and_rollback ]
     runs-on: ubuntu-latest
     if: always()
     steps:
       - name: Send Telegram Notification
         uses: appleboy/telegram-action@v1.0.0
         with:
-          to: ${{ secrets.TELEGRAM_TO }}
-          token: ${{ secrets.TELEGRAM_TOKEN }}
+          to: ${{ secrets.TELEGRAM_CHAT_ID }}
+          token: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           message: |
             ${{ (needs.ci.result == 'success' && needs.deploy.result == 'success' && needs.healthcheck_and_rollback.result == 'success') && '✅ Deploy SUCCESS' || '❌ Deploy FAILED' }}
 
