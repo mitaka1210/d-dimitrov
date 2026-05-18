@@ -21,7 +21,8 @@ jobs:
       - name: Install Dependencies
         run: |
           cd ${{ secrets.PROJECT_DIR }}
-          npm install
+          npm config set fetch-timeout 300000
+          npm install --prefer-offline
 
       - name: Run Lint
         run: |
