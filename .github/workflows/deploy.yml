@@ -1,39 +1,151 @@
-name: 🚀 Build & Deploy
+name: Deploy with SHA Tagging and Rollback
 
 on:
   push:
-    branches:
-      - stage
+    branches: [master]
   workflow_dispatch:
 
+concurrency:
+  group: production-deploy
+  cancel-in-progress: false
+
 jobs:
-  deploy:
-    name: 🚀 Deploy to Production
-    runs-on: ubuntu-latest
+  ci:
+    runs-on: self-hosted
     steps:
-      - name: 📥 Checkout Code
-        uses: actions/checkout@v4
+      - name: Git Pull Latest Changes
+        run: |
+          cd ${{ secrets.PROJECT_DIR }}
+          git pull origin master
 
-      - name: 🟢 Setup Node.js
-        uses: actions/setup-node@v4
+      - name: Install Dependencies
+        run: |
+          cd ${{ secrets.PROJECT_DIR }}
+          npm install
+
+      - name: Run Lint
+        run: |
+          cd ${{ secrets.PROJECT_DIR }}
+          CI=false npm run lint -- --fix
+
+      - name: Build
+        run: |
+          cd ${{ secrets.PROJECT_DIR }}
+          CI=false npm run build
+
+  deploy:
+    needs: ci
+    runs-on: self-hosted
+    steps:
+      - name: Build Docker Image with SHA Tag
+        run: |
+          cd ${{ secrets.PROJECT_DIR }}
+          echo "Building image with tag: ${{ github.sha }}"
+          docker build -t d-dimitrov-prod:${{ github.sha }} .
+          docker tag d-dimitrov-prod:${{ github.sha }} d-dimitrov-prod:latest
+
+      - name: Deploy with SHA-Tagged Image
+        run: |
+          cd ${{ secrets.PROJECT_DIR }}
+          APP_IMAGE_TAG=${{ github.sha }} docker compose up -d
+
+  healthcheck_and_rollback:
+    needs: deploy
+    runs-on: self-hosted
+    steps:
+      - name: Health Check
+        id: health_check
+        run: |
+          cd ${{ secrets.PROJECT_DIR }}
+          echo "Waiting for containers to start..."
+          sleep 60
+
+          SUCCESS=false
+          for i in {1..6}; do
+            if curl -fsS http://localhost:3444 > /dev/null; then
+              echo "✅ Health check passed on attempt $i"
+              SUCCESS=true
+              break
+            fi
+            echo "Attempt $i: Port 3444 not responding yet..."
+            sleep 10
+          done
+
+          if [ "$SUCCESS" = true ]; then
+            echo "${{ github.sha }}" > ${{ secrets.PROJECT_DIR }}/.last_stable_sha
+            echo "✅ Stable SHA saved: ${{ github.sha }}"
+            echo "deploy_result=success" >> $GITHUB_OUTPUT
+          else
+            echo "❌ Health check FAILED after 6 attempts"
+            echo "=== Container Status ==="
+            docker ps -a --format "table {{.Names}}\t{{.Status}}\t{{.Ports}}"
+
+            echo "=== Port Availability ==="
+            ss -tlnp | grep 3444 || echo "Port 3444 is not listening"
+
+            echo "=== Verbose curl on port 3444 ==="
+            curl -v http://localhost:3444 2>&1 || true
+
+            echo "=== App logs (last 80 lines) ==="
+            docker compose logs --tail=80 app
+
+            echo "deploy_result=failed" >> $GITHUB_OUTPUT
+            exit 1
+          fi
+
+      - name: Rollback to Last Stable Image
+        if: failure()
+        run: |
+          cd ${{ secrets.PROJECT_DIR }}
+          LAST_STABLE=$(cat .last_stable_sha 2>/dev/null || echo "")
+
+          if [ -z "$LAST_STABLE" ]; then
+            echo "❌ CRITICAL: No stable image found. Cannot rollback!"
+            exit 1
+          fi
+
+          echo "⏪ Rolling back to stable SHA: $LAST_STABLE"
+          APP_IMAGE_TAG=$LAST_STABLE docker compose up -d
+
+          echo "Waiting for rollback containers to start..."
+          sleep 20
+
+          ROLLBACK_OK=false
+          for i in {1..3}; do
+            if curl -fsS http://localhost:3444 > /dev/null; then
+              echo "✅ Rollback successful — app is running on $LAST_STABLE"
+              ROLLBACK_OK=true
+              break
+            fi
+            echo "Rollback attempt $i: Still not responding..."
+            sleep 15
+          done
+
+          if [ "$ROLLBACK_OK" = false ]; then
+            echo "🚨 CRITICAL: Rollback also failed! Manual intervention required."
+          fi
+
+          exit 1
+
+  notify:
+    needs: [ci, deploy, healthcheck_and_rollback]
+    runs-on: ubuntu-latest
+    if: always()
+    steps:
+      - name: Send Telegram Notification
+        uses: appleboy/telegram-action@v1.0.0
         with:
-          node-version: 20
+          to: ${{ secrets.TELEGRAM_TO }}
+          token: ${{ secrets.TELEGRAM_TOKEN }}
+          message: |
+            ${{ (needs.ci.result == 'success' && needs.deploy.result == 'success' && needs.healthcheck_and_rollback.result == 'success') && '✅ Deploy SUCCESS' || '❌ Deploy FAILED' }}
 
-      - name: 📦 Install Dependencies
-        run: npm ci
+            Repo: ${{ github.repository }}
+            Branch: ${{ github.ref_name }}
+            SHA: ${{ github.sha }}
 
-      - name: 🏗️ Build Project
-        run: npm run build
-        env:
-          NODE_ENV: production
+            CI:              ${{ needs.ci.result }}
+            Deploy:          ${{ needs.deploy.result }}
+            Health/Rollback: ${{ needs.healthcheck_and_rollback.result }}
 
-      - name: 🚀 Deploy via SSH
-        uses: appleboy/ssh-action@v1.0.3
-        with:
-          host: ${{ secrets.SSH_HOST }}
-          username: ${{ secrets.SSH_USER }}
-          key: ${{ secrets.SSH_PRIVATE_KEY }}
-          port: ${{ secrets.SSH_PORT }}
-          script: |
-            cd ${{ secrets.PROJECT_DIR }}
-            bash test_deploy.sh
+            ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}

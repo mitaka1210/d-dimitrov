@@ -2,7 +2,7 @@ version: '3.8'
 
 services:
   app:
-    build: .
+    image: d-dimitrov-prod:${APP_IMAGE_TAG:-latest}
     container_name: d-dimitrov
     ports:
       - "3444:3000"
