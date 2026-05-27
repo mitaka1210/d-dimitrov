@@ -14,6 +14,7 @@ interface ArticleRow {
  section_content: string | null;
  section_position: number | null;
  section_image_url: string | null;
+ main_image_url: string | null;
 }
 
 export async function GET() {
@@ -24,6 +25,7 @@ export async function GET() {
                    a.title             AS article_title,
                    a.created_at        AS article_created_at,
                    a.status            AS status,
+                   a.main_image_url    AS main_image_url,
                    s.id                AS section_id,
                    s.title             AS section_title,
                    s.content           AS section_content,
@@ -49,7 +51,7 @@ export async function GET() {
      title: row.article_title,
      status: row.status,
      createData: row.article_created_at,
-     images: row.section_image_url,
+     mainImages: row.main_image_url,
      sections: [],
     };
    }
@@ -65,7 +67,7 @@ export async function GET() {
     });
    }
   }
-
+  console.log('pesho', Object.values(articlesMap));
   return NextResponse.json(Object.values(articlesMap));
  } catch (error: any) {
   console.error('Database error:', error);

@@ -36,6 +36,7 @@ const articlesSlice = createSlice({
    let articlesArr = [];
    state.data = validateArticles(action.payload);
    state.status = 'succeeded';
+   console.log('pesho 123123', action.payload);
    if (action.payload.error === undefined) {
     for (let i = 0; i < state.data.length; i++) {
      if (state.data[i].status === true) {
@@ -50,6 +51,7 @@ const articlesSlice = createSlice({
        status: state.data[i].status,
        category: state.data[i].category,
        id: state.data[i].id,
+       mainImages: state.data[i].mainImages,
        title: state.data[i].title,
        sections: state.data[i].sections,
        images: state.data[i].images,
