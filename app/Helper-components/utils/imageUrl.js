@@ -4,6 +4,7 @@
  * @returns {string | null} URL за img src или null ако path е невалиден
  */
 export function getUploadImageUrl(path) {
+ console.log('pesho', path);
  if (typeof path !== 'string' || !path.trim()) return null;
  const trimmed = path.trim();
  if (!trimmed.startsWith('/upload/')) return null;

@@ -3,7 +3,7 @@ import path from "path";
 import fs from "fs";
 import { Readable } from "stream";
 
-const UPLOAD_DIR = path.join(process.cwd(), "upload");
+const UPLOAD_DIR = path.join(process.cwd(), "mitaka-website", "upload");
 
 const MIME: Record<string, string> = {
   ".png": "image/png",
