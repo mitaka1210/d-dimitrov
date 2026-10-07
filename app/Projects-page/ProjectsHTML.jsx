@@ -415,11 +415,17 @@ const ProjectsHtml = () => {
         <h4 className="card-main-title">{t('dashboardProject')}</h4>
        </div>
        <h5 className="card-content">{t('dashboardProjectText')}</h5>
-       <div className="buttons-wrapper flex-horizontal-container justify-content-end text-align-center align-items-center">
-        <a href="https://dashboard.d-dimitrov.eu/" target="_blank" className="read-more-btn">
-         {t('application')}
-        </a>
-       </div>
+       <h6 className="margin-top-5 border-color-bottom-gray">{t('technologies')}</h6>
+       <ul className="card-content">
+        <li>Authentication</li>
+        <li>HTML</li>
+        <li>CSS</li>
+        <li>JS</li>
+        <li>Python</li>
+        <li>PostgreSQL</li>
+        <li>Docker</li>
+        <li>AI-Assisted Software Development Framework (custom)</li>
+       </ul>
       </figcaption>
       <span className="after"></span>
      </figure>
@@ -432,11 +438,18 @@ const ProjectsHtml = () => {
         <h4 className="card-main-title">{t('personalFinance')}</h4>
        </div>
        <h5 className="card-content">{t('personalFinanceText')}</h5>
-       <div className="buttons-wrapper flex-horizontal-container justify-content-end text-align-center align-items-center">
-        <a href="https://finance-dashboard-ten-rosy.vercel.app/" target="_blank" className="read-more-btn">
-         {t('application')}
-        </a>
-       </div>
+       <h6 className="margin-top-5 border-color-bottom-gray">{t('technologies')}</h6>
+       <ul className="card-content">
+        <li>Next.js</li>
+        <li>C#</li>
+        <li>HTML</li>
+        <li>CSS</li>
+        <li>JS</li>
+        <li>PostgreSQL</li>
+        <li>Docker</li>
+        <li>Render</li>
+        <li>AI-Assisted Software Development Framework (custom)</li>
+       </ul>
       </figcaption>
       <span className="after"></span>
      </figure>
