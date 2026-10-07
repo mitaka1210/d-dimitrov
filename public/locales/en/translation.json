@@ -164,5 +164,9 @@
  "completes": "Completed",
  "aqua-hub-header": "Platform AquaHub",
  "aqua-hub-text": "AquaHub is a modern digital ecosystem paired with a user-friendly mobile app. It consolidates everything needed to care for an aquarium with ease, enjoyment, and zero unnecessary stress.",
- "product": "Product"
+ "product": "Product",
+ "dashboardProject": "My Dashboard",
+ "dashboardProjectText": "A personal dashboard that keeps key data and metrics in one place.",
+ "personalFinance": "Personal Finance",
+ "personalFinanceText": "Analysis and tracking of personal finances – income, expenses and a budget overview."
 }
