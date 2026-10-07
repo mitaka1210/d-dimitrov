@@ -8,41 +8,45 @@ import {useTranslation} from "react-i18next";
 import MyServices from "../my-services/myServices";
 
 const skills = [
-  [{ name: "HTML", icon: "📝", category: "old" }],
-  [
-    { name: "CSS", icon: "🎨", category: "old" },
-    { name: "JavaScript", icon: "⚡", category: "old" },
-  ],
-  [
-    { name: "SCSS", icon: "💅", category: "old" },
-    { name: "ReactJS", icon: "⚛️", category: "old" },
-    { name: "AngularJS", icon: "🅰️", category: "old" },
-  ],
-  [
-    { name: "Gulp", icon: "🐙", category: "old" },
-    { name: "GitHub", icon: "🐱", category: "old" },
-    { name: "Angular", icon: "🅰️", category: "old" },
-    { name: "NextJS", icon: "🚀", category: "new" },
-  ],
-  [
-    { name: "Redux", icon: "🔄", category: "old" },
-    { name: "Express", icon: "🚀", category: "old" },
-    { name: "Docker", icon: "🐳", category: "new" },
-    { name: "RxJS", icon: "🔗", category: "old" },
-    { name: "DBeaver", icon: "🐘", category: "old" },
-  ],
-  [
-    { name: "Postman", icon: "📡", category: "old" },
-    { name: "PostgreSQL", icon: "🐘", category: "new" },
-    { name: "RTK", icon: "⚙️", category: "old" },
-    { name: "Firebase", icon: "🔥", category: "new" },
-    { name: "Vue - 2", icon: "🟩", category: "new" },
-    { name: "NodeJS", icon: "🛠️", category: "new" },
-  ],
-  [   {name: "bashScripts", icon: "📜", category: "new" },
-      { name: "selfHosted", icon: "🖥️", category: "new" },
-      { name: "Мисля какво да е", icon: "🤔💭", category: "new" }
-  ]
+ [{ name: 'HTML', icon: '📝', category: 'old' }],
+ [
+  { name: 'CSS', icon: '🎨', category: 'old' },
+  { name: 'JavaScript', icon: '⚡', category: 'old' },
+ ],
+ [
+  { name: 'SCSS', icon: '💅', category: 'old' },
+  { name: 'ReactJS', icon: '⚛️', category: 'old' },
+  { name: 'AngularJS', icon: '🅰️', category: 'old' },
+ ],
+ [
+  { name: 'Gulp', icon: '🐙', category: 'old' },
+  { name: 'GitHub', icon: '🐱', category: 'old' },
+  { name: 'Angular', icon: '🅰️', category: 'old' },
+  { name: 'NextJS', icon: '🚀', category: 'old' },
+ ],
+ [
+  { name: 'Redux', icon: '🔄', category: 'old' },
+  { name: 'Express', icon: '🚀', category: 'old' },
+  { name: 'Docker', icon: '🐳', category: 'old' },
+  { name: 'RxJS', icon: '🔗', category: 'old' },
+  { name: 'DBeaver', icon: '🐘', category: 'old' },
+ ],
+ [
+  { name: 'Postman', icon: '📡', category: 'old' },
+  { name: 'PostgreSQL', icon: '🐘', category: 'new' },
+  { name: 'RTK', icon: '⚙️', category: 'old' },
+  { name: 'Firebase', icon: '🔥', category: 'old' },
+  { name: 'Vue - 2', icon: '🟩', category: 'old' },
+  { name: 'NodeJS', icon: '🛠️', category: 'old' },
+ ],
+ [
+  { name: 'bashScripts', icon: '📜', category: 'old' },
+  { name: 'selfHosted', icon: '🏠🖥️', category: 'old' },
+  { name: 'AI-automation', icon: '🧠', category: 'new' },
+  { name: 'C#', icon: '🖥️', category: 'new' },
+  { name: 'DataGrip', icon: '🛠️', category: 'new' },
+  { name: 'Мисля какво да е', icon: '🤔💭', category: 'new' },
+ ],
 ];
 
 const skillDescriptionsBG = {

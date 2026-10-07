@@ -29,6 +29,8 @@ import img28 from '../../assets/images/ai-docs-image.png';
 import img29 from '../../assets/images/ai-agents.png';
 import img30 from '../../assets/images/invest-tracking.png';
 import img31 from '../../assets/images/aqua-hub.png';
+import img32 from '../../assets/images/dashboard.png';
+import img33 from '../../assets/images/finance.png';
 
 const imagesArray = [
  {
@@ -154,6 +156,14 @@ const imagesArray = [
  {
   id: 30,
   url: img31,
+ },
+ {
+  id: 31,
+  url: img32,
+ },
+ {
+  id: 32,
+  url: img33,
  },
 ];
 export default imagesArray;
