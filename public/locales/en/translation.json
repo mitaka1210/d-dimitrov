@@ -158,11 +158,15 @@
  "contactWithMeIfYouWant": "If you want to learn more, write to me!",
  "aiDocumentationText": "AI Documentation Studio is a local Docker application that uses AI models such as ChatGPT, Claude and Gemini to generate technical and business documentation directly from source code projects. The user provides a path to a project or a specific component, and the system automatically creates README, API documentation, architectural descriptions, release notes and customer summaries, without the code leaving his machine. The application works with a license key and allows the use of his own AI API key for full control over costs and privacy.",
  "aiAgentWorkflowText": "I made my own AI-agent (Claude Code Skeleton) — a framework for accelerating development based on artificial intelligence. The platform provides a quick start through ready-made documentation templates, imposes strict enforceable standards for code quality and offers specialized AI agents for task delegation.",
- "aiAgentWorkflow": "Claude Code Skeleton Ecosystem",
+ "aiAgentWorkflow": "AI-Assisted Software Development Framework",
  "aiSectionName": "Effectiveness with AI",
  "close": "Close",
  "completes": "Completed",
  "aqua-hub-header": "Platform AquaHub",
  "aqua-hub-text": "AquaHub is a modern digital ecosystem paired with a user-friendly mobile app. It consolidates everything needed to care for an aquarium with ease, enjoyment, and zero unnecessary stress.",
- "product": "Product"
+ "product": "Product",
+ "dashboardProject": "My Dashboard",
+ "dashboardProjectText": "A personal dashboard that keeps key data and metrics in one place.",
+ "personalFinance": "Personal Finance",
+ "personalFinanceText": "Analysis and tracking of personal finances – income, expenses and a budget overview."
 }

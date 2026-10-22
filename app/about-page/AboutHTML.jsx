@@ -51,7 +51,6 @@ const AboutHtml = forwardRef(({ open, setOpen }, ref) => {
   <>
    <div className="about">
     <div className="about-me text-align-center flex-horizontal-container-raw justify-content-center align-items-center">
-     <h2 className="">{t('aboutMe')}</h2>
     </div>
     <section>
      <div className="my-hobbi flex-vertical-container justify-content-center align-items-center text-align-center margin-15" onClick={closeDiv}>

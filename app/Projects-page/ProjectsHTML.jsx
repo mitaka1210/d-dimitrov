@@ -406,6 +406,53 @@ const ProjectsHtml = () => {
       </figcaption>
       <span className="after"></span>
      </figure>
+     <figure className="shape-box shape-box_half">
+      <img src={img[31].url.src} alt="Dashboard" />
+      <div className="brk-abs-overlay z-index-0 bg-black opacity-60"></div>
+      <figcaption>
+       <div className="show-cont">
+        <h3 className="card-no">14</h3>
+        <h4 className="card-main-title">{t('dashboardProject')}</h4>
+       </div>
+       <h5 className="card-content">{t('dashboardProjectText')}</h5>
+       <h6 className="margin-top-5 border-color-bottom-gray">{t('technologies')}</h6>
+       <ul className="card-content">
+        <li>Authentication</li>
+        <li>HTML</li>
+        <li>CSS</li>
+        <li>JS</li>
+        <li>Python</li>
+        <li>PostgreSQL</li>
+        <li>Docker</li>
+        <li>AI-Assisted Software Development Framework (custom)</li>
+       </ul>
+      </figcaption>
+      <span className="after"></span>
+     </figure>
+      <figure className="shape-box shape-box_half">
+      <img src={img[32].url.src} alt="Personal finance" />
+      <div className="brk-abs-overlay z-index-0 bg-black opacity-60"></div>
+      <figcaption>
+       <div className="show-cont">
+        <h3 className="card-no">15</h3>
+        <h4 className="card-main-title">{t('personalFinance')}</h4>
+       </div>
+       <h5 className="card-content">{t('personalFinanceText')}</h5>
+       <h6 className="margin-top-5 border-color-bottom-gray">{t('technologies')}</h6>
+       <ul className="card-content">
+        <li>Next.js</li>
+        <li>C#</li>
+        <li>HTML</li>
+        <li>CSS</li>
+        <li>JS</li>
+        <li>PostgreSQL</li>
+        <li>Docker</li>
+        <li>Render</li>
+        <li>AI-Assisted Software Development Framework (custom)</li>
+       </ul>
+      </figcaption>
+      <span className="after"></span>
+     </figure>
     </div>
    </section>
    <section className="magic-novatio flex-vertical-container justify-content-center text-align-center">
@@ -416,7 +463,7 @@ const ProjectsHtml = () => {
       <div className="brk-abs-overlay z-index-0 bg-black opacity-60"></div>
       <figcaption>
        <div className="show-cont">
-        <h3 className="card-no">14</h3>
+        <h3 className="card-no">16</h3>
         <h4 className="card-main-title">{t('novatio')}</h4>
        </div>
        <h5 className="card-content">{t('novatioText')}</h5>
@@ -442,7 +489,7 @@ const ProjectsHtml = () => {
       <div className="brk-abs-overlay z-index-0 bg-black opacity-60"></div>
       <figcaption>
        <div className="show-cont">
-        <h3 className="card-no">15</h3>
+        <h3 className="card-no">17</h3>
         <h4 className="card-main-title">{t('econt')}</h4>
        </div>
        <h5 className="card-content">{t('econtSubText')}</h5>
@@ -466,7 +513,7 @@ const ProjectsHtml = () => {
       <div className="brk-abs-overlay z-index-0 bg-black opacity-60"></div>
       <figcaption>
        <div className="show-cont">
-        <h3 className="card-no">16</h3>
+        <h3 className="card-no">18</h3>
         <h6 className="card-main-title">😏</h6>
        </div>
        <h5 className="card-content">{t('textForNextProject')}</h5>
@@ -483,7 +530,7 @@ const ProjectsHtml = () => {
       <div className="brk-abs-overlay z-index-0 bg-black opacity-60"></div>
       <figcaption>
        <div className="show-cont">
-        <h3 className="card-no">17</h3>
+        <h3 className="card-no">19</h3>
         <h4 className="card-main-title аi-docs">{t('aiDocumentation')}</h4>
        </div>
        <h5 className="card-content">{t('aiDocumentationText')}</h5>
@@ -510,7 +557,7 @@ const ProjectsHtml = () => {
       <div className="brk-abs-overlay z-index-0 bg-black opacity-60"></div>
       <figcaption>
        <div className="show-cont">
-        <h3 className="card-no">18</h3>
+        <h3 className="card-no">20</h3>
         <h4 className="card-main-title аi-docs">{t('aiAgentWorkflow')}</h4>
        </div>
        <h5 className="card-content">{t('aiAgentWorkflowText')}</h5>

@@ -4,27 +4,7 @@ import Slider from "react-slick";
 import MyServices from "../my-services/myServices";
 import { FaCode, FaLaptopCode } from "react-icons/fa";
 const MobileSkillsHtml = () => {
-  const imgs = [
-    "html",
-    "css",
-    "docker",
-    "grunt",
-    "reactjs",
-    "angular",
-    "angularjs",
-    "scss",
-    "reactjs",
-    "postman",
-    "redux(RTK)",
-    "dbeaver",
-    "postgreSQL",
-    "github",
-    "express",
-    "javascript",
-    "nodejs",
-    "jekyll",
-    "rxjs",
-  ];
+  const imgs = ['html', 'css', 'docker', 'grunt', 'reactjs', 'angular', 'angularjs', 'scss', 'reactjs', 'postman', 'redux(RTK)', 'dbeaver', 'postgreSQL', 'github', 'express', 'javascript', 'nodejs', 'jekyll', 'rxjs', 'C#', 'AI-automation', 'selfHosted', 'bashScripts', 'firebase', 'vue-2', 'dataGrip'];
   const services = [
     {
       title: "Web Development",
